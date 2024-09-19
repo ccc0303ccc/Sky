@@ -35,7 +35,7 @@ var sconfig = {
 }
 //var x5f = 'file:///storage/emulated/0/Download/web/SlideX.html'; //本地html位置
 var x5f = 'hiker://files/rules/zetalpha/SlideX.html';
-var x5ui = 'https://github.com/ccc0303ccc/Sky/blob/main/x5ui.js'; //遠端js位置
+var x5ui = 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/x5ui.js'; //遠端js位置
 
 var x5debug = false;
 var x5plusRule="empty";
