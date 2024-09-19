@@ -1,3 +1,14 @@
+/*20240215 ver 1.0
+web:https://gitee.com/zetalpha/hikerview/raw/master/global/js/x5ui.js
+*/
+
+/**
+ * 判断两个对象是否相等
+ * @param {object} x - 对象1
+ * @param {object} y  - 对象2
+ * @param {array} excludeKeys  - 要排除的键的数组
+ * @return {boolean} 返回两个对象是否相等
+ */
 function isEqual(x, y, excludeKeys) {
   excludeKeys = excludeKeys != undefined ? excludeKeys : [];
   const ok = Object.keys;
@@ -14,28 +25,28 @@ function isEqual(x, y, excludeKeys) {
   return x === y;
 }
 
-//默認
+//默认
 var sconfig = {
-  newW: false, //新窗口打開
-  mark: "#immersiveTheme#", //連結標識
-  //url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用子頁面 {url}會替換目標連結
-  url: "hiker://page/er?rule=" + MY_RULE.title + "&url={url}", //使用二級
-  longc: false, //啟用長按
-  x5lc: true, //圖片菜單
-  x5h: '190', //x5瀏覽器高度  為空默認 3列封面默認190
+  newW: false, //新窗口打开
+  mark: "#immersiveTheme#", //链接标识
+  //url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用子页面 {url}会替换目标链接
+  url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用二级
+  longc: false, //启用长按
+  x5lc: true, //图片菜单
+  x5h: '190', //x5浏览器高度  为空默认 3列封面默认190
   zoom: false,
-  custom: true, //自訂 定義下方內容
-  /*imgh: 164, //圖片高度  
-  imgw: 123, //圖片寬度*/
+  custom: true, //自定义 定义下方内容
+  /*imgh: 164, //图片高度  
+  imgw: 123, //图片宽度*/
   speed: 5, //速度
-  fit: 'cover', //object-fit 樣式
-  autoplay: true, //自動播放
-  show: 3, //顯示數量
-  scroll: 1, //每次滑動數量 
+  fit: 'cover', //object-fit 样式
+  autoplay: true, //自动播放
+  show: 3, //显示数量
+  scroll: 1, //每次滑动数量 
 }
 //var x5f = 'file:///storage/emulated/0/Download/web/SlideX.html'; //本地html位置
 var x5f = 'hiker://files/rules/zetalpha/SlideX.html';
-var x5ui = 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/x5ui.js'; //遠端js位置
+var x5ui = 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/x5ui.js'; //远程js位置
 
 var x5debug = false;
 var x5plusRule="empty";
@@ -99,7 +110,7 @@ $.extend({
     if (o == 1) {
       zoom = w / dpi;
     } else {
-      log('橫屏')
+      log('横屏')
       zoom = w / dpi;
     }
     if (zoom < 1) {
@@ -129,7 +140,7 @@ $.extend({
       if (key == undefined) {
         return data;
       } else {
-        if (MY_RULE.title == '聚閱√') {
+        if (MY_RULE.title == '聚阅√') {
           key = MY_RULE.title + '-' + key;
         }
       }
@@ -155,7 +166,7 @@ $.extend({
       }
 
       this.onfile();
-      if (MY_RULE.title == '聚閱√') {
+      if (MY_RULE.title == '聚阅√') {
         key = MY_RULE.title + '-' + key;
       }
       var data = this.get();
@@ -202,14 +213,14 @@ $.exports.show = function (arr,data,cfg, extras) {
       eval(key + " = '" + value+ "'");
     }
   });
-  //參數
+  //参数
   cfg=cfg?cfg:{};
   let scfg=cfg;
 
   var sn = MY_RULE.title;
-  if (sn == "聚閱√") {
-    cfg['url'] = "聚閱";
-    var info = storage0.getMyVar('一級源介面資訊');
+  if (sn == "聚阅√") {
+    cfg['url'] = "聚阅";
+    var info = storage0.getMyVar('一级源接口信息');
     sn = info.name;
     if (typeof cfg['stype'] == 'undefined') {
       cfg['stype'] = info.type;
@@ -219,7 +230,7 @@ $.exports.show = function (arr,data,cfg, extras) {
 
   storage0.putMyVar("Slide_cfg", cfg);
 
-  if (MY_RULE.title == "聚閱√") {
+  if (MY_RULE.title == "聚阅√") {
     if (x5clear) {
       refreshX5WebView('about:blank');
     }
@@ -229,7 +240,7 @@ $.exports.show = function (arr,data,cfg, extras) {
   if (data.length > 0) {
     if (!fileExist(x5f)) {
       arr.push({
-        title: '““””<small>輪播元件尚未匯入❗️點我匯入</small>',
+        title: '““””<small>轮播组件尚未导入❗️点我导入</small>',
         col_type: 'text_center_1',
         url: $('').lazyRule(() => {
           eval(request('https://gitee.com/zetalpha/hikerview/raw/master/global/Ver.js'));
@@ -293,10 +304,10 @@ var mode = getParam('mode');
 var d = [];
 
 if (mode == 'set') {
-  setPageTitle('輪播設定');
+  setPageTitle('轮播设置');
   var sn = MY_RULE.title;
-  if (sn == "聚閱√") {
-    sn = storage0.getMyVar('一級源介面資訊').name
+  if (sn == "聚阅√") {
+    sn = storage0.getMyVar('一级源接口信息').name
   }
 
   addListener("onClose",
@@ -351,13 +362,13 @@ if (mode == 'set') {
   }
 
   d.push({
-    title: '預覽窗口',
+    title: '预览窗口',
     col_type: 'avatar',
-    desc:(sfig['sort']||"順序")+'\t',
+    desc:(sfig['sort']||"顺序")+'\t',
     img: 'https://hikerfans.com/tubiao/ke/156.png',
     url: $("#noLoading#").lazyRule((sn)=>{
-      let all_cols = ['順序', '逆序', '亂序'];
-      return $(all_cols, 1, '顯示順序')
+      let all_cols = ['顺序', '逆序', '乱序'];
+      return $(all_cols, 1, '显示顺序')
         .select((sn) => {
           $.sdata.set(sn, input, 'sort');
           refreshPage(false);
@@ -366,7 +377,7 @@ if (mode == 'set') {
     },sn),
     extra:{
       LongClick: [{
-        title: '偵錯:'+(sfig["debug"]||false?"開啟":"關閉"), js: $.toString((o, sn, k) => {
+        title: '调试:'+(sfig["debug"]||false?"开启":"关闭"), js: $.toString((o, sn, k) => {
           o = $.sdata.get(sn);
           let t; t = o[k] === false ? true : false;
           $.sdata.set(sn, t, k);
@@ -395,7 +406,7 @@ if (mode == 'set') {
   //log(plusRule)
   if(plusRule!="empty"){
     d.push({
-      title:'外部自訂設定',
+      title:'外部自定义设置',
       col_type:'text_icon',
       img:'https://hikerfans.com/tubiao/system/71.png',
       url:'hiker://empyt',
@@ -408,8 +419,8 @@ if (mode == 'set') {
 
   
   // d.push({
-  //   title: '呼叫小程序',
-  //   desc: '默認#immersiveTheme#',
+  //   title: '调用小程序',
+  //   desc: '默认#immersiveTheme#',
   //   url: $.toString((sn) => {
   //     $.sdata.set(sn, input, 'title');
   //     refreshPage(false);
@@ -422,7 +433,7 @@ if (mode == 'set') {
   // })
 
   d.push({
-    title: '確認修改',
+    title: '确认修改',
     img: 'https://hikerfans.com/tubiao/system/84.png',
     url: $('#noLoading#').lazyRule(() => {
       back(true);
@@ -432,7 +443,7 @@ if (mode == 'set') {
   })
 
   d.push({
-    title: '恢復默認',
+    title: '恢复默认',
     img: 'https://hikerfans.com/tubiao/system/83.png',
     col_type: 'icon_small_3',
     url: $('#noLoading#').lazyRule((sc, sn) => {
@@ -448,7 +459,7 @@ if (mode == 'set') {
       return 'hiker://empty';
     }, sconfig, sn)
   }, {
-    title: '檢查更新',
+    title: '检查更新',
     img: 'https://hikerfans.com/tubiao/system/89.png',
     col_type: 'icon_small_3',
     url: $('#noLoading#').lazyRule((x5u) => {
@@ -458,15 +469,15 @@ if (mode == 'set') {
         Updata(["SlideX.html"], true);
         refreshPage();
       } else {
-        toast('當前是偵錯模式');
+        toast('当前是调试模式');
       }
       return 'hiker://empty';
     }, getVar("slide_ui"))
   })
 
-  if (MY_RULE.title != "聚閱√") {
+  if (MY_RULE.title != "聚阅√") {
     d.push({
-      title: '新窗口打開',
+      title: '新窗口打开',
       url: lazy.replace('action', 'newW'),
       col_type: "text_icon",
       desc: "",
@@ -478,25 +489,25 @@ if (mode == 'set') {
 
 
   d.push({
-    title: '啟用長按',
+    title: '启用长按',
     url: lazy.replace('action', 'longc'),
     col_type: "text_icon",
     desc: "",
     pic_url: Tof('longc'),
   }, {
-    title: '圖片菜單',
+    title: '图片菜单',
     url: lazy.replace('action', 'x5lc'),
     col_type: "text_icon",
     desc: "",
     pic_url: Tof('x5lc'),
   }, {
-    title: '滑動指示',
+    title: '滑动指示',
     url: lazy.replace('action', 'dots'),
     col_type: "text_icon",
     desc: "",
     pic_url: Tof('dots'),
   }, {
-    title: '無標題',
+    title: '无标题',
     url: $('#noLoading#').lazyRule((o, sn, k) => {
       o = $.sdata.get(sn);
       let t;
@@ -519,19 +530,19 @@ if (mode == 'set') {
     desc: "",
     pic_url: Tof('notitle'),
   }, {
-    title: '自動縮放',
+    title: '自动缩放',
     url: lazy.replace('action', 'zoom'),
     pic_url: Tof('zoom'),
     col_type: 'text_icon',
   });
 
   d.push({
-    title: '連結標識',
-    desc: '默認#immersiveTheme#',
+    title: '链接标识',
+    desc: '默认#immersiveTheme#',
     url: $.toString((sn) => {
       let all_cols = ['', '#fullTheme#', '#gameTheme#', '#immersiveTheme#'];
       all_cols.unshift(input);
-      return $(all_cols, 1, '連結標識')
+      return $(all_cols, 1, '链接标识')
         .select((sn) => {
           $.sdata.set(sn, input, 'mark');
           refreshPage(false);
@@ -545,11 +556,11 @@ if (mode == 'set') {
   })
 
   d.push({
-    title: '連結',
+    title: '链接',
     url: $.toString((sn) => {
-      let all_cols = ["聚閱", "hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "hiker://empty?&url={url}","hiker://empty##{url}","{url}"];
+      let all_cols = ["聚阅", "hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "hiker://empty?&url={url}","hiker://empty##{url}","{url}"];
       all_cols.unshift(input)
-      return $(all_cols, 1, '{url}會替換目標連結')
+      return $(all_cols, 1, '{url}会替换目标链接')
         .select((sn) => {
           $.sdata.set(sn, input, 'url');
           refreshPage(false);
@@ -565,12 +576,12 @@ if (mode == 'set') {
   })
   if (sfig.longc) {
     d.push({
-      title: '長按連結',
-      desc: '默認空，對應傳入對象的lurl',
+      title: '长按链接',
+      desc: '默认空，对应传入对象的lurl',
       url: $.toString((sn) => {
         let all_cols = ["hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "hiker://empty?&url={url}", "hiker://empty##{url}", "{url}"];
         all_cols.unshift(input)
-        return $(all_cols, 1, '{url}會替換目標連結')
+        return $(all_cols, 1, '{url}会替换目标链接')
           .select((sn) => {
             $.sdata.set(sn, input, 'lurl');
             refreshPage(false);
@@ -590,7 +601,7 @@ if (mode == 'set') {
     d.push({
       title: 'x5高度',
       col_type: 'input',
-      desc: '默認190',
+      desc: '默认190',
       url: $.toString((sn, zoom) => {
         if (zoom == 'auto') {
           var px = $.getDisplay();
@@ -598,7 +609,7 @@ if (mode == 'set') {
         }
         let all_cols = [140, 190, 210];
         all_cols.unshift(Number(input));
-        return $(all_cols, 1, '默認190')
+        return $(all_cols, 1, '默认190')
           .select((sn) => {
             $.sdata.set(sn, input, 'x5h')
             refreshPage(false);
@@ -616,7 +627,7 @@ if (mode == 'set') {
   }
 
   d.push({
-    title: '自訂',
+    title: '自定义',
     url: lazy.replace('action', 'custom'),
     col_type: "text_icon",
     desc: "",
@@ -625,19 +636,19 @@ if (mode == 'set') {
 
   if (sfig['custom'] == true) {
     d.push({
-      title: '自動播放',
+      title: '自动播放',
       url: lazy.replace('action', 'autoplay'),
       col_type: "text_icon",
       desc: "",
       pic_url: Tof('autoplay'),
     });
     d.push({
-      title: 'object-fit樣式',
-      desc: '默認cover',
+      title: 'object-fit样式',
+      desc: '默认cover',
       url: $.toString((sn) => {
         let all_cols = ["", "fill", "cotain", "cover", "none", "scale-down", "initial", "inherit"];
         all_cols.unshift(input);
-        return $(all_cols, 1, '默認cover')
+        return $(all_cols, 1, '默认cover')
           .select((sn) => {
             $.sdata.set(sn, input, 'fit');
             refreshPage(false);
@@ -652,7 +663,7 @@ if (mode == 'set') {
       }
     }, {
       title: '播放速度',
-      desc: '單位秒',
+      desc: '单位秒',
       col_type: 'input',
       url: $.toString((sn) => {
         $.sdata.set(sn, input, 'speed');
@@ -672,9 +683,9 @@ if (mode == 'set') {
     })
 
     /*d.push({
-        title: '圖片高度',
+        title: '图片高度',
         col_type: 'input',
-        desc: '默認164',
+        desc: '默认164',
         url: $.toString((cof) => {
             $.GoS.save(cof, 'imgh', Number(input));
             refreshPage(false);
@@ -687,9 +698,9 @@ if (mode == 'set') {
     })*/
 
     /*d.push({
-        title: '圖片寬度',
+        title: '图片宽度',
         col_type: 'input',
-        desc: '默認123',
+        desc: '默认123',
         url: $.toString((cof) => {
             $.GoS.save(cof, 'imgw', Number(input));
             refreshPage(false);
@@ -709,13 +720,13 @@ if (mode == 'set') {
     }
 
     d.push({
-      title: '顯示數量',
+      title: '显示数量',
       col_type: 'input',
-      desc: '默認3',
+      desc: '默认3',
       url: $.toString((sn) => {
         let all_cols = [1, 2, 3];
         all_cols.unshift(input);
-        return $(all_cols, 1, '默認3')
+        return $(all_cols, 1, '默认3')
           .select((sn) => {
             $.sdata.set(sn, input, 'show');
             if (Number(input) <= 3) {
@@ -745,9 +756,9 @@ if (mode == 'set') {
     }
 
     d.push({
-      title: '滑動數量',
+      title: '滑动数量',
       col_type: 'input',
-      desc: '默認3',
+      desc: '默认3',
       url: $.toString((sn) => {
         $.sdata.set(sn, input, 'scroll');
         refreshPage(false);
