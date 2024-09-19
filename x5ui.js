@@ -30,7 +30,7 @@ var sconfig = {
   newW: false, //新窗口打开
   mark: "#immersiveTheme#", //链接标识
   //url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用子页面 {url}会替换目标链接
-  url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用二级
+  url: "hiker://empty/##&url={url}", //使用二级
   longc: false, //启用长按
   x5lc: true, //图片菜单
   x5h: '190', //x5浏览器高度  为空默认 3列封面默认190
@@ -46,7 +46,7 @@ var sconfig = {
 }
 //var x5f = 'file:///storage/emulated/0/Download/web/SlideX.html'; //本地html位置
 var x5f = 'hiker://files/rules/zetalpha/SlideX.html';
-var x5ui = 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/x5ui.js'; //远程js位置
+var x5ui = 'https://gitee.com/zetalpha/hikerview/raw/master/global/js/x5ui.js'; //远程js位置
 
 var x5debug = false;
 var x5plusRule="empty";
