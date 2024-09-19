@@ -1,14 +1,3 @@
-/*20240215 ver 1.0
-web:https://gitee.com/zetalpha/hikerview/raw/master/global/js/x5ui.js
-*/
-
-/**
- * 判断两个对象是否相等
- * @param {object} x - 对象1
- * @param {object} y  - 对象2
- * @param {array} excludeKeys  - 要排除的键的数组
- * @return {boolean} 返回两个对象是否相等
- */
 function isEqual(x, y, excludeKeys) {
   excludeKeys = excludeKeys != undefined ? excludeKeys : [];
   const ok = Object.keys;
@@ -29,7 +18,6 @@ function isEqual(x, y, excludeKeys) {
 var sconfig = {
   newW: false, //新窗口打开
   mark: "#immersiveTheme#", //链接标识
-  //url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用子页面 {url}会替换目标链接
   url: "hiker://page/er?rule=" + MY_RULE.title + "&url={url}", //使用二级
   longc: false, //启用长按
   x5lc: true, //图片菜单
@@ -44,7 +32,7 @@ var sconfig = {
   show: 3, //显示数量
   scroll: 1, //每次滑动数量 
 }
-//var x5f = 'file:///storage/emulated/0/Download/web/SlideX.html'; //本地html位置
+
 var x5f = 'hiker://files/rules/zetalpha/SlideX.html';
 var x5ui = 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/x5ui.js'; //远程js位置
 
@@ -205,8 +193,6 @@ $.exports.show = function (arr,data,cfg, extras) {
   var x5clear = false;
   extras = !extras ? {} : extras;
   Object.entries(extras).forEach(([key, value]) => {
-    //console.log(key)
-    //console.log(value)
     if(key=="x5plusRule"){
       eval(key + " = "+$.stringify(value));
     }else{
@@ -392,16 +378,7 @@ if (mode == 'set') {
     extra: {
       imgLongClick: sfig.x5lc,
     }
-  }, /*{
-    col_type: 'input',
-    extra: {
-      titleVisible: false,
-      height: -1,
-      highlight: true,
-      type: 'textarea',
-      defaultValue: JSON.stringify(sfig, null),
-    }
-  }*/)
+  })
   let plusRule=storage0.getMyVar("x5_plus",x5plusRule);
   //log(plusRule)
   if(plusRule!="empty"){
@@ -413,24 +390,6 @@ if (mode == 'set') {
     })
     eval(plusRule)
   }
-  
-
-  //saveFile("slick_sconfig.json",JSON.stringify(sconfig,null,2),0);
-
-  
-  // d.push({
-  //   title: '调用小程序',
-  //   desc: '默认#immersiveTheme#',
-  //   url: $.toString((sn) => {
-  //     $.sdata.set(sn, input, 'title');
-  //     refreshPage(false);
-  //     return 'hiker://empty';
-  //   }, sn),
-  //   col_type: 'input',
-  //   extra: {
-  //     defaultValue: sfig['title'],
-  //   }
-  // })
 
   d.push({
     title: '确认修改',
@@ -558,7 +517,7 @@ if (mode == 'set') {
   d.push({
     title: '链接',
     url: $.toString((sn) => {
-      let all_cols = ["聚阅", "hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "hiker://empty?&url={url}","hiker://empty##{url}","{url}"];
+      let all_cols = ["hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "聚阅", "hiker://empty?&url={url}","hiker://empty##{url}","{url}"];
       all_cols.unshift(input)
       return $(all_cols, 1, '{url}会替换目标链接')
         .select((sn) => {
@@ -681,36 +640,6 @@ if (mode == 'set') {
         type: 'number'
       }
     })
-
-    /*d.push({
-        title: '图片高度',
-        col_type: 'input',
-        desc: '默认164',
-        url: $.toString((cof) => {
-            $.GoS.save(cof, 'imgh', Number(input));
-            refreshPage(false);
-            return 'hiker://empty'
-        }, storage0.getItem('sconfig', sfig)),
-        extra: {
-            defaultValue: $.GoS.get('imgh') == undefined ? 164 : $.GoS.get('imgh'),
-            type: 'number'
-        }
-    })*/
-
-    /*d.push({
-        title: '图片宽度',
-        col_type: 'input',
-        desc: '默认123',
-        url: $.toString((cof) => {
-            $.GoS.save(cof, 'imgw', Number(input));
-            refreshPage(false);
-            return 'hiker://empty'
-        }, storage0.getItem('sconfig', sfig)),
-        extra: {
-            defaultValue: $.GoS.get('imgw') == undefined ? 123 : $.GoS.get('imgw'),
-            type: 'number'
-        }
-    })*/
 
     var sw = sfig['show'];
     if (sw == '0' || sw == undefined || sw == 0) {
