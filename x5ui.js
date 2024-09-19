@@ -30,7 +30,7 @@ var sconfig = {
   newW: false, //新窗口打开
   mark: "#immersiveTheme#", //链接标识
   //url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用子页面 {url}会替换目标链接
-  url: "hiker://page/p?rule=" + MY_RULE.title + "&url={url}", //使用二级
+  url: "hiker://page/er?rule=" + MY_RULE.title + "&url={url}", //使用二级
   longc: false, //启用长按
   x5lc: true, //图片菜单
   x5h: '190', //x5浏览器高度  为空默认 3列封面默认190
