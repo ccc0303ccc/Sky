@@ -22,7 +22,7 @@ var sconfig = {
   longc: false, //启用长按
   x5lc: true, //图片菜单
   x5h: '190', //x5浏览器高度  为空默认 3列封面默认190
-  zoom: false,
+  zoom: true,
   custom: true, //自定义 定义下方内容
   /*imgh: 164, //图片高度  
   imgw: 123, //图片宽度*/
@@ -226,7 +226,7 @@ $.exports.show = function (arr,data,cfg, extras) {
   if (data.length > 0) {
     if (!fileExist(x5f)) {
       arr.push({
-        title: '““””<small>轮播组件尚未导入❗️点我导入</small>',
+        title: '““””<small>輪播組件尚未導入❗️點我導入</small>',
         col_type: 'text_center_1',
         url: $('').lazyRule(() => {
           eval(request('https://gitee.com/zetalpha/hikerview/raw/master/global/Ver.js'));
@@ -348,7 +348,7 @@ if (mode == 'set') {
   }
 
   d.push({
-    title: '预览窗口',
+    title: '預覽窗口',
     col_type: 'avatar',
     desc:(sfig['sort']||"顺序")+'\t',
     img: 'https://hikerfans.com/tubiao/ke/156.png',
@@ -363,7 +363,7 @@ if (mode == 'set') {
     },sn),
     extra:{
       LongClick: [{
-        title: '调试:'+(sfig["debug"]||false?"开启":"关闭"), js: $.toString((o, sn, k) => {
+        title: '調試:'+(sfig["debug"]||false?"开启":"关闭"), js: $.toString((o, sn, k) => {
           o = $.sdata.get(sn);
           let t; t = o[k] === false ? true : false;
           $.sdata.set(sn, t, k);
@@ -383,7 +383,7 @@ if (mode == 'set') {
   //log(plusRule)
   if(plusRule!="empty"){
     d.push({
-      title:'外部自定义设置',
+      title:'外部自訂義設置',
       col_type:'text_icon',
       img:'https://hikerfans.com/tubiao/system/71.png',
       url:'hiker://empyt',
@@ -392,7 +392,7 @@ if (mode == 'set') {
   }
 
   d.push({
-    title: '确认修改',
+    title: '確認修改',
     img: 'https://hikerfans.com/tubiao/system/84.png',
     url: $('#noLoading#').lazyRule(() => {
       back(true);
@@ -402,7 +402,7 @@ if (mode == 'set') {
   })
 
   d.push({
-    title: '恢复默认',
+    title: '恢復默認',
     img: 'https://hikerfans.com/tubiao/system/83.png',
     col_type: 'icon_small_3',
     url: $('#noLoading#').lazyRule((sc, sn) => {
@@ -418,7 +418,7 @@ if (mode == 'set') {
       return 'hiker://empty';
     }, sconfig, sn)
   }, {
-    title: '检查更新',
+    title: '檢查更新',
     img: 'https://hikerfans.com/tubiao/system/89.png',
     col_type: 'icon_small_3',
     url: $('#noLoading#').lazyRule((x5u) => {
@@ -436,7 +436,7 @@ if (mode == 'set') {
 
   if (MY_RULE.title != "聚阅√") {
     d.push({
-      title: '新窗口打开',
+      title: '新窗口打開',
       url: lazy.replace('action', 'newW'),
       col_type: "text_icon",
       desc: "",
@@ -448,25 +448,25 @@ if (mode == 'set') {
 
 
   d.push({
-    title: '启用长按',
+    title: '啟用長按',
     url: lazy.replace('action', 'longc'),
     col_type: "text_icon",
     desc: "",
     pic_url: Tof('longc'),
   }, {
-    title: '图片菜单',
+    title: '圖片菜單',
     url: lazy.replace('action', 'x5lc'),
     col_type: "text_icon",
     desc: "",
     pic_url: Tof('x5lc'),
   }, {
-    title: '滑动指示',
+    title: '滑動指示',
     url: lazy.replace('action', 'dots'),
     col_type: "text_icon",
     desc: "",
     pic_url: Tof('dots'),
   }, {
-    title: '无标题',
+    title: '無標題',
     url: $('#noLoading#').lazyRule((o, sn, k) => {
       o = $.sdata.get(sn);
       let t;
@@ -489,15 +489,15 @@ if (mode == 'set') {
     desc: "",
     pic_url: Tof('notitle'),
   }, {
-    title: '自动缩放',
+    title: '自動縮放',
     url: lazy.replace('action', 'zoom'),
     pic_url: Tof('zoom'),
     col_type: 'text_icon',
   });
 
   d.push({
-    title: '链接标识',
-    desc: '默认#immersiveTheme#',
+    title: '鏈接標示',
+    desc: '默認#immersiveTheme#',
     url: $.toString((sn) => {
       let all_cols = ['', '#fullTheme#', '#gameTheme#', '#immersiveTheme#'];
       all_cols.unshift(input);
@@ -515,7 +515,7 @@ if (mode == 'set') {
   })
 
   d.push({
-    title: '链接',
+    title: '鏈接',
     url: $.toString((sn) => {
       let all_cols = ["hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "聚阅", "hiker://empty?&url={url}","hiker://empty##{url}","{url}"];
       all_cols.unshift(input)
@@ -535,8 +535,8 @@ if (mode == 'set') {
   })
   if (sfig.longc) {
     d.push({
-      title: '长按链接',
-      desc: '默认空，对应传入对象的lurl',
+      title: '長按鏈接',
+      desc: '默認空，對應傳入對象的lurl',
       url: $.toString((sn) => {
         let all_cols = ["hiker://page/er?rule=" + MY_RULE.title + "&url={url}", "hiker://empty?&url={url}", "hiker://empty##{url}", "{url}"];
         all_cols.unshift(input)
@@ -560,7 +560,7 @@ if (mode == 'set') {
     d.push({
       title: 'x5高度',
       col_type: 'input',
-      desc: '默认190',
+      desc: '默認190',
       url: $.toString((sn, zoom) => {
         if (zoom == 'auto') {
           var px = $.getDisplay();
@@ -586,7 +586,7 @@ if (mode == 'set') {
   }
 
   d.push({
-    title: '自定义',
+    title: '自定義',
     url: lazy.replace('action', 'custom'),
     col_type: "text_icon",
     desc: "",
@@ -595,15 +595,15 @@ if (mode == 'set') {
 
   if (sfig['custom'] == true) {
     d.push({
-      title: '自动播放',
+      title: '自動播放',
       url: lazy.replace('action', 'autoplay'),
       col_type: "text_icon",
       desc: "",
       pic_url: Tof('autoplay'),
     });
     d.push({
-      title: 'object-fit样式',
-      desc: '默认cover',
+      title: 'object-fit樣式',
+      desc: '默認cover',
       url: $.toString((sn) => {
         let all_cols = ["", "fill", "cotain", "cover", "none", "scale-down", "initial", "inherit"];
         all_cols.unshift(input);
@@ -622,7 +622,7 @@ if (mode == 'set') {
       }
     }, {
       title: '播放速度',
-      desc: '单位秒',
+      desc: '單位秒',
       col_type: 'input',
       url: $.toString((sn) => {
         $.sdata.set(sn, input, 'speed');
@@ -649,9 +649,9 @@ if (mode == 'set') {
     }
 
     d.push({
-      title: '显示数量',
+      title: '顯示數量',
       col_type: 'input',
-      desc: '默认3',
+      desc: '默認3',
       url: $.toString((sn) => {
         let all_cols = [1, 2, 3];
         all_cols.unshift(input);
@@ -685,9 +685,9 @@ if (mode == 'set') {
     }
 
     d.push({
-      title: '滑动数量',
+      title: '滑動數量',
       col_type: 'input',
-      desc: '默认3',
+      desc: '默認3',
       url: $.toString((sn) => {
         $.sdata.set(sn, input, 'scroll');
         refreshPage(false);
