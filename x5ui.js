@@ -340,10 +340,10 @@ if (mode == 'set') {
       b = false;
     }
     if (b == true) {
-      return 'https://hikerfans.com/tubiao/messy/55.svg';
+      return 'http://123.56.105.145/tubiao/messy/55.svg';
     }
     if (b == false) {
-      return 'https://hikerfans.com/tubiao/messy/63.svg';
+      return 'http://123.56.105.145/tubiao/messy/63.svg';
     }
   }
 
@@ -351,7 +351,7 @@ if (mode == 'set') {
     title: '預覽窗口',
     col_type: 'avatar',
     desc:(sfig['sort']||"顺序")+'\t',
-    img: 'https://hikerfans.com/tubiao/ke/156.png',
+    img: 'http://123.56.105.145/tubiao/ke/156.png',
     url: $("#noLoading#").lazyRule((sn)=>{
       let all_cols = ['顺序', '逆序', '乱序'];
       return $(all_cols, 1, '显示顺序')
@@ -385,7 +385,7 @@ if (mode == 'set') {
     d.push({
       title:'外部自訂義設置',
       col_type:'text_icon',
-      img:'https://hikerfans.com/tubiao/system/71.png',
+      img:'http://123.56.105.145/tubiao/system/71.png',
       url:'hiker://empyt',
     })
     eval(plusRule)
@@ -393,7 +393,7 @@ if (mode == 'set') {
 
   d.push({
     title: '確認修改',
-    img: 'https://hikerfans.com/tubiao/system/84.png',
+    img: 'http://123.56.105.145/tubiao/system/84.png',
     url: $('#noLoading#').lazyRule(() => {
       back(true);
       return 'hiker://empty';
@@ -403,7 +403,7 @@ if (mode == 'set') {
 
   d.push({
     title: '恢復默認',
-    img: 'https://hikerfans.com/tubiao/system/83.png',
+    img: 'http://123.56.105.145/tubiao/system/83.png',
     col_type: 'icon_small_3',
     url: $('#noLoading#').lazyRule((sc, sn) => {
       var ss = storage0.getMyVar("Slide_cfg", sc);
@@ -419,7 +419,7 @@ if (mode == 'set') {
     }, sconfig, sn)
   }, {
     title: '檢查更新',
-    img: 'https://hikerfans.com/tubiao/system/89.png',
+    img: 'http://123.56.105.145/tubiao/system/89.png',
     col_type: 'icon_small_3',
     url: $('#noLoading#').lazyRule((x5u) => {
       if (x5u.startsWith("http")) {
