@@ -18,7 +18,9 @@ try {
         list = JSON.parse(readFile(file));
     } catch (e) {
         list = [];
-        //saveFile(file, JSON.stringify(list));
+        if (!fileExist(file)) {
+            saveFile(file, JSON.stringify(list));
+        };
         console.error('原文件内容出错:', e);
     };
 
