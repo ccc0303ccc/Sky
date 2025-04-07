@@ -5,7 +5,7 @@ function 顺搜(height, arr) {
 		putVar(程序名+'顺搜高度', JSON.stringify(height));
 		var 本地 =getPath('hiker://files/rules/dzHouse/html/顺搜.html');
 		if (fileExist(本地) == false) {
-			var 远程x5 = request('http://123.56.105.145/weisyr/顺搜.html');
+			var 远程x5 = request('https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/顺搜.html');
 			if (远程x5.indexOf("search") > 0) {
 				writeFile(本地, 远程x5);
 			} else {
@@ -18,8 +18,8 @@ function 顺搜(height, arr) {
 		}
 		var js1=getPath('hiker://files/rules/dzHouse/html/js/zepto.min.js');
 		var js2=getPath('hiker://files/rules/dzHouse/html/js/zepto-module.js');
-		if (fileExist(js1) == false) writeFile(js1, request('http://123.56.105.145/weisyr/js/zepto.min.js'));
-		if (fileExist(js2) == false) writeFile(js2, request('http://123.56.105.145/weisyr/js/zepto-module.js'));
+		if (fileExist(js1) == false) writeFile(js1, request('https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/js/zepto.min.js'));
+		if (fileExist(js2) == false) writeFile(js2, request('https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/js/zepto-module.js'));
 		if (!getVar('X5加载')) {
 			x5_height = 0
 		} else {
