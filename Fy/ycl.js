@@ -5,7 +5,7 @@ try {
     http = (readFile("hiker://files/rules/FYJK/git.txt") || "https://codeberg.org/suifeng/yin/raw/branch/master/ycl.js").replace(/[^/]*$/, "");
 };
 
-require(config.依赖.replace(/[^/]*$/, "public.js"));
+require(http + "public.js");
 let btget = getItem("zgb", "影视");
 let get = btget == "影视" ? "ys" : btget == "小说" ? "xs" : btget == "其它" ? "qt" : btget == "漫画" ? "mh" : btget == "听书" ? "ts" : "";
 UPzg(get, getItem("fyzg", "周更"));
