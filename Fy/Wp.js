@@ -189,8 +189,12 @@ for (let l in lizso) {
         let gxbj = fyzg == "周更" ? `周${li.week}${item}更新${li.gj}${wei}` : fyzg == "日更" ? `每日${item}更新${li.gj}${wei}` : "已完结无更新";
 
         let zjs = li.desz != "" ? ` / 共${li.desz}${wei}` : "";
-        let TJ = fyzg == "周更" ? (ymdhm().split("#")[1] >= item && Day == li.week && li.desc != zjs) : (ymdhm().split("#")[1] >= item && "0" == li.week && li.desc != zjs);
-        let des = TJ ? '<font color = "#FA7298">' + li.desc + "</font>" : '<font color = "#6A5ACD">' + (fyzg == "周更" ? (Day == li.week && parseInt(li.desc) != parseInt(li.desz) ? li.desc - li.gj : li.desc) : parseInt(li.desc) != parseInt(li.desz) ? li.desc - li.gj : li.desc) + "</font>";
+
+        let TJ = fyzg == "周更" ? (ymdhm().split("#")[1] >= item && Day == li.week) : (ymdhm().split("#")[1] >= item && "0" == li.week);
+
+        let cz = parseInt(li.desc) != parseInt(li.desz);
+
+        let des = TJ ? '<font color = "#FA7298">' + li.desc + "</font>" : '<font color = "#6A5ACD">' + (fyzg == "周更" ? (Day == li.week && cz ? li.desc - li.gj : li.desc) : "0" == li.week && cz ? li.desc - li.gj : li.desc) + "</font>";
 
         let xzu;
         if (btget == "小说") {
