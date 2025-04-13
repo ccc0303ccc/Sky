@@ -1,5 +1,5 @@
 function error(tit1, tit2) {
-    if (getItem("首页", "on") == "on") {
+    if (getItem("首页", "off") == "on" && getMyVar("namejs", "") == "") {
         refreshPage();
         setItem("Mysye", "首页");
         clearMyVar("Mysou");
@@ -48,6 +48,7 @@ function fby(yu, dw, Json, file, tit1, tit2, sxtit) {
             toast(dw + " - 无法访问，正在重新获取域名！");
         } catch (e) {
             toast(dw + " - 没有发布页");
+            //return "hiker://empty";
         };
         if (getMyVar("namejs", "") == "") {
             const datedList = Json.map(item => {
