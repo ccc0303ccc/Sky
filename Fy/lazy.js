@@ -180,6 +180,12 @@ function lazy(nad, input) {
     if (/ali(pan|yun|yundrive)/.test(url)) {
         return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url);
     } else
+    if (/baidu/.test(url)) {
+        let list = "hiker://page/list?rule=百度网盘";
+        let login = "hiker://page/login?rule=百度网盘";
+
+        return (fetch(list) !== "" ? list : login) + "&realurl=" + url;
+    } else
     if (/\.mp4|\.m3u8|\.flv|\.m4a|\.mp3/.test(url)) {
         let Ad;
         if (/bfzy|bfbfvip|bbffvip|ddbbffcdn|rrcdnbf|vip\.lz|hd\.lz|\.cdnlz|\.ffzy|suonizy|kuaikan|cqxfjz|svipsvip|haiwaikan|\.hmrvideo/.test(url)) {
@@ -383,6 +389,12 @@ function mx(nad, MY_HOME, game, input) {
             if (mx == "夸克" || mx == "UC" || mx == "uc") {
                 return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(input) + "&sharePwd=";
             } else
+            if (mx == "百度") {
+                let list = "hiker://page/list?rule=百度网盘";
+                let login = "hiker://page/login?rule=百度网盘";
+
+                return (fetch(list) !== "" ? list : login) + "&realurl=" + input;
+            } else
             if (/ftp:\/\/a\.gbl\.114s\.com/.test(mx)) {
                 if (!fileExist("hiker://files/cache/FY/JP/bidi.dex")) {
                     toast("首次使用需下载so文件");
@@ -427,6 +439,12 @@ function mx(nad, MY_HOME, game, input) {
         } else
         if (cmx == "夸克" || cmx == "UC" || cmx == "uc") {
             return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(input) + "&sharePwd=";
+        } else
+        if (mx == "百度") {
+            let list = "hiker://page/list?rule=百度网盘";
+            let login = "hiker://page/login?rule=百度网盘";
+
+            return (fetch(list) !== "" ? list : login) + "&realurl=" + input;
         } else
         if (cmx == "二级") {
             return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
