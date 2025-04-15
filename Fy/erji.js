@@ -620,6 +620,10 @@ function setLists(lists, index) {
             let btget = getItem("zgb", "影视");
             let get = btget == "影视" ? "ys" : btget == "小说" ? "xs" : btget == "其它" ? "qt" : btget == "漫画" ? "mh" : btget == "听书" ? "ts" : "";
 
+            let lis = "hiker://page/list?rule=百度网盘&realurl=";
+            let lif = fetch(lis);
+            let loi = "hiker://page/loging?rule=百度网盘&realurl=";
+
             for (let j = 0; j < list.length; j++) {
                 let jpg = list[j].split("$")[1];
                 let jm = jpg != "" ? list[j].split("$")[0] : list[j].split("$")[0].replace(/.*第|集[\u4e00-\u9fa5]*|话.*|期.*|线路|厂长|\(.*\)/g, "");
@@ -662,7 +666,7 @@ function setLists(lists, index) {
                         };
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
                         return mx(nad, MY_HOME, "", url);
-                    }, der, MY_HOME, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url) : /\.mp4|\.m3u8|\.m4a|\.mp3|magnet\:|\.torrent|ed2k\:/.test(url) ? url : /ali(pan|yun|yundrive)/.test(url) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url) : /(quark|\.uc)\.cn/.test(url) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=" : /*/cloud\.189\.cn/.test(url) ? "hiker://page/cloudShareList?rule=Quark.简&page=fypage&realurl=" + encodeURIComponent(url) : */$(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, xt, jm, myurl, get, url) => {
+                    }, der, MY_HOME, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url) : /\.mp4|\.m3u8|\.m4a|\.mp3|magnet\:|\.torrent|ed2k\:/.test(url) ? url : /ali(pan|yun|yundrive)/.test(url) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url) : /(quark|\.uc)\.cn/.test(url) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=" : /baidu/.test(url) ? (lif !== "" ? lis : loi) + url : $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, xt, jm, myurl, get, url) => {
                         if (getMyVar("fys", "") == "0") {
                             require(config.依赖.replace(/[^/]*$/, "public.js"));
                             zuji(get, myurl, jm);
