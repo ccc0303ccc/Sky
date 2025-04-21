@@ -1,4 +1,3 @@
-(
 function show(d, list, cfg) {
     const htmlPath = "hiker://files/_cache/lunbo.html";
     const data = {
@@ -51,7 +50,7 @@ function show(d, list, cfg) {
                 images.forEach((img, i) => {
                     const item = document.createElement("div");
                     item.className = "carousel-item";
-                    item.innerHTML = \`<img src="\${decodeURIComponent(img.img)}" alt="\${img.title}">\`;
+                    item.innerHTML = `<img src="${decodeURIComponent(img.img)}" alt="${img.title}">`;
                     item.onclick = () => {
                         const url = img.url || "hiker://empty";
                         const link = cfg.url.replace("{url}", url) + (cfg.mark || "");
@@ -70,14 +69,13 @@ function show(d, list, cfg) {
                     indicator.dataset.color = colors[i];
                     indicator.onclick = () => {
                         currentIndex = i;
-                        update();
-                        reset();
+                        update(); reset();
                     };
                     indicators.appendChild(indicator);
                 });
 
                 function update() {
-                    carousel.style.transform = \`translateX(-\${currentIndex * 100}%)\`;
+                    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
                     titleEl.textContent = images[currentIndex].title;
                     indicators.querySelectorAll(".carousel-indicator").forEach((el, i) => {
                         el.style.background = (i === currentIndex) ? el.dataset.color : "#808080";
@@ -100,17 +98,14 @@ function show(d, list, cfg) {
                     currentIndex = (currentIndex - 1 + images.length) % images.length;
                     update(); reset();
                 };
-
                 document.getElementById("nextBtn").onclick = () => {
                     currentIndex = (currentIndex + 1) % images.length;
                     update(); reset();
                 };
 
                 let interval;
-                update();
-                start();
+                update(); start();
             }, data)
         }
     });
 }
-)
