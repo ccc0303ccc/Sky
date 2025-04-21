@@ -5,101 +5,62 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>輪播</title>
   <style>
-    body { margin: 0; padding: 0; background: #000; }
-    .carousel-container { width: 96%; margin: 0 auto; position: relative; overflow: hidden; border-radius: 10px; }
-    .carousel { display: flex; transition: transform .5s ease-in-out; }
-    .carousel-item { flex: 0 0 100%; position: relative; cursor: pointer; }
-    .carousel img { width: 100%; height: 45vw; object-fit: cover; border-radius: 10px; transition: transform .4s ease; }
-    .carousel-buttons { position: absolute; top:50%; transform: translateY(-50%); width:100%; display:flex; justify-content:space-between; }
-    .carousel-button { background: transparent; border: none; font-size: 1.5em; color: #fff; }
-    .carousel-indicators { position: absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; }
-    .carousel-indicator { width:10px; height:4px; background:#808080; margin:0 3px; cursor:pointer; }
+    body { margin:0; padding:0; background:#000; }
+    .carousel-container { width:96%; margin:0 auto; overflow:hidden; border-radius:10px; position:relative; }
+    .carousel { display:flex; transition:transform .5s ease-in-out; }
+    .carousel-item { flex:0 0 100%; position:relative; }
+    .carousel img { width:100%; height:45vw; object-fit:cover; border-radius:10px; transition:transform .4s ease; }
+    .carousel-buttons { position:absolute; top:50%; left:0; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%); }
+    .carousel-button { background:rgba(0,0,0,0.3); border:none; color:#fff; padding:8px; border-radius:50%; }
+    .carousel-indicators { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; }
+    .carousel-indicator { width:10px; height:4px; background:#888; margin:0 4px; cursor:pointer; }
     .carousel-indicator.active { background:#fff; }
-    .carousel-title { position:absolute; top:10px; left:10px; color:#fff; padding:4px 8px; background:rgba(0,0,0,.3); border-radius:4px; }
-    @keyframes zoomInOut {
-      0% {transform: scale(1);}
-      30% {transform: scale(0.9);}
-      100% {transform: scale(1.15);}
-    }
-    .animate-zoom { animation: zoomInOut .4s ease; }
+    .carousel-title { position:absolute; top:10px; left:10px; color:#fff; padding:4px 8px; background:rgba(0,0,0,0.3); border-radius:4px; font-size:14px; }
+    @keyframes zoomInOut { 0%{transform:scale(1);}30%{transform:scale(0.9);}100%{transform:scale(1.15);} }
+    .animate-zoom { animation:zoomInOut .4s ease; }
   </style>
 </head>
 <body>
   <div class="carousel-container">
-    <div class="carousel" id="carousel" data-images=''></div>
+    <div class="carousel" id="carousel"></div>
     <div class="carousel-buttons">
       <button class="carousel-button" id="prevBtn">〈</button>
       <button class="carousel-button" id="nextBtn">〉</button>
     </div>
     <div class="carousel-indicators" id="carouselIndicators"></div>
-    <div class="carousel-title" id="carouselTitle"></div>
+    <div class="carousel-title" id="carouselTitle">標題</div>
   </div>
-
   <script>
     (function(){
-      const carousel = document.getElementById("carousel");
-      const indicators = document.getElementById("carouselIndicators");
-      const titleEl = document.getElementById("carouselTitle");
-      // 从外部注入 window.carouselData
-      const imagesArr = window.carouselData || [];
-      let idx = 0, iv;
-
-      function render() {
-        // 帧切换
-        carousel.style.transform = `translateX(-${idx*100}%)`;
-        // 标题
-        titleEl.textContent = imagesArr[idx]?.title || "";
-        // 指示点
-        indicators.innerHTML = "";
-        imagesArr.forEach((_, i) => {
-          const dot = document.createElement("div");
-          dot.className = "carousel-indicator" + (i===idx?" active":"");
-          dot.onclick = () => { idx=i; reset(); render(); };
-          indicators.appendChild(dot);
+      const imgs = window.carouselData || [];
+      const car = document.getElementById('carousel');
+      const ind = document.getElementById('carouselIndicators');
+      const title = document.getElementById('carouselTitle');
+      let idx=0, interval;
+      function update(){
+        car.style.transform = `translateX(-${idx*100}%)`;
+        title.textContent = imgs[idx]?.title||'';
+        ind.querySelectorAll('.carousel-indicator').forEach((el,i)=>el.classList.toggle('active',i===idx));
+      }
+      function start(){ interval=setInterval(()=>{ idx=(idx+1)%imgs.length; update(); },3000); }
+      function reset(){ clearInterval(interval); start(); }
+      imgs.forEach((o,i)=>{
+        let d=document.createElement('div'); d.className='carousel-item';
+        let im=document.createElement('img'); im.src=o.img; im.alt=o.title;
+        d.appendChild(im);
+        d.addEventListener('click',()=>{
+          im.classList.add('animate-zoom');
+          setTimeout(()=>im.classList.remove('animate-zoom'),400);
+          location.href = o.url;
         });
-      }
-
-      function auto() {
-        iv = setInterval(()=>{
-          idx = (idx+1)%imagesArr.length;
-          render();
-        }, 3000);
-      }
-
-      function reset() {
-        clearInterval(iv);
-        auto();
-      }
-
-      // 点击放大缩小效果示例
-      function zoom(el) {
-        el.classList.add("animate-zoom");
-        setTimeout(()=>el.classList.remove("animate-zoom"),400);
-      }
-
-      // 构建 DOM
-      imagesArr.forEach((imgObj, i)=>{
-        const item = document.createElement("div");
-        item.className = "carousel-item";
-        const img = document.createElement("img");
-        img.src = imgObj.img;
-        img.alt = imgObj.title;
-        img.onclick = ()=> zoom(img);
-        item.appendChild(img);
-        // 点击跳转示例
-        item.onclick = ()=> {
-          zoom(img);
-          const u = imgObj.url;
-          // 这里发给 HikerViewer 二级页
-          fba.open(JSON.stringify({
-            rule: "er", title: imgObj.title,
-            url: `hiker://page/er?rule=Movieffm🍥&url=${u}#immersiveTheme##autoCache##noHistory#`
-          }));
-        };
-        carousel.appendChild(item);
+        car.appendChild(d);
+        let dot=document.createElement('div'); dot.className='carousel-indicator';
+        dot.addEventListener('click',()=>{ idx=i; update(); reset(); });
+        ind.appendChild(dot);
       });
-
-      render(); auto();
+      document.getElementById('prevBtn').onclick=()=>{ idx=(idx-1+imgs.length)%imgs.length; update(); reset(); };
+      document.getElementById('nextBtn').onclick=()=>{ idx=(idx+1)%imgs.length; update(); reset(); };
+      update(); start();
     })();
   </script>
 </body>
