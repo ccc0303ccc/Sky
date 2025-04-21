@@ -3,84 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>轮播</title>
+  <title>輪播</title>
   <style>
-    body{margin:0;padding:0;background:#000;}
-    .carousel-container{width:96%;margin:0 auto;position:relative;overflow:hidden;border-radius:10px;}
-    .carousel{display:flex;transition:transform .5s ease-in-out;}
-    .carousel-item{flex:0 0 100%;position:relative;cursor:pointer;}
-    .carousel img{width:100%;height:45vw;object-fit:cover;border-radius:10px;transition:transform .4s ease;}
-    .carousel-buttons{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);z-index:2;}
-    .carousel-button{background:rgba(0,0,0,0);border:none;color:#fff;padding:10px;border-radius:50%;}
-    .carousel-indicators{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;z-index:2;}
-    .carousel-indicator{width:10px;height:4px;background:#808;border-radius:2px;margin:0 3px;cursor:pointer;}
-    .carousel-indicator.active{background:#6a5acd;}
-    .carousel-title{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:20px;background:rgba(0,0,0,.3);color:#fff;font-size:16px;z-index:2;}
+    body { margin: 0; padding: 0; background: #000; }
+    .carousel-container { width: 96%; margin: 0 auto; position: relative; overflow: hidden; border-radius: 10px; }
+    .carousel { display: flex; transition: transform .5s ease-in-out; }
+    .carousel-item { flex: 0 0 100%; position: relative; cursor: pointer; }
+    .carousel img { width: 100%; height: 45vw; object-fit: cover; border-radius: 10px; transition: transform .4s ease; }
+    .carousel-buttons { position: absolute; top:50%; transform: translateY(-50%); width:100%; display:flex; justify-content:space-between; }
+    .carousel-button { background: transparent; border: none; font-size: 1.5em; color: #fff; }
+    .carousel-indicators { position: absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; }
+    .carousel-indicator { width:10px; height:4px; background:#808080; margin:0 3px; cursor:pointer; }
+    .carousel-indicator.active { background:#fff; }
+    .carousel-title { position:absolute; top:10px; left:10px; color:#fff; padding:4px 8px; background:rgba(0,0,0,.3); border-radius:4px; }
+    @keyframes zoomInOut {
+      0% {transform: scale(1);}
+      30% {transform: scale(0.9);}
+      100% {transform: scale(1.15);}
+    }
+    .animate-zoom { animation: zoomInOut .4s ease; }
   </style>
 </head>
 <body>
   <div class="carousel-container">
-    <div class="carousel" id="carousel"></div>
+    <div class="carousel" id="carousel" data-images=''></div>
     <div class="carousel-buttons">
       <button class="carousel-button" id="prevBtn">〈</button>
       <button class="carousel-button" id="nextBtn">〉</button>
     </div>
     <div class="carousel-indicators" id="carouselIndicators"></div>
-    <div class="carousel-title" id="carouselTitle">标题</div>
+    <div class="carousel-title" id="carouselTitle"></div>
   </div>
+
   <script>
     (function(){
-      const carousel = document.getElementById('carousel');
-      const dots = document.getElementById('carouselIndicators');
-      const titleEl = document.getElementById('carouselTitle');
-      // 全局注入的数据
-      const images = window.carouselData || [];
-      let idx = 0, timer;
+      const carousel = document.getElementById("carousel");
+      const indicators = document.getElementById("carouselIndicators");
+      const titleEl = document.getElementById("carouselTitle");
+      // 从外部注入 window.carouselData
+      const imagesArr = window.carouselData || [];
+      let idx = 0, iv;
 
       function render() {
-        carousel.style.transform = `translateX(-${idx * 100}%)`;
-        titleEl.textContent = images[idx]?.title || '';
-        dots.querySelectorAll('.carousel-indicator')
-            .forEach((el,i)=> el.classList.toggle('active', i===idx));
+        // 帧切换
+        carousel.style.transform = `translateX(-${idx*100}%)`;
+        // 标题
+        titleEl.textContent = imagesArr[idx]?.title || "";
+        // 指示点
+        indicators.innerHTML = "";
+        imagesArr.forEach((_, i) => {
+          const dot = document.createElement("div");
+          dot.className = "carousel-indicator" + (i===idx?" active":"");
+          dot.onclick = () => { idx=i; reset(); render(); };
+          indicators.appendChild(dot);
+        });
       }
-      function play() {
-        timer = setInterval(()=>{
-          idx = (idx+1)%images.length;
+
+      function auto() {
+        iv = setInterval(()=>{
+          idx = (idx+1)%imagesArr.length;
           render();
-        },3000);
+        }, 3000);
+      }
+
+      function reset() {
+        clearInterval(iv);
+        auto();
+      }
+
+      // 点击放大缩小效果示例
+      function zoom(el) {
+        el.classList.add("animate-zoom");
+        setTimeout(()=>el.classList.remove("animate-zoom"),400);
       }
 
       // 构建 DOM
-      images.forEach((img,i)=>{
-        // 项目
-        const item = document.createElement('div');
-        item.className = 'carousel-item';
-        const im = document.createElement('img');
-        im.src = img.img;
-        im.alt = img.title;
-        item.appendChild(im);
-        // 点击跳转
+      imagesArr.forEach((imgObj, i)=>{
+        const item = document.createElement("div");
+        item.className = "carousel-item";
+        const img = document.createElement("img");
+        img.src = imgObj.img;
+        img.alt = imgObj.title;
+        img.onclick = ()=> zoom(img);
+        item.appendChild(img);
+        // 点击跳转示例
         item.onclick = ()=> {
+          zoom(img);
+          const u = imgObj.url;
+          // 这里发给 HikerViewer 二级页
           fba.open(JSON.stringify({
-            rule:'er',
-            title: img.title,
-            url: `hiker://page/er?rule=Movieffm🍥&url=${encodeURIComponent(img.url)}#immersiveTheme##autoCache##noHistory#`
+            rule: "er", title: imgObj.title,
+            url: `hiker://page/er?rule=Movieffm🍥&url=${u}#immersiveTheme##autoCache##noHistory#`
           }));
         };
         carousel.appendChild(item);
-
-        // 圆点
-        const dot = document.createElement('div');
-        dot.className = 'carousel-indicator'+(i===0?' active':'');
-        dot.onclick = ()=> { idx=i; render(); clearInterval(timer); play(); };
-        dots.appendChild(dot);
       });
 
-      document.getElementById('prevBtn').onclick = ()=>{ idx=(idx-1+images.length)%images.length; render(); clearInterval(timer); play(); };
-      document.getElementById('nextBtn').onclick = ()=>{ idx=(idx+1)%images.length; render(); clearInterval(timer); play(); };
-
-      render();
-      play();
+      render(); auto();
     })();
   </script>
 </body>
