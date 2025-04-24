@@ -986,7 +986,7 @@ function Alert(title, text) {
 async function 选择() {
 	fba.clearVar("s_q");
 	fba.parseLazyRuleAsync($$$("#noLoading#").lazyRule(() => {
-		const hikerPop = $.require("http://123.56.105.145/weisyr/js/hikerPop.js");
+		const hikerPop = $.require("https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/js/hikerPop.js");
 		hikerPop.selectCenter({
 			options: ["🔍顺搜", "🥑青豆"],
 			columns: 2,
@@ -1026,7 +1026,7 @@ async function 直搜(input) {
 		var js = JSON.parse(request(html)).data;
 		var n = js.map(t => t.name);
 		hideLoading();
-		var hikerPop = $.require("http://123.56.105.145/weisyr/js/hikerPop.js");
+		var hikerPop = $.require("https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/js/hikerPop.js");
 		hikerPop.selectCenter({
 			options: n,
 			columns: 1,
@@ -1094,7 +1094,7 @@ function Prompt(key, value) {
 			info = "恢复默认";
 			cancel = false
 		};
-		const hikerPop = $.require("http://123.56.105.145/weisyr/js/hikerPop.js");
+		const hikerPop = $.require("https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/js/hikerPop.js");
 		hikerPop.inputAutoRow({
 			hint: Settings_json[key] || input,
 			title: key,
@@ -1147,7 +1147,7 @@ function default_img(SRC) {
 	fba.parseLazyRuleAsync($$$(SRC).lazyRule((默认图) => {
 		if (fileExist(默认图) == false) {
 			//saveImage('https://ss2.meipian.me/users/74082931/bc70d98c5ff2262e7b324b7c7944e2e7.gif', 默认图);
-			saveImage('http://123.56.105.145/weisyr/img/透明底图.png', 默认图);
+			saveImage('https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/img/透明底图.png', 默认图);
 		}
 		if (fileExist(input) == false) return false;
 	},默认图),$$$.toString(()=>{
@@ -1280,7 +1280,7 @@ async function dealImage(base64, w, callback) {
 //自动匹配图库并压缩
 async function auto_match() {
 	fba.parseLazyRuleAsync($$$(pictures).lazyRule((ln,SS_Pictures) => {
-		let file = $.require("http://123.56.105.145/weisyr/js/file.js")
+		let file = $.require("https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/js/file.js")
 		let folder = file.getFolder("/storage/emulated/0/Android/data/com.example.hikerview/files/Documents/SS_Pictures/")
 		let file_name = []
 		let To_base64 = []
@@ -1689,7 +1689,7 @@ $("#lishiList").delegate('li', 'singleTap doubleTap longTap', function (e) {
 	if (e.type=="singleTap") {
 		$("#search-input")[0].value = input;
 		$("#input-clear").show();
-		$("#search-ok img").attr("src", 'http://123.56.105.145/weisyr/icon/search.svg');
+		$("#search-ok img").attr("src", 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/icon/search.svg');
 	} else if(e.type=="longTap") {
 		搜索记录 ("删除", input)
 	} else {
@@ -1782,7 +1782,7 @@ function CLOSE(id) {
 	if (id=="input-clear") {
 		$("#search-input").val("");
 		$("#input-clear").hide();
-		$("#search-ok img").attr("src", 'http://123.56.105.145/weisyr/icon/scan.svg');
+		$("#search-ok img").attr("src", 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/icon/scan.svg');
 	}
 	$(".CLOSE").hide();
 	if(get_settings(程序名+"天气")!=true) {
@@ -2089,7 +2089,7 @@ $("#ONE_bg").click(function () {
 var push_tips, push_img, push_url, push_rule;
 async function update(Up) {
 	if (request(ln + 'ssts.json') != Up) {
-		var x5 = request('http://123.56.105.145/weisyr/顺搜.html');
+		var x5 = request('https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/顺搜.html');
 		if (x5.indexOf("search") > 0) {
 			fba.writeFile(ln + '顺搜.html', x5)
 			fba.writeFile(ln + 'ssts.json',Up);
@@ -2118,7 +2118,7 @@ async function push(Day) {
 }
 if (!fba.getVar('X5加载')) {
 	$('.pics_img').css({"animation":"淡入 0.9s linear forwards"});
-	requestAsync("http://123.56.105.145/weisyr/plug/ssts.js",(key,html)=>{eval(html);})
+	requestAsync("https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/plug/ssts.js",(key,html)=>{eval(html);})
 	if (localStorage.getItem("日") != Today && nowdays.getHours() > 5 || !localStorage.getItem('ONE_RADIO')) ONE_RADIO(nowMonth);
 	fba.putVar('X5加载', '完成')
 }
@@ -2242,7 +2242,7 @@ window.onclick = function(event) {
 async function file_load() {
 	fba.parseLazyRuleAsync($$$().lazyRule((ln) => {
 		let name = ['js/zepto.min.js','js/zepto-module.js','plug/level.js', 'plug/马卡龙色.js', 'plug/文件管理.js', 'img/frosted.png','icon/scan.svg','icon/search.svg','icon/radio_play.svg'];
-		let wn = 'http://123.56.105.145/weisyr/';
+		let wn = 'https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/';
 		for (let n = 0; n < name.length; n++) {
 			let localfile = [ln + name[n]];
 			let webfile = [wn + name[n]];
