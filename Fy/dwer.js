@@ -263,20 +263,28 @@ function dw2(tuli, der) {
 var html;
 let 线路;
 let 线路名;
+let 线名;
 let 列表;
 let 子列表;
+let 子列;
 let 类型;
 let 导演;
 let 主演;
 let 简介;
 let tuli;
 let 推荐列表;
+let 推荐;
 let 推荐名;
 let 推荐更;
 let 推荐图;
 let 推荐链;
 let 选集名;
+let 名称;
 let 选集链;
+let 链接;
+let 图片;
+let 详情;
+let 样式;
 
 let Js = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "JS" : names.gs == "JS";
 
@@ -299,7 +307,6 @@ if (Js) {
             公用 = eval("(" + g + ")");
         } catch (e) {
             公用 = null;
-            log(e.toString());
         };
     };
 
