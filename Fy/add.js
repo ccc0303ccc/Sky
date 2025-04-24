@@ -163,8 +163,9 @@ d.push({
     col_type: "text_4"
 }, {
     title: "保存",
-    url: $("#noLoading#").lazyRule((file, Json) => {
-        let dataArray = Json;
+    url: $("#noLoading#").lazyRule(() => {
+        let file = getItem("dy", "本地") == "本地" ? "hiker://files/rules/FYJK/ys.json" : "hiker://files/cache/FY/dy/" + getItem("dy") + ".json";
+        let dataArray = JSON.parse(readFile(file));
 
         function time() {
             const date = new Date();
@@ -198,7 +199,7 @@ d.push({
             "time": time,
             "ttl": "",
             "fbhost": "",
-            "gy": gy
+            "gy": gy.toString()
         };
 
         //查找数组中是否有与新对象同名
@@ -261,7 +262,7 @@ d.push({
             return "toast://保存成功！";
         };
         return "hiker://empty";
-    }, file, Json),
+    }),
     col_type: "text_4"
 }, {
     title: "<br>",
