@@ -1,4 +1,7 @@
 let d = [];
+addListener("onClose", $.toString(() => {
+    clearMyVar("fyxls");
+}));
 let murl = MY_URL.replace(/.*empty##/, "");
 MY_URL = isBase64(murl) == true ? base64Decode(murl) : decodeURIComponent(murl);
 
@@ -314,34 +317,13 @@ if (MY_PAGE == 1) {
     };
     let jie;
     try {
-        jie = 介.fontcolor("#778899");
+        jie = 介.substring(0, 62).fontcolor("#778899");
     } catch (e) {
         jie = ("欢迎使用风影").fontcolor("#778899");
     };
     d.push({
         title: "‘‘’’<b><small>" + tits + "</small></b>",
-        desc: "‘‘’’<b><small>" + "详情：".fontcolor("#708090") + jie + "</small></b>",
-        url: 图.replace("@Referer=", "") + "#noHistory##noRecordHistory#",
-        img: 图,
-        col_type: "movie_1_vertical_pic_blur",
-        extra: {
-            gradient: true
-        }
-    }, {
-        title: "线路",
-        url: $("#noLoading#").lazyRule(() => {
-            if (getItem("xl", "gua") == "ka") {
-                clearItem("xl");
-            } else {
-                setItem("xl", "ka");
-            }
-            refreshPage(false);
-            return "#noHistory#hiker://empty"
-        }),
-        img: ertu + "线路.png",
-        col_type: "icon_small_3"
-    }, {
-        title: "详情",
+        desc: "‘‘’’<b><small>" + "详情：".fontcolor("#708090") + jie + "\t查看更多</small></b>",
         url: $("hiker://empty#noRecordHistory##noHistory#").rule((text, 图0, 图) => {
             let d = [];
             if (Array.isArray(图0)) {
@@ -365,10 +347,11 @@ if (MY_PAGE == 1) {
             })
             setResult(d);
         }, descs, 图0, 图),
-        img: ertu + "详情.png",
-        col_type: "icon_small_3",
+        img: 图,
+        col_type: "movie_1_vertical_pic_blur",
         extra: {
-            inheritTitle: false
+            pageTitle: "详情",
+            gradient: true
         }
     }, {
         title: "搜索",
@@ -399,141 +382,132 @@ if (MY_PAGE == 1) {
                 })
             }]
         }
-    }, {
-        col_type: "line"
-    }, {
-        col_type: "big_blank_block"
     });
 
     function setTabs(tabs, vari) {
-        if (getItem("xl", "gua") == "ka") {
-            if (tabs == "") {
-                toast("没有其它线路了哟！");
-                clearItem("xl");
-            } else {
-                d.push({
-                    col_type: "big_blank_block"
-                });
-                if (getItem("推送", "off") == "on") {
-                    let push = {
-                        "name": MY_RULE.title + " • " + 名 || MY_RULE.title,
-                        "pic": 图.replace(/@.*/, ""),
-                        "content": 介,
-                        "director": 导.replace("导演：", ""),
-                        "actor": 主.replace("主演：", ""),
-                        "manual": "1",
-                        "format": ".m3u8#.mp4",
-                        "filters": "?url=http#.htm",
-                        "headerd": {
-                            "User-Agent": MOBILE_UA
-                        }
-                    };
-                    let ip = /海阔/.test(MY_NAME) ? "http://" + getIP() + ":9978" : "http://";
-                    let tvip = getItem("ip", ip);
-                    let tabss = tabs ? tabs : "源";
-                    //let lists = lists.replace(/[\'\"\\\/\b\f\n\r\t]/g, "");
-                    d.push({
-                        title: "‘‘’’<small><b>" + "Box推送".fontcolor("#33cccc") + "</b></small>",
-                        col_type: "scroll_button",
-                        url: $("#noLoading#").lazyRule((push, tabs, lists, tvip) => {
-                            if (!/997/.test(tvip) || tvip == "") {
-                                return "toast://前往设置项，TVBOX设置ip地址";
-                            }
-                            let froms = [];
-                            for (let i in tabs) {
-                                froms.push(tabs[i]);
-                            }
-                            let listi = lists.map(item => {
-                                return item.replace(/#-#/g, "#");
-                            });
-
-                            if (froms.length > 0) {
-                                push["from"] = froms.join("$$$");
-                                push["url"] = listi.join("$$$"); //log(push);
-                                var state = request(tvip + "/action", {
-                                    headers: {
-                                        "Content-Type": "application/x-www-form-urlencoded",
-                                        "Referer": tvip
-                                    },
-                                    timeout: 3000,
-                                    body: "do=push&url=" + JSON.stringify(push),
-                                    method: "POST"
-                                });
-                                if (state == "ok") {
-                                    return "toast://推送成功，如显示“没找到数据”可能是该链接需要密码或当前的jar不支持。";
-                                } else {
-                                    return "toast://推送失败，可能是ip地址设置错误或未连接到TVBOX。";
-                                };
-                            };
-                            return "toast://此线路无法推送";
-                        }, push, tabss, lists, tvip)
-                    })
-                } else {
-                    d.push({
-                        title: "‘‘’’<small><b>" + "线路".fontcolor("#33cccc") + "</b></small>",
-                        url: "hiker://empty",
-                        col_type: "scroll_button"
-                    })
-                };
-                try {
-                    eval("var wenj = " + readFile("hiker://files/cache/FY/xl.js"), 0);
-                    if (wenj != "") {
-                        if (wenj.route[MY_URL] != undefined) {
-                            putMyVar(MY_URL, wenj.route[MY_URL]);
-                        };
-                    };
-                } catch (e) {};
-                let 缓存 = 50; //线路缓存数量
-
-                for (let i in tabs) {
-                    if (tabs[i] != "") {
-                        d.push({
-                            title: "‘‘’’<small>" + (getMyVar(vari, "0") == i ? "<b>" + (tabs[i] + "↓").fontcolor("#33cccc") + "</b>" : tabs[i]) + "</small>",
-                            url: $("hiker://empty#noHistory##noLoading#").lazyRule((vari, i, 缓存) => {
-                                if (parseInt(getMyVar(vari, "0")) != i) {
-                                    try {
-                                        eval("var wenj = " + readFile("hiker://files/cache/FY/xl.js"), 0);
-                                    } catch (e) {
-                                        var wenj = "";
-                                    }
-                                    if (wenj == "") {
-                                        wenj = {
-                                            route: {}
-                                        };
-                                    } else
-                                    if (wenj.route == undefined) {
-                                        wenj.route = {};
-                                    }
-                                    wenj.route[vari] = i;
-                                    var key = 0;
-                                    var one = "";
-                                    for (var k in wenj.route) {
-                                        key++;
-                                        if (key == 1) {
-                                            one = k
-                                        }
-                                    }
-                                    if (key > 缓存) {
-                                        delete wenj.route[one];
-                                    }
-                                    saveFile("hiker://files/cache/FY/xl.js", JSON.stringify(wenj), 0);
-                                    putMyVar(vari, i);
-                                    refreshPage(false);
-                                    return 'hiker://empty'
-                                } else {
-                                    return "#noHistory#hiker://empty";
-                                }
-                            }, vari, i, 缓存),
-                            col_type: "scroll_button"
-                        })
-                    }
-                };
-                d.push({
-                    col_type: "line"
-                })
+        let push;
+        let ip;
+        let tvip;
+        let tabss;
+        if (getItem("推送", "off") == "on") {
+            push = {
+                "name": MY_RULE.title + " • " + 名 || MY_RULE.title,
+                "pic": 图.replace(/@.*/, ""),
+                "content": 介,
+                "director": 导.replace("导演：", ""),
+                "actor": 主.replace("主演：", ""),
+                "manual": "1",
+                "format": ".m3u8#.mp4",
+                "filters": "?url=http#.htm",
+                "headerd": {
+                    "User-Agent": MOBILE_UA
+                }
             };
+            let ip = /海阔/.test(MY_NAME) ? "http://" + getIP() + ":9978" : "http://";
+            tvip = getItem("ip", ip);
+            tabss = tabs ? tabs : "源";
         };
+
+        try {
+            eval("var wenj = " + readFile("hiker://files/cache/FY/xl.js"), 0);
+            if (wenj != "") {
+                if (wenj.route[MY_URL] != undefined) {
+                    putMyVar(MY_URL, wenj.route[MY_URL]);
+                };
+            };
+        } catch (e) {};
+        let 缓存 = 50; //线路缓存数量
+        let stab = tabs == "" ? [] : tabs.map((tit, index) => {
+            if (index == getMyVar(vari, "0")) {
+                putMyVar("fyxls", tit);
+                return `‘‘’’<b>${tit.fontcolor("#33cccc")}</b>`;
+            } else {
+                return tit;
+            };
+        });
+        d.push({
+            title: getMyVar("fyxls", "线路"),
+            img: ertu + "线路.png",
+            url: tabs == "" ? "toast://没有其它线路" : $(stab, 3, "选择线路").select((vari, tabs, 缓存) => {
+                input = input.replace(/.*">(.*?)<\/.*/, "$1");
+                let i = tabs.findIndex(li => li == input);
+                if (parseInt(getMyVar(vari, "0")) != i) {
+                    try {
+                        eval("var wenj = " + readFile("hiker://files/cache/FY/xl.js"), 0);
+                    } catch (e) {
+                        var wenj = "";
+                    }
+                    if (wenj == "") {
+                        wenj = {
+                            route: {}
+                        };
+                    } else
+                    if (wenj.route == undefined) {
+                        wenj.route = {};
+                    }
+                    wenj.route[vari] = i;
+                    var key = 0;
+                    var one = "";
+                    for (var k in wenj.route) {
+                        key++;
+                        if (key == 1) {
+                            one = k
+                        }
+                    }
+                    if (key > 缓存) {
+                        delete wenj.route[one];
+                    }
+                    saveFile("hiker://files/cache/FY/xl.js", JSON.stringify(wenj), 0);
+                    putMyVar(vari, i);
+                    refreshPage(false);
+                    return 'hiker://empty'
+                } else {
+                    return "hiker://empty";
+                }
+            }, vari, tabs, 缓存),
+            col_type: "icon_small_3",
+            extra: {
+                longClick: getItem("推送", "off") == "on" ? [{
+                    title: "推送",
+                    js: $.toString((push, tabs, lists, tvip) => {
+                        if (!/997/.test(tvip) || tvip == "") {
+                            return "toast://前往设置项，TVBOX设置ip地址";
+                        }
+                        let froms = [];
+                        for (let i in tabs) {
+                            froms.push(tabs[i]);
+                        }
+                        let listi = lists.map(item => {
+                            return item.replace(/#-#/g, "#");
+                        });
+
+                        if (froms.length > 0) {
+                            push["from"] = froms.join("$$$");
+                            push["url"] = listi.join("$$$"); //log(push);
+                            var state = request(tvip + "/action", {
+                                headers: {
+                                    "Content-Type": "application/x-www-form-urlencoded",
+                                    "Referer": tvip
+                                },
+                                timeout: 3000,
+                                body: "do=push&url=" + JSON.stringify(push),
+                                method: "POST"
+                            });
+                            if (state == "ok") {
+                                return "toast://推送成功，如显示“没找到数据”可能是该链接需要密码或当前的jar不支持。";
+                            } else {
+                                return "toast://推送失败，可能是ip地址设置错误或未连接到TVBOX。";
+                            };
+                        };
+                        return "toast://此线路无法推送";
+                    }, push, tabss, lists, tvip)
+                }] : ""
+            }
+        })
     };
+};
+
+if (MY_PAGE == 1) {
     setTabs(tabs, MY_URL);
 };
 
@@ -545,14 +519,12 @@ function setLists(lists, index) {
         listt = "";
     };
 
-    let zftu = "https://hikerfans.com/tubiao/messy/";
+    let wpl = /cloud\.189/.test(listt);
 
     let zflb = getItem("zf", "f") == "z";
-    let zfan = (zflb ? "正序".fontcolor("#19B89D") : "倒序".fontcolor("#ff7f50")) + "<small>" + ("\t\t共 " + listt.length + " 条\t\t\t").fontcolor("#19B89D") + "</small>";
     if (MY_PAGE == 1) {
         d.push({
-            title: zfan + (zflb ? "▴".fontcolor("#33cccc") : "▾".fontcolor("#ff7f50")),
-            desc: "<small>" + (zflb ? "正序".fontcolor("#33cccc") : "倒序".fontcolor("#ff7f50")) + "</small>\t",
+            title: zflb ? "正序" : "倒序",
             url: $("#noLoading#").lazyRule(() => {
                 if (getItem("zf", "f") == "z") {
                     clearItem("zf");
@@ -560,11 +532,40 @@ function setLists(lists, index) {
                     setItem("zf", "z");
                 }
                 refreshPage(false);
-                return "#noHistory#hiker://empty"
+                return "hiker://empty";
             }),
-            img: ertu + (zflb ? "正序.svg" : "倒序.svg"),
-            col_type: "text_icon"
+            img: ertu + "详情.png",
+            col_type: "icon_small_3",
+            extra: {
+                longClick: [{
+                    title: "网盘样式",
+                    js: $.toString(() => {
+                        return $(["text_1", "movie_2", "avatar", "card_pic_3_center"], 2).select(() => {
+                            setItem("fyyanshi", input);
+                            refreshPage(false);
+                            return "toast://已选择 " + input;
+                        })
+                    })
+                }]
+            }
         });
+        d.push({
+            col_type: "line"
+        });
+        if (!wpl) {
+            d.push({
+                title: "‘‘’’<small>" + ("\t\t共 " + listt.length + " 条\t\t\t").fontcolor("#19B89D") + "</small>",
+                url: "hiker://empty",
+                col_type: "text_1",
+                extra: {
+                    lineVisible: false
+                }
+            })
+        } else {
+            d.push({
+                col_type: "big_blank_block"
+            })
+        };
     };
     let lisd;
     try {
@@ -583,12 +584,11 @@ function setLists(lists, index) {
         if (getItem("zf", "f") == "z") {
             list = lisd;
         } else {
-            list = lisd.reverse();
+            list = !wpl ? lisd.reverse() : lisd;
         };
     } catch (e) {
         list = "";
     };
-
 
     try {
         if (list == "") {
@@ -611,6 +611,9 @@ function setLists(lists, index) {
                     }
                 });
             };
+        } else if (wpl) {
+            require(config.依赖.replace(/[^/]*$/, "pan.js"));
+            hs(d, list);
         } else {
             let xtan = getItem("嗅探", "off") == "on";
             let 排 = 排除 != undefined ? 排除.toString() : "";
@@ -666,7 +669,7 @@ function setLists(lists, index) {
                         };
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
                         return mx(nad, MY_HOME, "", url);
-                    }, der, MY_HOME, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url) : /\.mp4|\.m3u8|\.m4a|\.mp3|magnet\:|\.torrent|ed2k\:/.test(url) ? url : /ali(pan|yun|yundrive)/.test(url) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url) : /(quark|\.uc)\.cn/.test(url) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=" : /baidu/.test(url) ? (lif !== "" ? lis : loi) + url : $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, xt, jm, myurl, get, url) => {
+                    }, der, MY_HOME, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url) : /\.mp4|\.m3u8|\.m4a|\.mp3|magnet\:|\.torrent|ed2k\:/.test(url) ? url : /ali(pan|yun)/.test(url) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url) : /(quark|\.uc)\.cn/.test(url) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=" : /baidu/.test(url) ? (lif !== "" ? lis : loi) + url : $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, xt, jm, myurl, get, url) => {
                         if (getMyVar("fys", "") == "0") {
                             require(config.依赖.replace(/[^/]*$/, "public.js"));
                             zuji(get, myurl, jm);
