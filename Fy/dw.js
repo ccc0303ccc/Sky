@@ -299,8 +299,7 @@ if (Js) {
         try {
             公用 = eval("(" + g + ")");
         } catch (e) {
-            公用 = null;
-            log(e.toString());
+            公用 = null;          
         };
     };
     let headers = {
@@ -315,7 +314,7 @@ if (Js) {
         if (公用 && typeof 公用.免嗅 == "function") {
             try {
                 var mx = 公用.免嗅.toString();
-            } catch (e) {
+            } catch (e) { 
                 log(e.toString());
             };
         };
