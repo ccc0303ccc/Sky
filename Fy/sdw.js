@@ -297,8 +297,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
             try {
                 公用 = eval("(" + g + ")");
             } catch (e) {
-                公用 = null;
-                log(e.toString());
+                公用 = null;               
             };
         };
         let headers = {
@@ -469,6 +468,9 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                 };
                 let lxn = getItem("lx1", "全部");
                 let lxna = /影视|动漫|短剧|网盘/.test(lxn) ? "影视" : /听书|音乐/.test(lxn) ? "听书" : /全部|其它/.test(lxn) ? "其它" : lxn;
+                let lis = "hiker://page/list?rule=百度网盘&realurl=";
+                let lif = fetch(lis);
+                let loi = "hiker://page/loging?rule=百度网盘&realurl=";
                 List = list.map((li, index) => {
                     let title;
                     let img;
@@ -512,7 +514,13 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                     }, name, game, MY_HOME, surl) : (/function/.test(zw) && 正文 == "on") ? $(surl + "#readTheme#").rule((nad, game, MY_HOME) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
                         return zw(nad, MY_URL, MY_HOME, game);
-                    }, name, game, MY_HOME) : erurl;
+                    }, name, game, MY_HOME) : /ali(pan|yun)/.test(surl) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(surl) : /(quark|\.uc)\.cn/.test(surl) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(surl) + "&sharePwd=" : /baidu/.test(surl) ? (lif !== "" ? lis : loi) + surl : /cloud\.189/.test(surl) ? $("hiker://empty#noHistory#").rule((url) => {
+                        let d = [];
+                        putMyVar("fypanys", "1");
+                        require(config.依赖.replace(/[^/]*$/, "pan.js"));
+                        hs(d, url);
+                        setResult(d);
+                    }, surl) : erurl;
 
                     let tit = title !== undefined ? title.replace(/\n.*/, "") : title;
                     let des = desc !== undefined ? desc.replace(/\n.*/, "") : desc;
