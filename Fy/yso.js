@@ -274,7 +274,32 @@ if (page == 1) {
                 return "hiker://empty"
             }, erji),
             img: sotu + "搜标.png",
-            col_type: "avatar"
+            col_type: "avatar",
+            extra: {
+                longClick: [{
+                    title: "网盘样式",
+                    js: $.toString(() => {
+                        return $(["text_1", "movie_2", "avatar", "card_pic_3_center"], 2).select(() => {
+                            setItem("fyyanshi", input);
+                            refreshPage(false);
+                            return "toast://已选择 " + input;
+                        })
+                    })
+                }, {
+                    title: getItem("zf", "f") == "z" ? "当前: 正序" : "当前: 倒序",
+                    js: $.toString(() => {
+                        return $("#noLoading#").lazyRule(() => {
+                            if (getItem("zf", "f") == "z") {
+                                clearItem("zf");
+                            } else {
+                                setItem("zf", "z");
+                            }
+                            refreshPage(false);
+                            return "hiker://empty";
+                        })
+                    })
+                }]
+            }
         }, {
             col_type: "big_blank_block"
         });
@@ -297,6 +322,40 @@ if (page == 1) {
 };
 setPreResult(s);
 
+let yupan = (d, tit, url, ret) => {
+    if (page == 1) {
+        d.push({
+            title: `${tit}云盘`,
+            desc: `<small>${getHome(url)}</small>`,
+            img: `hiker://files/cache/FY/image/${tit}.png`,
+            url: ret,
+            col_type: "avatar"
+        })
+        deleteItemByCls("cls_load");
+    };
+    setResult(d);
+};
+
+let purls = getMyVar("Mysou");
+if (/cloud\.189/.test(purls)) {
+    if (page == 1) {
+        require(config.依赖.replace(/[^/]*$/, "pan.js"));
+        hs(d, purls);
+        deleteItemByCls("cls_load");
+    };
+    setResult(d);
+} else
+if (/(quark|\.uc)\.cn/.test(purls)) {
+    yupan(d, /quark/.test(purls) ? "夸克" : "UC", purls, "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(purls) + "&sharePwd=");
+} else
+if (/ali(pan|yun)/.test(purls)) {
+    yupan(d, "阿里", purls, "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(purls));
+} else
+if (/baidu/.test(purls)) {
+    let list = "hiker://page/list?rule=百度网盘";
+    let login = "hiker://page/login?rule=百度网盘";
+    yupan(d, "百度", purls, (fetch(list) !== "" ? list : login) + "&realurl=" + purls);
+} else
 if (getMyVar("Mysou")) {
     try {
         if (!jusou) {
