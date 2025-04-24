@@ -11,12 +11,12 @@ let get = btget == "影视" ? "ys" : btget == "小说" ? "xs" : btget == "其它
 UPzg(get, getItem("fyzg", "周更"));
 
 
-if (!fileExist("hiker://files/cache/FY/image/天翼.png")) {
+if (!fileExist("hiker://files/cache/FY/image/123.png")) {
     let api = "http://123.56.105.145/tubiao/";
 
-    let image = ["more/47.png", "more/213.png", "more/288.png", "more/101.png", "more/44.png", "more/83.png", "more/201.png", "more/185.png", "tu/moren.png", "tu/jing.png", "q/103.png", "q/123.png", "more/121.png", "more/299.png", "tu/reso.jpg", "more/23.png", "more/13.png", "more/74.png", "more/239.png", "more/10.png", "more/175.png", "more/145.png", "more/159.png", "more/341.png", "more/104.png", "messy/63.svg", "messy/55.svg", "q/94.png", "q/93.png", "q/106.png", "q/92.png", "tu/fytb.jpg", "system/10.png", "messy/145.svg", "tu/qing.png", "messy/156.svg", "tu/fyq.jpg", "tu/ip.png", "messy/123.svg", "messy/124.svg", "tu/suifeng.jpg", "system/30.png", "system/32.png", "system/31.png", "unframed/85.png", "erdi/142.png", "erdi/16.png", "erdi/14.png", "erdi/282.png", "erdi/45.png", "erdi/219.png", "erdi/320.png", "erdi/1.png", "erdi/68.png", "erdi/155.png", "erdi/160.png", "erdi/214.png", "more/118.png", "more/48.png", "erdi/166.png", "erdi/74.png", "erdi/7.png", "erdi/276.png", "erdi/239.png", "erdi/130.png", "erdi/165.png"];
+    let image = ["more/47.png", "more/213.png", "more/288.png", "more/101.png", "more/44.png", "more/83.png", "more/201.png", "more/185.png", "tu/moren.png", "tu/jing.png", "q/103.png", "q/123.png", "more/121.png", "more/299.png", "tu/reso.jpg", "more/23.png", "more/13.png", "more/74.png", "more/239.png", "more/10.png", "more/175.png", "more/145.png", "more/159.png", "more/341.png", "more/104.png", "messy/63.svg", "messy/55.svg", "q/94.png", "q/93.png", "q/106.png", "q/92.png", "tu/fytb.jpg", "system/10.png", "messy/145.svg", "tu/qing.png", "messy/156.svg", "tu/fyq.jpg", "tu/ip.png", "messy/123.svg", "messy/124.svg", "tu/suifeng.jpg", "system/30.png", "system/32.png", "system/31.png", "unframed/85.png", "erdi/142.png", "erdi/16.png", "erdi/14.png", "erdi/282.png", "erdi/45.png", "erdi/219.png", "erdi/320.png", "erdi/1.png", "erdi/68.png", "erdi/155.png", "erdi/160.png", "erdi/214.png", "more/118.png", "more/48.png", "erdi/166.png", "erdi/74.png", "erdi/7.png", "erdi/276.png", "erdi/239.png", "erdi/130.png", "erdi/165.png", "erdi/113.png", "erdi/6.png"];
 
-    let name = ["首页.png", "分类.png", "追更.png", "搜索.png", "设置.png", "历史.png", "收藏.png", "搜录.png", "默认.png", "精准.png", "单搜.png", "聚搜.png", "分类排列.png", "切换类型.png", "热搜.jpg", "搜标.png", "线路.png", "详情.png", "推荐.png", "热播.png", "电影.png", "剧集.png", "综艺.png", "动漫.png", "其它.png", "关.svg", "开.svg", "功能.png", "播放.png", "配置.png", "关于.png", "风影.jpg", "跳转.png", "更新.svg", "清除.png", "强更.svg", "Q群码.jpg", "IP.png", "正序.svg", "倒序.svg", "随风.jpg", "1.png", "2.png", "3.png", "搜索排列.png", "夸克.png", "阿里.png", "UC.png", "云盘.png", "百度.png", "迅雷.png", "哔哩.png", "斗鱼.png", "虎牙.png", "快手.png", "抖音.png", "网易.png", "更新.png", "排行.png", "影视.png", "小说.png", "漫画.png", "听书.png", "追其它.png", "天翼.png", "移动.png"];
+    let name = ["首页.png", "分类.png", "追更.png", "搜索.png", "设置.png", "历史.png", "收藏.png", "搜录.png", "默认.png", "精准.png", "单搜.png", "聚搜.png", "分类排列.png", "切换类型.png", "热搜.jpg", "搜标.png", "线路.png", "详情.png", "推荐.png", "热播.png", "电影.png", "剧集.png", "综艺.png", "动漫.png", "其它.png", "关.svg", "开.svg", "功能.png", "播放.png", "配置.png", "关于.png", "风影.jpg", "跳转.png", "更新.svg", "清除.png", "强更.svg", "Q群码.jpg", "IP.png", "正序.svg", "倒序.svg", "随风.jpg", "1.png", "2.png", "3.png", "搜索排列.png", "夸克.png", "阿里.png", "UC.png", "云盘.png", "百度.png", "迅雷.png", "哔哩.png", "斗鱼.png", "虎牙.png", "快手.png", "抖音.png", "网易.png", "更新.png", "排行.png", "影视.png", "小说.png", "漫画.png", "听书.png", "追其它.png", "天翼.png", "移动.png", "磁力.png", "123.png"];
 
     for (let i in image) {
         let li = image[i];
@@ -24,6 +24,7 @@ if (!fileExist("hiker://files/cache/FY/image/天翼.png")) {
         saveImage(apis + li, "hiker://files/cache/FY/image/" + name[i]);
     };
     saveImage("http://123.56.105.145/weisyr/img/Loading1.gif", "hiker://files/cache/FY/image/Loading.gif");
+saveImage("https://www.ctyun.cn/s/q04sv38ZSzTBF4mEHo-3dVsyWITNHb2AHhoKmmcfMQvFLURsx3V4aUR26W8PQUqCT8irIp8kNZZFmZcjQa3tK6eXmmMshjNGFvsiB8BbIGaFz_TPP8FfRddLJaCyZHeBXWsC1L62ycvoisuSuYDeDRtmnH44p_kJ", "hiker://files/cache/FY/image/天翼云.png");
 };
 
 function isBase64(str) {
@@ -330,7 +331,7 @@ function sy() {
     gx();
     let z = [];
     let d = [];
-    let fr = getMyVar("namejs", "") != "" ? [getMyVar("namejs").replace(/&&.*/, "")] : off1.filter(item => (item.fl != "" || item.sy != "") && item.gs != "HOST" || item.gs == "HOST").map(item => item.name.replace(/&&.*/, ""));
+    let fr = getMyVar("namejs", "") != "" ? [] : off1.filter(item => (item.fl != "" || item.sy != "") && item.gs != "HOST" || item.gs == "HOST").map(item => item.name.replace(/&&.*/, ""));
     let rn = ["首页"].concat(fr);
     if (getItem("首页", "off") == "on" && getItem("Mysye", "首页") == "首页" && getMyVar("Myfl") == "" && getMyVar("Mysou") == "") {
         let arr = fr;
@@ -361,33 +362,31 @@ function sy() {
     let syurl;
     let cesy;
     try {
-        var yu = getMyVar("namejs", "") != "" ? getMyVar("namejs").replace(/&&.*/, "") : Json.find(item => item.name.replace(/&&.*/, "") === sui);
+        let yu = Json.find(item => item.name.replace(/&&.*/, "") === sui);
         if (yu != undefined) {
             try {
-                if (getMyVar("namejs", "") != "" || yu.fbhost == "") {
-                    let s = getMyVar("namejs", "") != "" ? getMyVar("hostjs") : yu.host;
+                if (yu.fbhost == "") {
+                    let s = yu.host;
                     let syur = new Function(s);
                     toast("获取域名中，请稍后！");
                     syurl = syur();
-                    if (getMyVar("namejs", "") == "") {
-                        let dList = Json.map(item => {
-                            if (item.name.replace(/&&.*/, "") === sui) {
-                                const newItem = Object.assign({}, item, {
-                                    fbhost: syurl
-                                });
-                                return newItem;
-                            }
-                            return item;
-                        });
-                        saveFile(file, JSON.stringify(dList));
-                    };
+                    let dList = Json.map(item => {
+                        if (item.name.replace(/&&.*/, "") === sui) {
+                            const newItem = Object.assign({}, item, {
+                                fbhost: syurl
+                            });
+                            return newItem;
+                        }
+                        return item;
+                    });
+                    saveFile(file, JSON.stringify(dList));
                 } else {
                     syurl = yu.fbhost;
                 }
             } catch (e) {
-                syurl = getMyVar("namejs", "") != "" ? getMyVar("hostjs") : yu.host;
+                syurl = yu.host;
             };
-            cesy = getMyVar("namejs", "") != "" ? getMyVar("syjs") : yu.sy;
+            cesy = yu.sy;
         } else {
             syurl = "http://fenying";
             cesy = "";
@@ -648,14 +647,14 @@ function sy() {
     for (let i in titll) {
         z.push({
             title: "‘‘’’<b>" + titll[i] + "</b>",
-            url: urlu[i],
+            url: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : urlu[i],
             img: 图 + pici[i],
             col_type: "icon_5",
             extra: {
                 inheritTitle: false,
                 longClick: i == 0 && getItem("dy", "本地") == "本地" ? [{
                     title: "删除 " + sui,
-                    js: $.toString((name) => {
+                    js: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : $.toString((name) => {
                         return name == "首页" || name == "选源" ? "toast://当前未选择源" : $("删除后不可恢复，确认删除  " + name + " ？").confirm((name) => {
                             let list;
                             let file = "hiker://files/rules/FYJK/ys.json";
@@ -685,7 +684,7 @@ function sy() {
             desc: "可 以 少 字 ，不 可 错 字 ！",
             url: $.toString((sui, myurl) => {
                 putMyVar("Mysou", input);
-                if (getMyVar("Mysou") && myurl != "http://fenying" || getItem("s1", "0") == "1") {
+                if (getMyVar("Mysou") && myurl != "http://fenying" || getItem("s1", "0") == "1" || /cloud\.189/.test(input)) {
                     if (getItem("s1", "0") != "1" && myurl != "http://fenying") {
                         setItem("s0", sui);
                     };
@@ -721,7 +720,7 @@ function sy() {
         z.push({
             title: "搜索记录",
             img: 图 + "搜录.png",
-            url: $("#noLoading#").lazyRule((sui) => {
+            url: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : $("#noLoading#").lazyRule((sui) => {
                 if (getMyVar("dxz", "off") == "on") {
                     deleteItemByCls("so_id");
                     putMyVar("dxz", "off");
@@ -767,7 +766,7 @@ function sy() {
                 id: "sojl_id",
                 longClick: [{
                     title: "清除记录",
-                    js: $.toString(() => {
+                    js: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : $.toString(() => {
                         deleteFile("hiker://files/cache/FY/sojl.js");
                         deleteItemByCls("so_id");
                         clearMyVar("dxz");
@@ -788,7 +787,7 @@ function sy() {
         }, {
             title: '‘‘’’<font color="#b0e0e6">点击选择首页</font>',
             desc: "0",
-            url: 首页,
+            url: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : 首页,
             img: 图 + "风影.jpg",
             col_type: "card_pic_1"
         });
@@ -1156,6 +1155,9 @@ function xsy(syurl, d, sui) {
     };
     let lxn = getItem("lx1", "全部");
     let lxna = /影视|动漫|短剧|网盘/.test(lxn) ? "影视" : /听书|音乐/.test(lxn) ? "听书" : /全部|其它/.test(lxn) ? "其它" : lxn;
+    let lis = "hiker://page/list?rule=百度网盘&realurl=";
+    let lif = fetch(lis);
+    let loi = "hiker://page/loging?rule=百度网盘&realurl=";
     for (let i in 列) {
         if (标[i] != "轮播" && 标[i] != null && 标[i] != "禁用") {
             /*if (i != 1) {
@@ -1188,7 +1190,13 @@ function xsy(syurl, d, sui) {
                     }, sui, game, getHome(MY_URL), urll) : (/function/.test(文) && 开 == "on") ? $(urll + "#readTheme#").rule((nad, game, MY_HOME) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
                         return zw(nad, MY_URL, MY_HOME, game);
-                    }, sui, game, getHome(MY_URL)) : $("hiker://empty##" + urll + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
+                    }, sui, game, getHome(MY_URL)) : /ali(pan|yun)/.test(urll) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(urll) : /(quark|\.uc)\.cn/.test(urll) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(urll) + "&sharePwd=" : /baidu/.test(urll) ? (lif !== "" ? lis : loi) + urll : /cloud\.189/.test(urll) ? $("hiker://empty#noHistory#").rule((url) => {
+                        let d = [];
+                        putMyVar("fypanys", "1");
+                        require(config.依赖.replace(/[^/]*$/, "pan.js"));
+                        hs(d, url);
+                        setResult(d);
+                    }, urll) : $("hiker://empty##" + urll + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
                         require(config.依赖);
                         erji()
                     });
@@ -1256,8 +1264,7 @@ function xsy(syurl, d, sui) {
     });
     deleteItemByCls("cls_load");
     setResult(d);
-    if (getMyVar("待") != "1" && getMyVar("换") != sui) {
-        putMyVar("换", sui);
+    if (getMyVar("待") != "1") {
         require(config.依赖.replace(/[^/]*$/, "dw.js"));
     };
 };
@@ -1280,6 +1287,9 @@ function erji() {
 //设置
 function she() {
     let d = [];
+    if (getMyVar("namejs", "null") != "null") {
+        back(true);
+    };
     let shtu = "hiker://files/cache/FY/image/";
     d.push({
         title: "<b><small>功能</small></b>",
@@ -1427,6 +1437,17 @@ function she() {
                     return "toast://视频源 编辑，分享，删除 等管理。";
                 })
             }]
+        }
+    }, {
+        title: "<b>帐号管理</b>",
+        pic: shtu + "跳转.png",
+        url: $("hiker://empty#noRecordHistory##noHistory##noRefresh#").rule(() => {
+            require(config.依赖.replace(/[^/]*$/, "pan.js"));                                  
+            dlu();
+        }),
+        col_type: coll,
+        extra: {
+            inheritTitle: false
         }
     });
 
