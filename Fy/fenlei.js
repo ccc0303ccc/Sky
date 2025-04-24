@@ -42,7 +42,7 @@ if (parseInt(page) == 1) {
 
         url = [电影u, 剧集u, 动漫u, 综艺u, 短剧u];
     };
-    let img = ["电影", "剧集", "综艺", "动漫", "其它"];
+    let img = ["电影", "剧集", "综艺", "动漫", "其它", "分类"];
     let 链 = url.filter(item => item !== "");
     let len = 链.length;
     let flei = getMyVar("Myfl", title[0]);
@@ -324,6 +324,9 @@ if (list == "") {
 
         let lxn = getItem("lx1", "全部");
         let lxna = /影视|动漫|短剧|网盘/.test(lxn) ? "影视" : /听书|音乐/.test(lxn) ? "听书" : /全部|其它/.test(lxn) ? "其它" : lxn;
+        let lis = "hiker://page/list?rule=百度网盘&realurl=";
+        let lif = fetch(lis);
+        let loi = "hiker://page/loging?rule=百度网盘&realurl=";
         if (Js) {
             list.forEach(li => {
                 let title = li.title;
@@ -338,7 +341,13 @@ if (list == "") {
                 }, dwfl, game, MY_HOME, urls) : (/function/.test(zw) && 正文 == "on") ? $(urls + "#readTheme#").rule((nad, game, MY_HOME) => {
                     require(config.依赖.replace(/[^/]*$/, "lazy.js"));
                     return zw(nad, MY_URL, MY_HOME, game);
-                }, dwfl, game, MY_HOME) : $("hiker://empty##" + urls + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
+                }, dwfl, game, MY_HOME) : /ali(pan|yun)/.test(urls) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(urls) : /(quark|\.uc)\.cn/.test(urls) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(urls) + "&sharePwd=" : /baidu/.test(urls) ? (lif !== "" ? lis : loi) + urls : /cloud\.189/.test(urls) ? $("hiker://empty#noHistory#").rule((url) => {
+                    let d = [];
+                    putMyVar("fypanys", "1");
+                    require(config.依赖.replace(/[^/]*$/, "pan.js"));
+                    hs(d, url);
+                    setResult(d);
+                }, urls) : $("hiker://empty##" + urls + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
                     require(config.依赖);
                     erji()
                 });
