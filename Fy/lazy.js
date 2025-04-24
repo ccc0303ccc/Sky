@@ -13,7 +13,6 @@ function lazy(nad, input) {
         公用 = eval("(" + gy.gy + ")");
     } catch (e) {
         公用 = null;
-        log(e.toString());
     };
     let 点击 = 公用 && typeof 公用.点播 == "string" ? 公用.点播 : "";
     let 排除 = 公用 && typeof 公用.排除 == "object" ? 公用.排除.toString() : "";
@@ -174,10 +173,19 @@ function lazy(nad, input) {
         }
         input = jx + url;
     };
-    if (/quark\.cn|\.uc\.cn/.test(url)) {
+    if (/(quark|\.uc)\.cn/.test(url)) {
         return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=";
     } else
-    if (/ali(pan|yun|yundrive)/.test(url)) {
+    if (/cloud\.189/.test(url)) {
+        return $("hiker://empty").rule((url) => {
+            let d = [];
+            putMyVar("fypanys", "1");
+            require(config.依赖.replace(/[^/]*$/, "pan.js"));
+            hs(d, url);
+            setResult(d);
+        }, url);
+    } else
+    if (/ali(pan|yun)/.test(url)) {
         return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url);
     } else
     if (/baidu/.test(url)) {
@@ -383,6 +391,15 @@ function mx(nad, MY_HOME, game, input) {
             if (mx == "嗅探") {
                 return xt ? video(input) : lazy(nad, input);
             } else
+            if (mx == "天翼") {
+                return $("hiker://empty").rule((url) => {
+                    let d = [];
+                    putMyVar("fypanys", "1");
+                    require(config.依赖.replace(/[^/]*$/, "pan.js"));
+                    hs(d, url);
+                    setResult(d);
+                }, input);
+            } else
             if (mx == "阿里") {
                 return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(input);
             } else
@@ -433,6 +450,15 @@ function mx(nad, MY_HOME, game, input) {
         let cmx = 公用.免嗅(input);
         if (cmx == "嗅探") {
             return xt ? video(input) : lazy(nad, input);
+        } else
+        if (mx == "天翼") {
+            return $("hiker://empty").rule((url) => {
+                let d = [];
+                putMyVar("fypanys", "1");
+                require(config.依赖.replace(/[^/]*$/, "pan.js"));
+                hs(d, url);
+                setResult(d);
+            }, input);
         } else
         if (cmx == "阿里") {
             return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(input);
