@@ -249,7 +249,6 @@ if (Js) {
             公用 = eval("(" + g + ")");
         } catch (e) {
             公用 = null;
-            log(e.toString());
         };
     };
 
