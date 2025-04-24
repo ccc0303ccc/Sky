@@ -18,9 +18,6 @@ try {
         list = JSON.parse(readFile(file));
     } catch (e) {
         list = [];
-        if (!fileExist(file)) {
-            saveFile(file, JSON.stringify(list));
-        };
         console.error('原文件内容出错:', e);
     };
 
@@ -118,7 +115,12 @@ try {
                     });
                 };
                 let file = "hiker://files/rules/FYJK/ys.json";
-                let list = JSON.parse(readFile(file)) || [];
+                let list;
+                try {
+                    list = JSON.parse(readFile(file));
+                } catch (e) {
+                    list = [];
+                };
                 let ad = add.length;
                 let Up = up.length;
                 let Lo = lio.length;
@@ -192,7 +194,12 @@ try {
                 img: "",
                 url: $("确认导入  " + name + " ？").confirm((li) => {
                     let file = "hiker://files/rules/FYJK/ys.json";
-                    let list = JSON.parse(readFile(file));
+                    let list;
+                    try {
+                        list = JSON.parse(readFile(file));
+                    } catch (e) {
+                        list = [];
+                    };
                     list = list.filter(item => !(item.name.replace(/&&.*/, "") === li.name.replace(/&&.*/, "")));
                     list.unshift(li);
                     saveFile(file, JSON.stringify(list));
