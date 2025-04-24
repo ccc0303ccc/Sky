@@ -1,4 +1,4 @@
-push_tips = "完美支持了大体积的gif和svg";
+//push_tips = "优化深色适配，有颜色对不上的，跟我说";
 //eval(request("https://api.vvhan.com/api/denglong"));
 /*fba.writeFile('hiker://files/rules/dzHouse/html/plug/文件管理.js', request('http://123.56.105.145/weisyr/plug/文件管理.js'));
 */
@@ -7,9 +7,9 @@ fba.parseLazyRule($$$().lazyRule(() => {
 	deleteFile('file:///storage/emulated/0/Android/data/com.example.hikerview/files/Documents/cache/顺搜_默认图.jpg');
 },默认图))
 */
-update(03281)
+update(0422)
 /*
-audio = new Audio("https://raw.githubusercontent.com/ccc0303ccc/Sky/main/weisyr/video/天气预报bgm.mp3");
+audio = new Audio("https://hikerfans.com/weisyr/video/天气预报bgm.mp3");
 $("#weather_info").click(() => {
 audio.volume = 0.6;
 audio.play();
