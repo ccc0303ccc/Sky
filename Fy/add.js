@@ -109,7 +109,7 @@ d.push({
     title: "测试",
     url: $(["首页", "分类", "搜索"], 3, "测试").select((syurl, d, sui) => {
         if (input == "首页") {
-            return getMyVar("namejs") == "" && getMyVar("hostjs") == "" && getMyVar("syjs") == "" ? "toast://正确填写后再测试" : $("hiker://empty##noRecordHistory##noHistory#").rule((syurl, d, sui) => {
+            return getMyVar("namejs", "") == "" && getMyVar("syjs", "") == "" || getMyVar("hostjs", "") == "" ? "toast://正确填写后再测试" : $("hiker://empty#fypage#noRecordHistory##noHistory#").rule((syurl, d, sui) => {
                 let syurl;
                 try {
                     let sy = new Function(syurl);
@@ -121,23 +121,24 @@ d.push({
 
                 if (getMyVar("syjs") != "*") {
                     require(config.依赖);
-                    xsy(syurl, d, sui);
+                    xsy(syurl, d, sui, "2");
                 } else {
                     putMyVar("flurl", syurl);
                     require(config.依赖);
-                    fenlei()
+                    require(config.依赖.replace(/[^/]*$/, "fenlei.js"));
+                    fenlei("2");
                 };
             }, syurl, d, sui)
         } else
         if (input == "搜索") {
-            return getMyVar("namejs") == "" && getMyVar("sourljs") == "" && getMyVar("sojs") == "" ? "toast://正确填写后再测试" : $(getMyVar("Mysou", "我的")).input(() => {
+            return getMyVar("namejs", "") == "" && getMyVar("sojs", "") == "" || getMyVar("sourljs", "") == "" ? "toast://正确填写后再测试" : $(getMyVar("Mysou", "我的")).input(() => {
                 putMyVar("Mysou", input);
-                require(config.依赖);
-                return sourl();
+                require(config.依赖);       
+                return sourl("2");
             });
         } else
         if (input == "分类") {
-            return getMyVar("namejs") == "" && getMyVar("hostjs") == "" && getMyVar("fljs") == "" ? "toast://正确填写后再测试" : getMyVar("syjs") == "*" ? "toast://测试首页即为分类！" : $(syurl + "#noLoading#").lazyRule((url) => {
+            return getMyVar("namejs", "") == "" && getMyVar("fljs", "") == "" || getMyVar("hostjs", "") == "" ? "toast://正确填写后再测试" : getMyVar("syjs", "") == "*" ? "toast://测试首页即为分类！" : $(syurl + "#noLoading#").lazyRule((url) => {
                 let url;
                 try {
                     let sy = new Function(url);
@@ -151,11 +152,12 @@ d.push({
                 //putMyVar("Myurl.url", url);
                 return $("hiker://empty#" + url + "#noRecordHistory##noHistory##fypage").rule(() => {
                     require(config.依赖);
-                    fenlei()
+                    require(config.依赖.replace(/[^/]*$/, "fenlei.js"));
+                    fenlei("2");
                 });
             }, syurl);
         }
-    }, getMyVar("hostjs"), d, getMyVar("namejs")),
+    }, getMyVar("hostjs", ""), d, getMyVar("namejs", "")),
     col_type: "text_4"
 }, {
     title: "助手",
