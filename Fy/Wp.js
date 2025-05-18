@@ -3,6 +3,7 @@ let s = [];
 addListener("onClose", $.toString(() => {
     clearMyVar("zgli");
     clearMyVar("fys");
+    clearMyVar("fyzg");
 }));
 putMyVar("fys", "0");
 let bt = ["影视", "小说", "漫画", "听书", "其它"];
@@ -14,6 +15,8 @@ for (let i in bt) {
         img: pic1 + (/其它/.test(bt[i]) ? "追" + bt[i] : bt[i]) + ".png",
         url: $("#noLoading#").lazyRule((li) => {
             setItem("zgb", li);
+            clearMyVar("fyzg");
+            clearMyVar("zgli");
             refreshPage(false);
             return "hiker://empty";
         }, bt[i]),
@@ -106,7 +109,7 @@ s.push({
 });
 
 let zgzl = ["历史", "收藏", "周更", "日更", "完更"];
-let fyzg = getItem("fyzg", "周更");
+let fyzg = getMyVar("fyzg", "周更");
 for (let z in zgzl) {
     let li = zgzl[z];
     s.push({
@@ -118,7 +121,7 @@ for (let z in zgzl) {
             if (li === "历史") {
                 return "hiker://history?rule=" + MY_RULE.title;
             } else {
-                setItem("fyzg", li);
+                putMyVar("fyzg", li);
                 refreshPage(false);
                 return "hiker://empty";
             };
@@ -227,6 +230,7 @@ for (let l in lizso) {
                 title: li.title,
                 desc: fyzg == "完更" ? `${li.desc}` : `第${des1.replace(/.*>(.*?)<\/.*/, "$1")}${wei}${zjs}`,
                 img: li.img,
+                type: "1",
                 inheritTitle: false,
                 pageTitle: `${li.title}「${li.pageTitle}」`,
                 id: "id_fyfmxz" + l,
@@ -237,7 +241,7 @@ for (let l in lizso) {
                         clearMyVar("fys");
                         return tit + $("#noLoading#").lazyRule(() => {
                             require(config.依赖);
-                            return sourl()
+                            return sourl("1")
                         });
                     }, btget, li.title)
                 }, {
