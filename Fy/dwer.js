@@ -8,8 +8,9 @@ try {
     log(e.toString());
 };
 
+let type = MY_PARAMS.type;
 let off = Jso.filter(item => item.off === "1");
-let names = getMyVar("namejs", "null") != "null" ? getMyVar("namejs").replace(/&&.*/, "") : off.find(item => item.name.replace(/&&.*/, "") === der);
+let names = type == "2" ? getMyVar("namejs").replace(/&&.*/, "") : off.find(item => item.name.replace(/&&.*/, "") === der);
 
 let myName = getMyVar('namejs');
 let result = off.find(item => item.name === myName);
@@ -286,14 +287,14 @@ let 图片;
 let 详情;
 let 样式;
 
-let Js = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "JS" : names.gs == "JS";
+let Js = type == "2" ? getMyVar("gs", gsValue) == "JS" : names.gs == "JS";
 
-let HOst = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "HOST" : names.gs == "HOST";
+let HOst = type == "2" ? getMyVar("gs", gsValue) == "HOST" : names.gs == "HOST";
 
 if (Js) {
     let s;
     let g;
-    if (getMyVar("namejs", "null") != "null") {
+    if (type == "2") {
         s = getMyVar("erjs");
         g = getMyVar("gyjs");
     } else {
