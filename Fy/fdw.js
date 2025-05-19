@@ -1,3 +1,5 @@
+let d = [];
+
 function tb_url(dwfl, MY_URL) {
     电影_url = MY_URL;
 
@@ -79,13 +81,11 @@ function htmlf(MY_URL, MY_HOME, http, game, dwfl, true_url, d, page, off1) {
         html = request(MY_HOME + "?btwaf" + ht.match(/btwaf(.*?)\"/)[1], {
             headers: headers
         });
-    };
-
+    } else 
     if (/验证码|安全验证/.test(ht) && !/弹出验证码|验证通过/.test(ht)) {
-
         if (page == 1) {
             require(http + "yzm.js");
-            return verify(MY_URL, MY_HOME, http, game, dwfl, true_url, d, page, "", off1);
+            html = verify(MY_URL, MY_HOME, http, game, dwfl, true_url, d, page, "", off1);
         };
     } else
     if (ht == "" || !/电影|剧集|连续剧|电视剧|综艺|动漫|短剧|纪录|记录|番剧|视频|視頻|電影|劇集|續集|電視劇|綜藝|動畫|短劇|紀錄|番劇/.test(ht)) {
@@ -96,7 +96,7 @@ function htmlf(MY_URL, MY_HOME, http, game, dwfl, true_url, d, page, off1) {
     } else {
         html = ht;
     };
-    return html
+    return html;
 };
 
 function lei(dwfl, html) {
@@ -198,7 +198,6 @@ function tir(dwfl, html) {
     return 片名 + "$" + 链接
 };
 
-let names = getMyVar("namejs", "null") != "null" ? getMyVar("namejs") : Json.find(item => item.name.replace(/&&.*/, "") === dwfl);
 let 电影_url;
 let 剧集_url;
 let 动漫_url;
@@ -228,14 +227,19 @@ let 更新;
 let 图片;
 let 片名;
 let 链接;
-let Js = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "JS" : names.gs == "JS";
 
-let HOst = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "HOST" : names.gs == "HOST";
+let page = MY_PAGE;
+let type = getMyVar("dwtype", "1");
+let dwfl = type == "2" ? getMyVar("namejs").replace(/&&.*/, "") : getItem("m1");
+let names = type == "2" ? getMyVar("namejs") : Json.find(item => item.name.replace(/&&.*/, "") === dwfl);
+let Js = type == "2" ? getMyVar("gs", gsValue) == "JS" : names.gs == "JS";
+
+let HOst = type == "2" ? getMyVar("gs", gsValue) == "HOST" : names.gs == "HOST";
 
 if (Js) {
     let s;
     let g;
-    if (getMyVar("namejs", "null") != "null") {
+    if (type == "2") {
         s = getMyVar("fljs");
         g = getMyVar("gyjs");
     } else {
@@ -257,7 +261,7 @@ if (Js) {
         "Referer": MY_URL,
     };
     let fl = s.replace(/html\s*\=\s*fetch\(MY\_URL\)/, "html = fetch(MY_URL, {timeout: 5000, headers: headers })");
- 
+
     let myurl = getMyVar("Myurl.url", MY_URL);
     eval(fl);
     if (typeof 免嗅 == "string" ? 免嗅 == "on" : false) {
