@@ -11,12 +11,12 @@ let get = btget == "影视" ? "ys" : btget == "小说" ? "xs" : btget == "其它
 UPzg(get, getItem("fyzg", "周更"));
 
 
-if (!fileExist("hiker://files/cache/FY/image/123.png")) {
+if (!fileExist("hiker://files/cache/FY/image/123云.png")) {
     let api = "http://123.56.105.145/tubiao/";
 
-    let image = ["more/47.png", "more/213.png", "more/288.png", "more/101.png", "more/44.png", "more/83.png", "more/201.png", "more/185.png", "tu/moren.png", "tu/jing.png", "q/103.png", "q/123.png", "more/121.png", "more/299.png", "tu/reso.jpg", "more/23.png", "more/13.png", "more/74.png", "more/239.png", "more/10.png", "more/175.png", "more/145.png", "more/159.png", "more/341.png", "more/104.png", "messy/63.svg", "messy/55.svg", "q/94.png", "q/93.png", "q/106.png", "q/92.png", "tu/fytb.jpg", "system/10.png", "messy/145.svg", "tu/qing.png", "messy/156.svg", "tu/fyq.jpg", "tu/ip.png", "messy/123.svg", "messy/124.svg", "tu/suifeng.jpg", "system/30.png", "system/32.png", "system/31.png", "unframed/85.png", "erdi/142.png", "erdi/16.png", "erdi/14.png", "erdi/282.png", "erdi/45.png", "erdi/219.png", "erdi/320.png", "erdi/1.png", "erdi/68.png", "erdi/155.png", "erdi/160.png", "erdi/214.png", "more/118.png", "more/48.png", "erdi/166.png", "erdi/74.png", "erdi/7.png", "erdi/276.png", "erdi/239.png", "erdi/130.png", "erdi/165.png", "erdi/113.png", "erdi/6.png"];
+    let image = ["more/47.png", "more/213.png", "more/288.png", "more/101.png", "more/44.png", "more/83.png", "more/201.png", "more/185.png", "tu/moren.png", "tu/jing.png", "q/103.png", "q/123.png", "more/121.png", "more/299.png", "tu/reso.jpg", "more/23.png", "more/13.png", "more/74.png", "more/239.png", "more/10.png", "more/175.png", "more/145.png", "more/159.png", "more/341.png", "more/104.png", "messy/63.svg", "messy/55.svg", "q/94.png", "q/93.png", "q/106.png", "q/92.png", "tu/fytb.jpg", "system/10.png", "messy/145.svg", "tu/qing.png", "messy/156.svg", "tu/fyq.jpg", "tu/ip.png", "messy/123.svg", "messy/124.svg", "tu/suifeng.jpg", "system/30.png", "system/32.png", "system/31.png", "unframed/85.png", "erdi/142.png", "erdi/16.png", "erdi/14.png", "erdi/282.png", "erdi/45.png", "erdi/219.png", "erdi/320.png", "erdi/1.png", "erdi/68.png", "erdi/155.png", "erdi/160.png", "erdi/214.png", "more/118.png", "more/48.png", "erdi/166.png", "erdi/74.png", "erdi/7.png", "erdi/276.png", "erdi/239.png", "erdi/130.png", "erdi/165.png", "erdi/113.png", "erdi/6.png", "tu/123云.svg"];
 
-    let name = ["首页.png", "分类.png", "追更.png", "搜索.png", "设置.png", "历史.png", "收藏.png", "搜录.png", "默认.png", "精准.png", "单搜.png", "聚搜.png", "分类排列.png", "切换类型.png", "热搜.jpg", "搜标.png", "线路.png", "详情.png", "推荐.png", "热播.png", "电影.png", "剧集.png", "综艺.png", "动漫.png", "其它.png", "关.svg", "开.svg", "功能.png", "播放.png", "配置.png", "关于.png", "风影.jpg", "跳转.png", "更新.svg", "清除.png", "强更.svg", "Q群码.jpg", "IP.png", "正序.svg", "倒序.svg", "随风.jpg", "1.png", "2.png", "3.png", "搜索排列.png", "夸克.png", "阿里.png", "UC.png", "云盘.png", "百度.png", "迅雷.png", "哔哩.png", "斗鱼.png", "虎牙.png", "快手.png", "抖音.png", "网易.png", "更新.png", "排行.png", "影视.png", "小说.png", "漫画.png", "听书.png", "追其它.png", "天翼.png", "移动.png", "磁力.png", "123.png"];
+    let name = ["首页.png", "分类.png", "追更.png", "搜索.png", "设置.png", "历史.png", "收藏.png", "搜录.png", "默认.png", "精准.png", "单搜.png", "聚搜.png", "分类排列.png", "切换类型.png", "热搜.jpg", "搜标.png", "线路.png", "详情.png", "推荐.png", "热播.png", "电影.png", "剧集.png", "综艺.png", "动漫.png", "其它.png", "关.svg", "开.svg", "功能.png", "播放.png", "配置.png", "关于.png", "风影.jpg", "跳转.png", "更新.svg", "清除.png", "强更.svg", "Q群码.jpg", "IP.png", "正序.svg", "倒序.svg", "随风.jpg", "1.png", "2.png", "3.png", "搜索排列.png", "夸克.png", "阿里.png", "UC.png", "云盘.png", "百度.png", "迅雷.png", "哔哩.png", "斗鱼.png", "虎牙.png", "快手.png", "抖音.png", "网易.png", "更新.png", "排行.png", "影视.png", "小说.png", "漫画.png", "听书.png", "追其它.png", "天翼.png", "移动.png", "磁力.png", "123.png", "123云.png"];
 
     for (let i in image) {
         let li = image[i];
@@ -24,7 +24,10 @@ if (!fileExist("hiker://files/cache/FY/image/123.png")) {
         saveImage(apis + li, "hiker://files/cache/FY/image/" + name[i]);
     };
     saveImage("http://123.56.105.145/weisyr/img/Loading1.gif", "hiker://files/cache/FY/image/Loading.gif");
-saveImage("https://www.ctyun.cn/s/q04sv38ZSzTBF4mEHo-3dVsyWITNHb2AHhoKmmcfMQvFLURsx3V4aUR26W8PQUqCT8irIp8kNZZFmZcjQa3tK6eXmmMshjNGFvsiB8BbIGaFz_TPP8FfRddLJaCyZHeBXWsC1L62ycvoisuSuYDeDRtmnH44p_kJ", "hiker://files/cache/FY/image/天翼云.png");
+    saveImage("https://www.ctyun.cn/s/q04sv38ZSzTBF4mEHo-3dVsyWITNHb2AHhoKmmcfMQvFLURsx3V4aUR26W8PQUqCT8irIp8kNZZFmZcjQa3tK6eXmmMshjNGFvsiB8BbIGaFz_TPP8FfRddLJaCyZHeBXWsC1L62ycvoisuSuYDeDRtmnH44p_kJ", "hiker://files/cache/FY/image/天翼云.png");
+
+saveImage("https://ecloud.eos-guangzhou-1.cmecloud.cn/op-portal-static/9.4.1_h2/static/ecloud-logo-2023.835f0962.png", "hiker://files/cache/FY/image/移动云.png");
+
 };
 
 function isBase64(str) {
@@ -75,7 +78,7 @@ if (result) {
     //console.log("没有找到匹配的项");
 };
 
-function sourl() {
+function sourl(type) {
     try {
         eval("var sojl = " + readFile("hiker://files/cache/FY/sojl.js"));
     } catch (e) {
@@ -99,10 +102,11 @@ function sourl() {
     saveFile("hiker://files/cache/FY/sojl.js", JSON.stringify(sojl));
     putMyVar("Mysou", input);
     if (getMyVar('影搜') != '1') {
-        return $("hiker://empty#noRecordHistory##noHistory#fypage").rule(() => {
+        return $("hiker://empty#noRecordHistory##noHistory#fypage").rule((type) => {
             require(config.依赖);
-            yso()
-        });
+            require(config.依赖.replace(/[^/]*$/, "yso.js"));
+            yso(type);
+        }, type);
     } else {
         refreshPage();
         return "hiker://empty";
@@ -198,13 +202,13 @@ function gx() {
     let 手 = getMyVar("手动", "0") == "1";
     let 强 = getMyVar("强制", "0") == "1";
     let 手d = getVar("fy手动fy", "0") == "1";
-    let ver = "250320";
+    let ver = "250426";
     let zver = getItem("ver", "1");
     if ((ver > zver) && mytitle) {
         let vers = $.toString((ver) => {
             setItem("ver", ver);
             deleteCache();
-            return "海阔视界规则分享，当前分享的是：小程序，随风￥home_rule_v2￥base64://@风影@eyJsYXN0X2NoYXB0ZXJfcnVsZSI6IiIsInRpdGxlIjoi6aOO5b2xIiwiYXV0aG9yIjoi6ZqP6aOOIiwidXJsIjoiaGlrZXI6Ly9lbXB0eSMjZnlwYWdlIiwidmVyc2lvbiI6MjUwMzIwLCJjb2xfdHlwZSI6Im1vdmllXzMiLCJjbGFzc19uYW1lIjoiIiwidHlwZSI6ImFsbCIsImNsYXNzX3VybCI6IiIsImFyZWFfbmFtZSI6IiIsImFyZWFfdXJsIjoiIiwic29ydF9uYW1lIjoiIiwieWVhcl9uYW1lIjoiIiwic29ydF91cmwiOiIiLCJ5ZWFyX3VybCI6IiIsImZpbmRfcnVsZSI6ImpzOlxuIHJlcXVpcmUoY29uZmlnLuS+nei1lik7XG4gc3koKSIsInNlYXJjaF91cmwiOiJoaWtlcjovL2VtcHR5IyMqKiIsImdyb3VwIjoi4pGgQeW9sSIsInNlYXJjaEZpbmQiOiJqczpcbiByZXF1aXJlKGNvbmZpZy7kvp3otZYpO1xuIHNvdSgpIiwiZGV0YWlsX2NvbF90eXBlIjoibW92aWVfMSIsImRldGFpbF9maW5kX3J1bGUiOiIiLCJzZGV0YWlsX2NvbF90eXBlIjoibW92aWVfMSIsInNkZXRhaWxfZmluZF9ydWxlIjoiKiIsInVhIjoibW9iaWxlIiwicHJlUnVsZSI6ImV2YWxQcml2YXRlSlMoXCI0SFoxQ0lNeUR5STAranVwVUxDR0pIeVdZWXp2S3RPMzMwclNVZWM3dzVuT0Q1YjJ5TFFpbUxpUFU5VnNGUEhPdEJ2dEtoaWRlcDJhbWhzUUFzODFPcDkxTnN1WUl1WU4ySXkyTklKUUZYcmVCcEZKSlZvb3hlSk9jV1p6MHBkOGRuNHBDdWZvS05jVzYzaWxTaVBPNkRiSEQ0VTFRd1BjaXg3eDhubm5BcUpTRktxMW1QYkNiaExqc2Nld201YWtzcWVuekhsclc2VC8xbldTQ2VlUzZQK2E5UytnK21TK1dKTkdLamZ1LzMwemd2c3U3clFGYTFNQmova3pqeThoWDlzSlVabUxLNUhzaU1EUmNlZnFMUVJMWWhCZXdLZWdyRk9hMnBTMG56bCs0K3ZnUVpLOW0zS0ZLditaQkJucWlrdW1MOFR2SVMvTENCUGJ3c0Jad2hIWXRXVzlKRkp4alJJdG9QSENOZ1ZFcllwVGhkeStuYnAzajBMRk5NUkJCMUxWRG9aZUUrUmJLbisrVnNqeVpLTDZsRTN0RmpVd2JPbGZvRmFtVytKbzVQOEU0NlM0ZDQ0bUhSMEsrSmppYWFuZHZmMnNlTFJ3eFBmZi9nUm1Nd0dHUXJJdXVzYm5VbXZyb3RkOUdXdklkcVBDZ0hpM1FQY0JoZEh1VU5VdHlCRkI5NzRXSndMK1RWUnkvQ24xZ0FNUkdXY2FVK1F4TUtPSUpaeCtLdWd6akpxMlgwNm1QZ2k3OVdmbVlJVGRIeGF1VHYyb0NDZzJRc3JQcnZ2bUkzTVpUTkZTbUZiWTVhOGpRMWJNS0UzUzg0Zk8zdXk5dFhPN00vMGp2VnEzbmwzL2hvS3NpZ2dTckh1anhKK2xVUWJFNVJQSG4yQUdEdVE3S1RNcGowSjVmYlZiTGdRSDRsQVZpTXpIdGNPb0xpdEMvRW5aSkhJZGpVNHBFbG5RTnpKdElmcmYyMEJoQ015Q1JQTmEvb3pZa1BHSldLVk1PRkxrS0ZsUTdCSDRldGRPSkFqVnpmUGQ0a0dXa1lEdWxxdFVJejB6R255TndPY2ZDWHIvUUxtRlNXUEJBWW53d0t0dU0rTXdjVkVHUVdVYk1Qb0VQVDVZeFBHR3BpR0FlN1N2NVpWNm11NktYNU9ydWJ6QVJacGV4dUhLb2Y3bVI4cys5aCtMdTlXVjdBZVhRbEpPMWFycXFrMUxEMDAxLzlicjlCd0R3d1V0dEc5NFpkbHVqVnZVR3UzcUhldFZwYUlNRHdFMTZGQ2FcIik7IiwicGFnZXMiOiJbe1wiY29sX3R5cGVcIjpcIm1vdmllXzNcIixcIm5hbWVcIjpcIuWvvOWFpeWPo+S7pFwiLFwicGF0aFwiOlwiaW1wb3J0XCIsXCJydWxlXCI6XCJldmFsUHJpdmF0ZUpTKFxcXCJkNG1uK0dwTEdLT3BEN1A1dUJwS2JXUUp2ODVIcjk4amgwUnpsa01IbTg2cWdPRER3MWlMVDllZVJGWCtGZllpUXl0Y05VMUpQS2I2a2U5MFh0RUZOc0I4cjNpcXY4Q2pzS2R1QmtaMi8xbmtjazVDZjlOQTluNnJWdHQwOW5ZVllxRENuVjB6eFMwaTBxMjRzTlBVZ0VRaXA5V2M2OWVqK29OeFBPYk9PU1F1dXorWFBwZGtuL09lbUxZOEZ5YjlWL3BTSzN6a2pLeWg5NXNjVm94OTR6T2V0SFVPLzBIS2dnMEZybXlpaTRrejlVTlFWWVJRdnpCL2FIU1YrRk1kb0ozMm1Ba0kyL1NDeDBoVnA3YlFidzdsS0FEdk4yK245UmRNU0gvQVBCV0c3SGtGcFBkRk1xakFsVnFHSFFwbGo2M0Z6TDFRWmxWZVJsUUZYR1UrdVRTQlJUZXh2NzZLVFJTaE9MbS9Bell1ZWk3bVlDS3BxZUMzMnpRelljZnNybXBsbkVROENHSlVGMGx1NHNWMzNHU3FJMzZGQURzbnZQSmM1c0xSVXA2bkd6TzdHczNKQlpzYTdVWUdGZGhZRGJKU1FNdS9vVmlSbE40NW5lbldaR3NvMytoaFFXNTN0ZDhKKzdITTNIQm11QWZjL2k2RWpiWUovTkFQdmdQdEhtQXlpaVovUTQxb29jajI1UXhIR2RqejhiWHFZVWQ1cU54UWRlK2xLaXpOR1lDUzhWVDIxS2hTeC9wTEY1N0tDWDB3UUVwOS9xcmdueDhVRUM3bTB5aEhGNUFoK09LNTJmMnU5NkpTK2NlOU9kVkh5TlhDSlBOM3YrNjFBMGo2SGQ1YXNEWS84N3p1Z3k1QkpNb0ZyUCtSYVBpUE5ZYVR0bGVaYUd4Z21mTG9abGc3UEhuQzNUOEN2ZDQwOHVLRGcrL0M5azR2VVV3dmNoRWhPaldIYkVheTRXR1F2L2x2ZjdnZTBRYWpqVThiM0hLcC9KUnd6aU9vVkdKVkJJUHdMVURDcVhHSE51Y2VEdEtjNzhwdHJacVRwVVkxWlVtTG5QTTM4elJCS0VxYWxhdHc3WnptMWMzUVU1NWhoQXBuWm9RcXpNSlVIRWZyakl0NjRKNHJmcmZROHhhbGw2c25TYUlRNVI2M3F6d1ByaTFzUGY4SVk3YUJUcVhXWllDVmZ1NVpFNDIrOUlJWjRRbXFXdCt4eUtOT2tTTGxpNnRBU1B3OHdBQlRvNGxpVkJPSlpIOGpRK0MwNng1cVJVTVpsaWZCdE9SaWZ0TEllaXFHSmliM0F4blJXcGk2emJPbm9UaWVQcFBXbHlHM3UySVJUaDZpSUFDcU5KQ1BybjRPS3A3TmpmYTV0L3dkWDlmRCswWTAyR3RrSmZvY0dTVWxtN3dlendLR2NxbmRrZ3JIMDlYbStQOWpPVzBHZjNsVm9XYmhJWk9LeDdoaG40eWVORUVaTGhqYmZhOW1sdmtQT2FoeFNiWXZRSDA4NzNMbHlCSzRLOVEvejdvQlpvVGx5a1l3Z2g0VHRuaHdpbWQ4SXF0TDBITjV0Njc2ZFk2aUFLdlIwZG14Z250L2J6bXU5aEdDRW5zMUw2SlpaN0l1Z04waWRoQmtUcGd3d3I4WmJheTNhVjBuTG9DMHZkQ3ZNd2NVQ2g1M3RJUHJjL2ZyN2h0cG9peUw3MW50RWhXRTc0SmhLeG9LRDdjRTdLRzk0anMvdE9VSVNyUmxBWkdNd28xczNMb1htMlZSNmdiZ0FLeUVyUm9HY1lHV1BRbnhPVXNidlNncHJodTRWdGo2ZkhkSFU3cVJZODdraE1EM0pYQ1ZwNmxweHhyd05GSjVFQUttRVhEN1l2NEw2aTJUSjdNcnFUMnlzQWdpUDcvL0xDVUFDOGVEa3lwTGtSaXpYTG9BM04xRWdicm9hSkJsdzhuSmNuU3U1b3d6MjhEWDNDbVlDa3hva3A3VW9xcnB0Z0E0alM3QUg1anNLTDY5cERvTE90eGdxblFuWUVvaFRIN2JSYmhKRjJ5ZDJvWmN6bzhZampxQU1raUVRZEFlNXZ2QVd4MGdGeUFmV0xvTWR2OXlBUmZsWnhLUjk3bnQwL1d5SURoNlpmditjYXNXUDcrelVVMVFXMC8weXZTS09MRC93aGhkdFpHUzJqaTRLRkxueGJxZ3RFZzFOdFJaZTJmK1N3VGk2MEdINTBOdURnaytRZUU1QldSaHhQcmFzcUpTaUFnWkVpc2tuTFVYUkZQSmExL1NxVllOdjJSZDZOZ2FMeDdpYlVwR3dVTWdaTDl4a0R6UEFtLzU5VlVMNktLa2dhdkJVaFdFRmhTYVNKUDJySXA2MEtRbmxMd2ptckR0cmpHSS9EdVc1c3JrMzY3eXpZT2Q0SEwwcnY5c1lpVm12Q0VHbE9CVldRbXN4eXJ1ZVlzT3VTbDI4YUVxc3NpUEpyWFhJR25Zc3kzTWJ5cU1rU2ovVFRPNS9UeTRpZjVWWVZKTFZmcGRoeDg2OGorcGVuSUgrT1FGaGIvTGpqbFVJazZZbFRKK3JFMlB4cDZ2U2phT1NtQnFSUktDWk0xeFJHWlJXRVJycXFOZFRCa1Rnc1Q1WkdzaXlGZjhZUDVJcXFKek5QT1V4V3cxNzJ4aE9FdjB4b0w1ZXM0NDNuK0oyRU1xUDdMUytsckdnRzNoZE04S0FTejBtZEtWTFVmYjBCQWNpMzVScnZtdXBYanpGbkg2bWhUZmpFSVFTbWFOWHR0b2FnUHJvWjlkc1VteEV0MDA4Tm5EakVoaHdLbEJ4amp3N0lNeXRJSTM5SERKckdrRjYxVWtoczd1WkhVV0VjM0owci9QUXpyRENDZ290RC82WHFadHM2WkR2Z3ZWNURTWGxvT05TSld3ZjFNYUZzSk8wbGp1b29LVnhWY2swcnJ3VXI1Y3g1ekVSRWt3azk2REVVaDN0YUNCZ1Y3ZDlQbTFHY0IwYzBGN0VPandaSkwzKzVwOGp0aEc0QzNVQzk3ZCt5SjU0WjBkNXc2TUszajlTa2hUU0t2WGNmckc5NTc0bEZsRDJYT2RoNTBhdDg4VjBlRXVSMXpRbGhpQ0JBSkJpUFpxQkg1K3FCR2FPcWdhVFJidDZoa2NiQWgyeGJ0TmZnVG1iK3ozaEVQckllK1ZIZjUrNTg2WWtSQmJqQzZiWm9oajJnL0V5N1ZJQ2w4N29xYUszekhsaVVOMmZoVDJxY3prQWpzbFFVdXhldlNsVVk2V0pnK1RJUWtDYUR0dTdpWXFxTExWUWVEWE1UQ2hvelhCOEtkK3VIRUR2empKUnprcStFYjFBUEhUVThxSmNRVjlXRHA4RlRRSkkzSHZNUW9sNTRtN2Z5a3Uxb3ova25CNEtoZTc2a3I5cnlRbXBMRHkxaGFBcS9rYkNCOXBoVDlYdFhZSGF0UjlsNWpVR1dJUXV0TXVGdzBxVTdqV0YxSkIxZ1VoWVZLbWdWd2RPWXN3QjhhVmdxYisxdGtIeUI1YU5XUTZrbUcrZWM2VU12c08vUE93NUNjcjc5c0p6aWRsd2NOL1pYL0h5b1o2cUtod09hRkordzFwd2lSZE4xcXc5eU1KaURLaDdMUHVjUU9hTGRjZXYzSlc3UUJMUkFsWVR2ZkFxMFJ4aERLYktWTXE4aVFldnJxejkxWHphWUovRDhqMGowTDRSRGRkRVdqS3lLMlY1L0ZhRSs2SFVWOG5nKzV4RFRlMVUzdkRZRVZUdWNmZVcxVjI2b2lsRll5WEZaK3Y3RUhFOElkUStZcVRiR1A4YXRONXU2MndPZTZFeW1WZ1R4eEd5ZUE2VEhaSkRBNEN6cFF5K3c3ODg3RGtKeXZ2MnduT0orSEN5TnRuaUpBVjRwblhSbDI1VjZDOVk3T3Nna2Mvei9RMEJmU1NrQVBVcS93ZnV4MDdrcnRLTm53aFBrbEl0ZFIydEFpcGtzZ0liQUVrSFB3aDZ3UzA5VURYMm80UG56NlcvM0lUb0V4d1ZjOTVHMlZaaVRySUsxNDN3RXh2QkRzWTdnRUNXckY3Ui8wZWU1NWNHRW9MS3BTSlhGamRZdmllNXlzV2pNK3VPSmExUWMvQUhDSk52Mm9xa3NWL3kwWUFobDJYSXJsSTRNRkI1Mll1VStiMjZuTDdWcUxSTk1hdVVMWUpwd3AvZlpyQ1NaSlVCWUtIeFdKaWNXcVcwNENHMTBpcFZnSzNRL2p6K3pJSCtoNG90blhKZFJkTmJzN2dZY3ZLYk5sWXRDd1hiNFo5M05nL3V4eUJJQVJ0aUgyck9Cb3FnTnBTUUVvTnFaZXo5YkJDSktNTWRzQkhzaWt4UE9XRXNvWDF1RnhGbi91aTBPeE5iOHA2UzB4OWV5ck5XUmNQOVZMM1RkOEhhVU82ZlNsMEZCQVJsS1pXNmpPaVhZOWxvZHpOUTVzbkFjNTdwZGcrYU9salV1eHVKRXlITHR4Vjl6cG5jWXR4V0IzOEVwMGFJQXFUMnlMYzRvMkdOQW9sUVMvajhrS240U3lHLy8zZjNkZ3lqaW9obHRDQWJuY1lsWmp3UHJLQnBBS2QvTXNnNDJSTGVGMlZ5VE1INGNmYy9LK0s0dlNoV3JMUDhndFk4a0RWcGlaaDRZb3NWaGZjRnlUY0lYSnhYc3lDd3VWSzdTVldzems4NGU4eXVOQ040NitLQWJIUFhERjE0RHBvd1Q4MnZ4NFdqWTFzU1VLbUozVlhzTTdNazc5a2FlVElybW1ZQk5jakRET0JWQ3VtS0c4dElldGIvenptN2xPZzlOWTR4RERpa3d5L0FQamgwVXU3TWJlMXpZS1hTQWxIVXNQZW5mM3R1eFdLdnBLbjdMT3B4Ris1Ry9wcjNsaGtIcHRZTWladGsxZHV6Z3lHMERvclhlWlh6NkVFUytFS1F3WGdVWmp3dTZ1aWc2cDF3K0VpVTJYbk1ld05CbXlxWExaYVp0QllmR2R6d1pDaTduYnhtRkZRbEdrTXJYN3VrVVh4WjhDNG9TdGl1VlR5TnlSTWdoVDNvWVpCRU40UkVTNHVDbE4vRGc9PVxcXCIpO1wifSx7XCJjb2xfdHlwZVwiOlwibW92aWVfM1wiLFwibmFtZVwiOlwi5a+85YWl56Gu6K6kXCIsXCJwYXRoXCI6XCJjZm1cIixcInJ1bGVcIjpcImpzOlxcbmV2YWxQcml2YXRlSlMoXFxcIlppWlVuTVpCaVovMlRPdUpnOUVScERycnc0YWlSUFJ5SHA2ZmpvbXdjaWhNc1hUNllaSHFTa05vTlp2S3hEV0pneEswam9pamh1UW9nOGR0ejVSVnFoYXR5RzljbXAwVE1ieUc0SXZidTA1T2NMeXRWY1dzemRsMXc1dXBlL3lnMDEvc25vd3VmVDBTdFo4ekorNGZwSXZXVUtzY3hTS3dzemtsWVhodG1rMldvL0E2RzJkUVhjOXYzSXpISm9senpOa1k2NFRpVlVPNzB4MHcrR3llckE9PVxcXCIpO1wifV0iLCJpY29uIjoiaGlrZXI6Ly9maWxlcy9jYWNoZS9GWS9pbWFnZS/po47lvbEuanBnIiwicHJveHkiOiIifQ=="
+            return "海阔视界规则分享，当前分享的是：小程序，随风￥home_rule_v2￥base64://@风影@eyJsYXN0X2NoYXB0ZXJfcnVsZSI6IiIsInRpdGxlIjoi6aOO5b2xIiwiYXV0aG9yIjoi6ZqP6aOOIiwidXJsIjoiaGlrZXI6Ly9lbXB0eSMjZnlwYWdlIiwidmVyc2lvbiI6MjUwNDI2LCJjb2xfdHlwZSI6Im1vdmllXzMiLCJjbGFzc19uYW1lIjoiIiwidHlwZSI6ImFsbCIsImNsYXNzX3VybCI6IiIsImFyZWFfbmFtZSI6IiIsImFyZWFfdXJsIjoiIiwic29ydF9uYW1lIjoiIiwieWVhcl9uYW1lIjoiIiwic29ydF91cmwiOiIiLCJ5ZWFyX3VybCI6IiIsImZpbmRfcnVsZSI6ImpzOlxuIHJlcXVpcmUoY29uZmlnLuS+nei1lik7XG4gc3koKSIsInNlYXJjaF91cmwiOiJoaWtlcjovL2VtcHR5IyMqKiIsImdyb3VwIjoi4pGgQeW9sSIsInNlYXJjaEZpbmQiOiJqczpcbiByZXF1aXJlKGNvbmZpZy7kvp3otZYpO1xuIHNvdSgpIiwiZGV0YWlsX2NvbF90eXBlIjoibW92aWVfMSIsImRldGFpbF9maW5kX3J1bGUiOiIiLCJzZGV0YWlsX2NvbF90eXBlIjoibW92aWVfMSIsInNkZXRhaWxfZmluZF9ydWxlIjoiKiIsInVhIjoibW9iaWxlIiwicHJlUnVsZSI6ImV2YWxQcml2YXRlSlMoXCI0SFoxQ0lNeUR5STAranVwVUxDR0pIeVdZWXp2S3RPMzMwclNVZWM3dzVuT0Q1YjJ5TFFpbUxpUFU5VnNGUEhPdEJ2dEtoaWRlcDJhbWhzUUFzODFPcDkxTnN1WUl1WU4ySXkyTklKUUZYcmVCcEZKSlZvb3hlSk9jV1p6MHBkOGRuNHBDdWZvS05jVzYzaWxTaVBPNkRiSEQ0VTFRd1BjaXg3eDhubm5BcUpTRktxMW1QYkNiaExqc2Nld201YWtzcWVuekhsclc2VC8xbldTQ2VlUzZQK2E5UytnK21TK1dKTkdLamZ1LzMwemd2c3U3clFGYTFNQmova3pqeThoWDlzSlVabUxLNUhzaU1EUmNlZnFMUVJMWWhCZXdLZWdyRk9hMnBTMG56bCs0K3ZnUVpLOW0zS0ZLditaQkJucWlrdW1MOFR2SVMvTENCUGJ3c0Jad2hIWXRXVzlKRkp4alJJdG9QSENOZ1ZFcllwVGhkeStuYnAzajBMRk5NUkJCMUxWRG9aZUUrUmJLbisrVnNqeVpLTDZsRTN0RmpVd2JPbGZvRmFtVytKbzVQOEU0NlM0ZDQ0bUhSMEsrSmppYWFuZHZmMnNlTFJ3eFBmZi9nUm1Nd0dHUXJJdXVzYm5VbXZyb3RkOUdXdklkcVBDZ0hpM1FQY0JoZEh1VU5VdHlCRkI5NzRXSndMK1RWUnkvQ24xZ0FNUkdXY2FVK1F4TUtPSUpaeCtLdWd6akpxMlgwNm1QZ2k3OVdmbVlJVGRIeGF1VHYyb0NDZzJRc3JQcnZ2bUkzTVpUTkZTbUZiWTVhOGpRMWJNS0UzUzg0Zk8zdXk5dFhPN00vMGp2VnEzbmwzL2hvS3NpZ2dTckh1anhKK2xVUWJFNVJQSG4yQUdEdVE3S1RNcGowSjVmYlZiTGdRSDRsQVZpTXpIdGNPb0xpdEMvRW5aSkhJZGpVNHBFbG5RTnpKdElmcmYyMEJoQ015Q1JQTmEvb3pZa1BHSldLVk1PRkxrS0ZsUTdCSDRldGRPSkFqVnpmUGQ0a0dXa1lEdWxxdFVJejB6R255TndPY2ZDWHIvUUxtRlNXUEJBWW53d0t0dU0rTXdjVkVHUVdVYk1Qb0VQVDVZeFBHR3BpR0FlN1N2NVpWNm11NktYNU9ydWJ6QVJacGV4dUhLb2Y3bVI4cys5aCtMdTlXVjdBZVhRbEpPMWFycXFrMUxEMDAxLzlicjlCd0R3d1V0dEc5NFpkbHVqVnZVR3UzcUhldFZwYUlNRHdFMTZGQ2FcIik7IiwicGFnZXMiOiJbe1wiY29sX3R5cGVcIjpcIm1vdmllXzNcIixcIm5hbWVcIjpcIuWvvOWFpeWPo+S7pFwiLFwicGF0aFwiOlwiaW1wb3J0XCIsXCJydWxlXCI6XCJldmFsUHJpdmF0ZUpTKFxcXCJkNG1uK0dwTEdLT3BEN1A1dUJwS2JXUUp2ODVIcjk4amgwUnpsa01IbTg2cWdPRER3MWlMVDllZVJGWCtGZllpUXl0Y05VMUpQS2I2a2U5MFh0RUZOc0I4cjNpcXY4Q2pzS2R1QmtaMi8xbmtjazVDZjlOQTluNnJWdHQwOW5ZVjY1RkNDSHJWWjhTSEsrc2x1TWgrMHEyWm1ON1F0L05PbGIxVzJhZVpnL3gzVlFWNmRvZ01KNG1ESDVlQldOYmQvMnF4L2lucTJOd3gzbnFmWkdJMjBLVEoydGY0L21KdmhzMGIxQUtjVGoraEV0Z05vbm8xWUlWRHBvOWxnaVNBMXRtaktlc3ZCbjdZR2xVMWxiVE9ma0N3VWd1bGpzdjdCek5jd2xIeEkzMk5HZGF6dkIwd0QvdFRiUWdrdFZqZzVvQUg0ZVowaFVUV2VrNFRnY3I0QjBRUHcrU0ROSXlNNVpaUlI4ZGRJd0NHMytyQWcxV25WWWdsMVZ2dTNhaEgyUERRQ3ZqdFlUaXVLT0htNTl3U1ZBYXl4THR6UzVRdmVxdzBhWWFLd3pObzNabytsejlBcm4yclUzRXFuZndRK2J3NTd2K1lQUDJpWS85aUsvdDFhNlo2cEx2ekx4dmVPaitIUVR1cmt0REQ0ckR6Nk15dGp0eHlGOE1yYkdFZmtTcGg2Z2NoWFM0NktJWnNiMUdkQTBkNVNleEk0dFJnT2MvWkhBYm1TS3QyaG9IWUFPUkRPTjdQRnd6MlNHNjdYcm5RS0ViWXArbFhYbHR3RVNRZ1B4cGJQUUthL290WlJQYm1GY0VaTlErN0o0WG1wRDNjN1F5azYyalg5N1JNQUw1SVlTQWc3MmQ3RllEZENuMFM5dUxJOTlZckJCQjFwb29VRHdidWFRd3IwcWtTbFJXUFlnUGVQVmpuQk5jaDBZakJVU2FTS1NLSHZtNmFQZlFTd1VCSjdHaFdhWGlsakpUY2pUN0M4Q2xpT0gwSENLQW5JRGU1WkdmeXZ6dzdldkRnSHZsUXlzYWp1UTZhSmVGVTZOZ2cvMWNyNDJxK21RZFE1ZUZWSktMdVJMV2dJR0QwVGQ0RDVoMjgzWlYrMFdHbDRjTjNvQ3FvUnhvbzM1M05GdXo1Sng5UXFIMDFBbUYyNGpmdWtMZ1hseUlpU0JVY2RxOXp2bmt4VUg0Visza3l2ek5pRm9mVS9obGJ0WnAxWWtkM1VycUk5RDlqM2sxWXNTNVl0REg5NzBYWm1DR0svbmF0SWpyUzVRTER4SlEyaFg3K2I4TEdoZ0lmdkRNMFFodDJ2ZU4xS3Y1UXZpYlRVVVl0eW1EOTZqS0tNOUMwdEJlRm04SFd4L0phbGhEbHhNL0VsQk1QOWpzYWhtZzkxZjBuRjZhUm1BRVV1S3FEY3VoakVFMTRSSmR2OE91aDBVY3EySzBIaXN3MjFHNG5rTlVHTmNSelNaUTUxbGNzajIvTmJiVktkTjBQZUZqYjZoS05PaGFQOE14cElYRlZ4bnN5aGFYYWlmd2FNc052YURVdGZodnplSmora00wM2xuczJPZnlaQ3ZNanY3ZjNMdzFKY1FHdG53bzNoUVVxNlJVd2wvQ2UrL1RmeXl2TFNOWldjL3NJbi92V1NBSFU5dU14eUVSY0Nua1BiS3h4d3huNUt0ZDFjcjdDajU2cTZ2THJsY3cwTDZ3WmdrVGtMZWU1aGF6bzhqeCtQYXFmZTRFUy81U0YxUkZHdGsvWnhPVjVTT3FGUjBJeCt5ZjFZN0l2aXN0ekFidDl5cW0yUDJXVVRack9vd1NjMzZPOHFsTDQ0dmkvZUhFWE8rZjN5cnZmMHpXTXJ6eU1ud3JWVFlyWWFCeU1sRm1uUSs3TlFWeklvQkMzY1dUeXYyUndzQVlSZUd1SHVZSjlhRUIwMUNLSHh6eDYrNmdud3p5RU5iUDg2MjBZYkJub2lBakpQOVNnclRGUFRkVElXaFEyYWhuUldwaTZ6Yk9ub1RpZVBwUFdseUZKR2ZIZE9SV1dTWGNRN0p5Skk0ajhTSHJKNy9VNVdkQTRzck9MOGkwUXVEcjNSZU5QcUIyM0pnTHkrZDFjeVJTR3hEODBLTW93emJLSnRldXlybzZnT3FXYlU5bmhRamRNVnI3YS9pOE8vMEpKaENQbzU0MXNvV1dhdUdwODRaYXJOQkwyYXNrVmtKZjNJSW9KVnpQZ1BBNXFaaXNsTWNFdEdibURELzJldjdKcy9QRG1KeUdNYUwyaDF2cnp4Vk00Vmd6eXBZcnRlNGZoT2xVR2Y5NlJtQUROUnE4d1JzdTZ2bGVxejNudTdPeFdsdjBnRU16SHFxby9oWFczWnduZ1ZNblMzWGVJejloSDFDdWVVV2diMVRVY3JUTEJQWk5oR1oySEY2dE5OUEl1a2JrdlhvdEJPUVlDQ29KRUticEZuanRQKzhZdWF6RlE2TXFtam4wS3dJY3RjSDVmaitrWjdzT0hxYXUvaDN3bHlMWXU1aHVTQXM4azRRZmNwZnBEREYwTUZ2aDAwY0NsRS9vV0dJOEV6QzRQcDRtQXJ4VmZEeGpWNm55UGVLTWxaaDZTOVpHSi9FVVhkN0pFejdKYTVuK2VkQ3A2UklsSlZRbW42NU5QdU1sc3M4c1NTWkgrNXZ6ZStJZmlHMVlWbVpnMldJY3k1TkZWam1yY1plRWRCWDlBQUhWZDZoSHZDLzJXQzZiQUFFNjFESldIOEhBQlEydWwwVEtDWndna28vRW5IY3dmaWE3SUt3MnlDWlluVkNUb1B0MXJ5MTBaRm5LV1dwWU9lTTBUU2lzeGZGK3NzbUJDZkYwMm1nc3FsSWxjV04xaStKN25LeGFNejY0RzVsMlBDREs4Q1hJVW9CbVNBbURyVXloU1pFVUZoQTJTS3lML2F3Yi85UGR6Z2tpdDdONy9scUtkNVJ0OWlkYkF4WHpUQkRyWkwwc1U3UHY0Y09obWt3bzJxS1hxbVpSdXpTbW9MeE4zVzNNL01PL1kwZmpWR2s0aHJVWC8wVkpUdGJ3YXRBT1k5NGt4b29KQUJsdEM1SUxwbGpZRGVLQVJzOGhSVkd4N29CeUdLMGw1WDJMemVkUFlxbzBXcHNRVGU1a1VManJaeVV4VmpPV0Z6Rm5KcDY2UUF3OEVzUTBwL2NpWHUxVlo3QjdCTEx5eVMvQWZMU3BqZFhSdW1nT1VzNnBNVUhPYldrZHFQUTBIWHdCU25VU3NCSCtKZ29QV2hiektiUHc4Umh0MnZlTjFLdjVRdmliVFVVWXR5bURrdGM5QjVDMGk2VVBnMXNCbUZBa3lheXBKYmliUWxsRVpwQWo1TkFOYWlTNXBKT2h3Y2NUR1dXcFdwL2dhMWIxQkxUTnhzQkpKYmtkc1lSOGUvMUhwZzZtLzlrcXBORG1yMXYvU1p5YVlsZzlicXdiM2Y0cTZydnI4NVdDdnZtSzVIOXVzMlJMZUlOMll4VU5Pb2FwenFkUWpHUTl0dEVOdnhuQkRjQ0Z1YzZYSTRML1ljTk9FdjhDbUIxR2VtTWZ0anhvcHFuekZ2a2ptL3NsdVBkSDN5S3orRTlXWFRzaG5ORVBFdnZtbUdLSXZxQ0VDY2RwMlRnLzRhdDdVa053OFFrUlBDTjRJM2p3OVFyRWRiaXc0TUZpalU1Wkt1eWxjdnk3RUNlYmE1LzhlR3RDYTMrT0RNZm1oMGZocHo3RXhHOTM2QmJueWJ6aDBlQ3JDRzdZRi9VN1JlOTVmTFZnOFRQdkRlZFRvcWJmUXc2KzI3REdNSzhLMmF2Q0ZNb1JrSHRzNFl6dndEWHhUTjlKUjU1UlZTWDN0clY3UWw3UGZCRENYMW84RjVydDJxV25FWUJqRGM5d2NwS2NTN1BQWW9iaE00c3NZclI0Wm9UbjdsOE1PT211Qk9kdDNac2lkK1NxWVBjcksxZTFkaXFwWjdkbVhscURRaUFGbk5uVDJ4cDJnMWFLS3M0ZkhwN2hETE9Lb1c5cWNsNTAzUStYeEdWbUpNaUhvTkhKR252dE1KcDZjbFlmQTVidlZTb3FZL0x0bVY5SkV0UklYV1krL0xzZ0V5Z2krQi9ERkNNdjQ0aGFFTkhML2k4WnZybi9yUGE0S0NlYkkyTlI3R0FTUDNXQjIwZ1RiMjNiK0s2OFlITkhLUGk3S1pDck9PcUI2WW5YNlQ1WElyZlNaMHBVdFI5dlFFQnlMZmxHdSthNmxlUE1XY2ZxYUZOK01RaEJLWm8xZXZkVkFyNVBCekJjcTVkWlJXYmpjQTdmTm1RZWE0RjNwYlJmSDFhK01zcG9CSnI5WjJtRlF6WnVzekdKN05oQzBLYlM3VlVxOVhSTVdQRzZEL1R1VytJclg4Y0p2cmpnTHAzUFNOeEEvelFLSEdrMHV1L3ZjYjh3d1NidElmVWtHL2NwTTBBTTVlWmtjSCtRTjZ0TFAxSDdyeUd6blRZNmQreE9OU0JlM0pjTVhVKzI3Um54ajhSVmxpRVd4MjdsQjR2d0FPU0RXY1lFQzNhUzc5MndVTWJQbVl5bzlzT0xSc09ONjVsVVZzbmpINVpzQ2kvaVdGZlVaVXcwVXF1Qjd2Y3huR3d6TGl6WFpEREdrNHZBYTUzL3dCa3Q2NVZJZWh2cUthbjJMNlVoK3ZWRnZ6Z292S3pURERPUkhoUWxjOTUwS3ltcFRCcUZvcVJIRkFpUzJGZmRITDRKOGMycjEvRGwrbThsT3Q3L3ZzSDd4QU44OHAwQUZTbWFXaUdLL3ZaN3JnMXJ3ZEltMTBzR2dxeGFqL1F4UUpYTWdJNkhWMWVYZ0hqM3ZaSlFGa2xzRno0Zzl1aTRYVHRsSnRFTHdiZ3lVaFhPQXl2TGV2Ly9MS2xhcE1iV2R2a1FsYnJoTW5tMnpkSmtjbnBTYkV3aklXcld4Vk5Cd1llcHA5TjROV3FibWJKUnRUZThoTHRkTTBCZG5lVW5sMEQ3Ync0Ykl0UmtrMzhDQ0FMZjNtUForeTBFZUhuU1piUVJ0bU1mZEFTRGNMajhpQTdKdUNJamxmbXBhYVE9PVxcXCIpO1wifSx7XCJjb2xfdHlwZVwiOlwibW92aWVfM1wiLFwibmFtZVwiOlwi5a+85YWl56Gu6K6kXCIsXCJwYXRoXCI6XCJjZm1cIixcInJ1bGVcIjpcImpzOlxcbmV2YWxQcml2YXRlSlMoXFxcIlppWlVuTVpCaVovMlRPdUpnOUVScERycnc0YWlSUFJ5SHA2ZmpvbXdjaWhNc1hUNllaSHFTa05vTlp2S3hEV0pneEswam9pamh1UW9nOGR0ejVSVnFoYXR5RzljbXAwVE1ieUc0SXZidTA1T2NMeXRWY1dzemRsMXc1dXBlL3lnMDEvc25vd3VmVDBTdFo4ekorNGZwSXZXVUtzY3hTS3dzemtsWVhodG1rMldvL0E2RzJkUVhjOXYzSXpISm9senpOa1k2NFRpVlVPNzB4MHcrR3llckE9PVxcXCIpO1wifV0iLCJpY29uIjoiaGlrZXI6Ly9maWxlcy9jYWNoZS9GWS9pbWFnZS/po47lvbEuanBnIiwicHJveHkiOiIifQ=="
         }, ver);
         confirm({
             title: "发现新版本：" + ver,
@@ -331,7 +335,7 @@ function sy() {
     gx();
     let z = [];
     let d = [];
-    let fr = getMyVar("namejs", "") != "" ? [] : off1.filter(item => (item.fl != "" || item.sy != "") && item.gs != "HOST" || item.gs == "HOST").map(item => item.name.replace(/&&.*/, ""));
+    let fr = off1.filter(item => (item.fl != "" || item.sy != "") && item.gs != "HOST" || item.gs == "HOST").map(item => item.name.replace(/&&.*/, ""));
     let rn = ["首页"].concat(fr);
     if (getItem("首页", "off") == "on" && getItem("Mysye", "首页") == "首页" && getMyVar("Myfl") == "" && getMyVar("Mysou") == "") {
         let arr = fr;
@@ -362,7 +366,7 @@ function sy() {
     let syurl;
     let cesy;
     try {
-        let yu = Json.find(item => item.name.replace(/&&.*/, "") === sui);
+        let yu = Json.find(item => item.name.replace(/&&.*/, "") === sui); //log(yu)
         if (yu != undefined) {
             try {
                 if (yu.fbhost == "") {
@@ -622,7 +626,8 @@ function sy() {
         //putMyVar("Myurl.url", input);
         return $("hiker://empty#" + url + "#noRecordHistory##noHistory##fypage").rule(() => {
             require(config.依赖);
-            fenlei()
+            require(config.依赖.replace(/[^/]*$/, "fenlei.js"));
+            fenlei("1");
         });
     }, syurl);
     let 追更 = $("hiker://empty#noRecordHistory##noHistory#noRefresh#").rule(() => {
@@ -631,7 +636,8 @@ function sy() {
     });
     let 影搜 = $("hiker://empty#noRecordHistory##noHistory#fypage").rule(() => {
         require(config.依赖);
-        yso()
+        require(config.依赖.replace(/[^/]*$/, "yso.js"));
+        yso("1");
     });
     let 设置 = $("hiker://empty#noRecordHistory##noHistory##noRefresh#").rule(() => {
         require(config.依赖);
@@ -647,14 +653,14 @@ function sy() {
     for (let i in titll) {
         z.push({
             title: "‘‘’’<b>" + titll[i] + "</b>",
-            url: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : urlu[i],
+            url: urlu[i],
             img: 图 + pici[i],
             col_type: "icon_5",
             extra: {
                 inheritTitle: false,
                 longClick: i == 0 && getItem("dy", "本地") == "本地" ? [{
                     title: "删除 " + sui,
-                    js: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : $.toString((name) => {
+                    js: $.toString((name) => {
                         return name == "首页" || name == "选源" ? "toast://当前未选择源" : $("删除后不可恢复，确认删除  " + name + " ？").confirm((name) => {
                             let list;
                             let file = "hiker://files/rules/FYJK/ys.json";
@@ -684,13 +690,13 @@ function sy() {
             desc: "可 以 少 字 ，不 可 错 字 ！",
             url: $.toString((sui, myurl) => {
                 putMyVar("Mysou", input);
-                if (getMyVar("Mysou") && myurl != "http://fenying" || getItem("s1", "0") == "1" || /cloud\.189/.test(input)) {
+                if (getMyVar("Mysou") && myurl != "http://fenying" || getItem("s1", "0") == "1" || /pan\.quark\.cn|cloud\.189.cn|yun\.139|www\.123[a-zA-Z\d]{3}\.com|www\.ali(yun|pan).*?\.com|pan\.baidu\.com|drive\.uc\.cn|magnet:|\.torrent|ed2k:|pan\.xunlei\.com/.test(input)) {
                     if (getItem("s1", "0") != "1" && myurl != "http://fenying") {
                         setItem("s0", sui);
                     };
                     return input + $("#noLoading#").lazyRule(() => {
                         require(config.依赖);
-                        return sourl()
+                        return sourl("1")
                     });
                 } else {
                     return myurl == "http://fenying" ? "toast://请选择首页" : "toast://请输入关键字";
@@ -720,7 +726,7 @@ function sy() {
         z.push({
             title: "搜索记录",
             img: 图 + "搜录.png",
-            url: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : $("#noLoading#").lazyRule((sui) => {
+            url: $("#noLoading#").lazyRule((sui) => {
                 if (getMyVar("dxz", "off") == "on") {
                     deleteItemByCls("so_id");
                     putMyVar("dxz", "off");
@@ -736,7 +742,7 @@ function sy() {
                                 title: "‘‘’’<small>" + li + "</small>",
                                 url: li + $("#noLoading#").lazyRule(() => {
                                     require(config.依赖);
-                                    return sourl()
+                                    return sourl("1")
                                 }),
                                 col_type: "flex_button",
                                 extra: {
@@ -766,7 +772,7 @@ function sy() {
                 id: "sojl_id",
                 longClick: [{
                     title: "清除记录",
-                    js: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : $.toString(() => {
+                    js: $.toString(() => {
                         deleteFile("hiker://files/cache/FY/sojl.js");
                         deleteItemByCls("so_id");
                         clearMyVar("dxz");
@@ -787,7 +793,7 @@ function sy() {
         }, {
             title: '‘‘’’<font color="#b0e0e6">点击选择首页</font>',
             desc: "0",
-            url: getMyVar("namejs", "null") != "null" ? "toast://编辑时无法操作" : 首页,
+            url: 首页,
             img: 图 + "风影.jpg",
             col_type: "card_pic_1"
         });
@@ -808,12 +814,13 @@ function sy() {
         if (cesy != "*") {
             if (MY_PAGE == 1) {
                 require(config.依赖);
-                xsy(MY_URL, d, sui);
+                xsy(MY_URL, d, sui, "1");
             };
         } else {
             putMyVar("flurl", syurl);
             require(config.依赖);
-            fenlei();
+            require(config.依赖.replace(/[^/]*$/, "fenlei.js"));
+            fenlei("1")
             deleteItemByCls("cls_load");
         };
     };
@@ -945,7 +952,7 @@ let getHtml = (image) => `
 `;
 
 
-function dpush(d, image, sui) {
+function dpush(d, image, sui, type) {
     let Html = getHtml(image);
     let path = getPath("hiker://files/_cache/fy.html");
     writeFile(path, '<!DOCTYPE html><html lang="zh"><body></body></html>');
@@ -1039,8 +1046,8 @@ function dpush(d, image, sui) {
                 createCarousel();
 
             }, Html),
-            urlInterceptor: $.toString((game, sui, myurle) => {
-                return $.toString((game, sui, myurle, input) => {
+            urlInterceptor: $.toString((game, sui, myurle, type) => {
+                return $.toString((game, sui, myurle, input, type) => {
 
                     let findRule = "js:" + $$$.toString(() => {
 
@@ -1062,12 +1069,13 @@ function dpush(d, image, sui) {
                             title: title,
                             desc: desc,
                             img: img,
+                            type: type,
                             inheritTitle: false,
                             pageTitle: `${title}「${sui}」`
                         }
                     }));
-                }, game, sui, myurle, input);
-            }, game, sui, MY_RULE.title),
+                }, game, sui, myurle, input, type);
+            }, game, sui, MY_RULE.title, type),
             //cls: "cls_fylunbo",
             ua: MOBILE_UA,
             //imgLongClick: false
@@ -1077,10 +1085,10 @@ function dpush(d, image, sui) {
 
 
 //首页列表
-function xsy(syurl, d, sui) {
+function xsy(syurl, d, sui, type) {
     MY_URL = getHome(syurl);
     try {
-        if (getMyVar("namejs", "") == "") {
+        if (type == "1") {
             eval("var sy = " + readFile("hiker://files/cache/FY/sy/" + base64Encode(sui) + ".js", 0));
         } else {
             报错;
@@ -1089,6 +1097,7 @@ function xsy(syurl, d, sui) {
         if (MY_URL != "http://fenying") {
             putMyVar("待", "1");
             require(config.依赖.replace(/[^/]*$/, "dw.js"));
+            var sy = DW(type);
         };
     };
     let 标 = sy.标;
@@ -1141,7 +1150,7 @@ function xsy(syurl, d, sui) {
                 link: link.trim()
             };
         });
-        dpush(d, image, sui);
+        dpush(d, image, sui, type);
     } else {
         d.push({
             col_type: "big_blank_block"
@@ -1155,9 +1164,10 @@ function xsy(syurl, d, sui) {
     };
     let lxn = getItem("lx1", "全部");
     let lxna = /影视|动漫|短剧|网盘/.test(lxn) ? "影视" : /听书|音乐/.test(lxn) ? "听书" : /全部|其它/.test(lxn) ? "其它" : lxn;
-    let lis = "hiker://page/list?rule=百度网盘&realurl=";
-    let lif = fetch(lis);
-    let loi = "hiker://page/loging?rule=百度网盘&realurl=";
+
+    let fxlj = "hiker://page/fxlj?rule=百度云盘&realurl=";
+    let login = "hiker://page/login?rule=百度云盘&realurl=";
+    
     for (let i in 列) {
         if (标[i] != "轮播" && 标[i] != null && 标[i] != "禁用") {
             /*if (i != 1) {
@@ -1184,17 +1194,17 @@ function xsy(syurl, d, sui) {
                     let img = isBase64(im) == true && im !== "undefined" ? base64Decode(im) : decodeURIComponent(im);
 
                     let urll = j.split("$")[3];
-                    let url = /@lazyRule=|@rule=/.test(urll) ? urll : urll == "hiker://empty" ? urll : (/function/.test(免) && 开 == "on") ? $().lazyRule((nad, game, MY_HOME, url) => {
+                    let url = /@lazyRule=|@rule=/.test(urll) ? urll : urll == "hiker://empty" ? urll : (/function/.test(免) && 开 == "on") ? $("hiker://empty").lazyRule((nad, game, MY_HOME, url, type) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return mx(nad, MY_HOME, game, url);
-                    }, sui, game, getHome(MY_URL), urll) : (/function/.test(文) && 开 == "on") ? $(urll + "#readTheme#").rule((nad, game, MY_HOME) => {
+                        return mx(url, nad, MY_HOME, game, url, type);
+                    }, sui, game, getHome(MY_URL), urll, type) : (/function/.test(文) && 开 == "on") ? $(urll + "#readTheme#").rule((nad, game, MY_HOME, type) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return zw(nad, MY_URL, MY_HOME, game);
-                    }, sui, game, getHome(MY_URL)) : /ali(pan|yun)/.test(urll) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(urll) : /(quark|\.uc)\.cn/.test(urll) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(urll) + "&sharePwd=" : /baidu/.test(urll) ? (lif !== "" ? lis : loi) + urll : /cloud\.189/.test(urll) ? $("hiker://empty#noHistory#").rule((url) => {
+                        return zw(nad, MY_URL, MY_HOME, game, type);
+                    }, sui, game, getHome(MY_URL), type) : /magnet:|\.torrent|ed2k:|pan\.xunlei/.test(urll) ? "hiker://page/diaoyong?rule=迅雷&page=fypage#" + urll : /ali(pan|yun)/.test(urll) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(urll) : /(quark|\.uc)\.cn/.test(urll) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(urll) + "&sharePwd=" : /baidu/.test(urll) ? (fetch(fxlj) == "" ? login : fxlj) + urll : /cloud\.189|yun\.139|www\.123[0-9a-zA-Z]{3}\.com/.test(urll) ? $("hiker://empty#noHistory#").rule((url) => {
                         let d = [];
                         putMyVar("fypanys", "1");
                         require(config.依赖.replace(/[^/]*$/, "pan.js"));
-                        hs(d, url);
+                        hs(url, d, url);
                         setResult(d);
                     }, urll) : $("hiker://empty##" + urll + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
                         require(config.依赖);
@@ -1207,6 +1217,7 @@ function xsy(syurl, d, sui) {
                         title: ti,
                         desc: des,
                         img: img,
+                        type: type,
                         inheritTitle: false,
                         pageTitle: ti + "「" + sui + "」",
                         backgroundColor: Colors(),
@@ -1266,17 +1277,8 @@ function xsy(syurl, d, sui) {
     setResult(d);
     if (getMyVar("待") != "1") {
         require(config.依赖.replace(/[^/]*$/, "dw.js"));
+        DW(type);
     };
-};
-
-//分类
-function fenlei() {
-    require(http + "fenlei.js");
-};
-
-//影搜
-function yso() {
-    require(http + "yso.js");
 };
 
 //二级
@@ -1287,9 +1289,6 @@ function erji() {
 //设置
 function she() {
     let d = [];
-    if (getMyVar("namejs", "null") != "null") {
-        back(true);
-    };
     let shtu = "hiker://files/cache/FY/image/";
     d.push({
         title: "<b><small>功能</small></b>",
@@ -1442,7 +1441,7 @@ function she() {
         title: "<b>帐号管理</b>",
         pic: shtu + "跳转.png",
         url: $("hiker://empty#noRecordHistory##noHistory##noRefresh#").rule(() => {
-            require(config.依赖.replace(/[^/]*$/, "pan.js"));                                  
+            require(config.依赖.replace(/[^/]*$/, "pan.js"));
             dlu();
         }),
         col_type: coll,
@@ -1795,9 +1794,10 @@ function sou() {
     d.push({
         title: "搜索\t" + input,
         url: $("hiker://empty#noRecordHistory##noHistory#fypage").rule((input) => {
-            putMyVar("Mysou", input);
+            putMyVar("Mysou", input);            
             require(config.依赖);
-            yso()
+            require(config.依赖.replace(/[^/]*$/, "yso.js"));
+            yso("1");
         }, input),
         col_type: "text_1",
         extra: {
