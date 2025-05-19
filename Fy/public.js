@@ -229,7 +229,42 @@ function ChineseToNumber(chnStr) {
 //匹配数字
 function extractNumber(desc, p) {
     // 先尝试匹配阿拉伯数字
-    const matchArabic = p == "x" ? desc.match(/(\d+)(?:集|话|回|期|卷|章).*/) : desc.match(/(\d+)/);
+    let matchArabic;
+    if (p == "x") {
+        matchArabic = desc.match(/(\d+)(?:集|话|回|期|卷|章).*/);
+    } else
+    if (/SE\d+\.\d+/.test(desc)) {
+        matchArabic = desc.match(/SE\d+\.(\d+)/);
+    } else
+    if (/S\d+E\d+/.test(desc)) {
+        matchArabic = desc.match(/S\d+E(\d+)/);
+    } else
+    if (/EP\d+/.test(desc)) {
+        matchArabic = desc.match(/EP(\d+)/);
+    } else
+    if (/(\d+)(?:集|话|回|期|卷|章)/.test(desc)) {
+        matchArabic = desc.match(/(\d+)(?:集|话|回|期|卷|章)/);
+    } else
+    if (/>?第?(\d+)[\u4e00-\u9fa5]*?<?/.test(desc)) {
+        matchArabic = desc.match(/>?第?(\d+)[\u4e00-\u9fa5]*?<?/);
+    } else 
+    if (/[\u4e00-\u9fa5]\_(\d+)/.test(desc)) {
+        matchArabic = desc.match(/[\u4e00-\u9fa5]\_(\d+)/);
+    } else
+    if (/(?:|_)\d+(?=_|\.|-)/.test(desc)) {
+        matchArabic = desc.match(/(?:|_)\d+(?=_|\.|-)/);
+    } else 
+    if (/(\d+)\s*_?[1-9a-zA-Z]+?\.\w+/.test(desc)) {
+        matchArabic = desc.match(/(\d+)\s*[1-9a-zA-Z]+?\./);
+    } else 
+    if (/^(?!\d+-\d+)\D*\d+\s+/.test(desc)) {
+        matchArabic = desc.match(/^(?!\d+-\d+)\D*\d+\s+/);
+    } else 
+    if (/\s(\d+)\s/.test(desc)) {
+        matchArabic = desc.match(/\s(\d+)\s/);
+    } else {
+        matchArabic = desc.match(/(\d+)/);
+    };
     if (matchArabic) {
         return matchArabic[1];
     };
@@ -390,10 +425,10 @@ let jrzg = (name, title, desc, img, url, Title, zuji, gen, wek, gj, gs, desz) =>
 //记录足迹
 function zuji(get, url, tit) {
     try {
-        let zuji = extractNumber(tit, "z");
+        let zuji = extractNumber(tit, "z"); //log(url)
         let list = JSON.parse(readFile(file));
         const Arr = list[get].map(function(item) {
-            if (base64Decode(item['url']).split("#imm")[0].split("##")[1] == url) {
+            if (base64Decode(item['url']).includes(url)) {
                 item['zuji'] = zuji;
             }
             return item;
