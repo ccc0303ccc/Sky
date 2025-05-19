@@ -1,4 +1,4 @@
-function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
+function search(http, game, name, ssurl, d, page, sokey, off1, Json, type) {
     ssurl = ssurl.replace("fypage", page);
     let MY_HOME = getHome(ssurl);
     let MY_URL = ssurl;
@@ -6,10 +6,10 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
     let jin = getSearchMode() == "1";
     let col = getItem("h1", "三列") == "竖列" ? "movie_1_vertical_pic" : getItem("h1", "三列") == "双列" ? "movie_2" : "movie_3";
 
-    let nam = getMyVar("namejs", "null") != "null" ? getMyVar("namejs").replace(/&&.*/, "") : off1.find(item => item.name.replace(/&&.*/, "") === name);
+    let nam = type == "2" ? getMyVar("namejs").replace(/&&.*/, "") : off1.find(item => item.name.replace(/&&.*/, "") === name);
 
-    function ttlo(name, Json, file, sxtit) {
-        if (getMyVar("namejs", "null") == "null" && getItem("失效", "on") == "on") {
+    function ttlo(name, Json, file, sxtit, type) {
+        if (type == "1" && getItem("失效", "on") == "on") {
             const ttlList = Json.map(item => {
                 if (item.name.replace(/&&.*/, "") === name) {
                     // 尝试将 ttl 转换成数字，如果转换失败（比如是 "ttl" 或 ""），则设为 0
@@ -33,9 +33,9 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
         }
     };
 
-    function fby(nam, name, Json, file, text, sxtit) {
-        if (nam.fbhost != "" && nam.fbhost != undefined || getMyVar("namejs", "null") != "null") {
-            let s = getMyVar("namejs", "null") != "null" ? getMyVar("hostjs") : nam.host;
+    function fby(nam, name, Json, file, text, sxtit, type) {
+        if (nam.fbhost != "" && nam.fbhost != undefined || type == "2") {
+            let s = type == "2" ? getMyVar("hostjs") : nam.host;
             let syur;
             try {
                 syur = new Function(s);
@@ -43,7 +43,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
             } catch (e) {
                 toast(name + " - 没有发布页");
             };
-            if (getMyVar("namejs", "null") == "null") {
+            if (type == "1") {
                 const datedList = Json.map(item => {
                     if (item.name.replace(/&&.*/, "") === name) {
                         const newItem = Object.assign({}, item, {
@@ -69,7 +69,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                 return "toast://" + name + " - 已获取到域名，正在加载！";
             };
         } else {
-            ttlo(name, Json, file, sxtit);
+            ttlo(name, Json, file, sxtit, type);
             if (getItem("s1", "0") !== "1") {
                 d.push({
                     col_type: "rich_text",
@@ -86,7 +86,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
         };
     };
 
-    function htmlyz(MY_URL, MY_HOME, http, game, name, ssurl, d, page, sokey, nam, off1, Json) {
+    function htmlyz(MY_URL, MY_HOME, http, game, name, ssurl, d, page, sokey, nam, off1, Json, type) {
         let headers = {
             "User-Agent": MOBILE_UA,
             "Referer": MY_URL,
@@ -153,11 +153,11 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                 if (htm.statusCode != 200) {
                     let text = "无法访问，请换源";
                     let sxtit = "无法访问";
-                    fby(nam, name, Json, file, text, sxtit);
+                    fby(nam, name, Json, file, text, sxtit, type);
                 } else {
                     log(ht);
                     let sxtit = "规则失效";
-                    ttlo(name, Json, file, sxtit);
+                    ttlo(name, Json, file, sxtit, type);
                     if (getItem("s1", "0") !== "1") {
                         d.push({
                             col_type: "rich_text",
@@ -278,14 +278,14 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
     let bh;
     let gg;
     let zw;
-    let Js = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "JS" : nam.gs == "JS";
+    let Js = type == "2" ? getMyVar("gs", gsValue) == "JS" : nam.gs == "JS";
 
-    let HOst = getMyVar("namejs", "null") != "null" ? getMyVar("gs", gsValue) == "HOST" : nam.gs == "HOST";
+    let HOst = type == "2" ? getMyVar("gs", gsValue) == "HOST" : nam.gs == "HOST";
 
     if (Js) {
         let so;
         let g;
-        if (getMyVar("namejs", "null") != "null") {
+        if (type == "2") {
             so = getMyVar("sojs");
             g = getMyVar("gyjs");
         } else {
@@ -380,11 +380,11 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                     };
                     html = [];
                     deleteItemByCls("cls_load");
-                    return fby(nam, name, Json, file, text, sxtit);
+                    return fby(nam, name, Json, file, text, sxtit, type);
                 } else {
                     log(htm);
                     let sxtit = "规则失效";
-                    ttlo(name, Json, file, sxtit);
+                    ttlo(name, Json, file, sxtit, type);
                     if (getItem("s1", "0") !== "1") {
                         d.push({
                             col_type: "rich_text",
@@ -409,7 +409,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
         list = typeof(列表) != "undefined" ? 列表(html) : 搜索列表(html);
     } else
     if (HOst) {
-        html = htmlyz(MY_URL, MY_HOME, http, game, name, ssurl, d, page, sokey, nam, off1, Json);
+        html = htmlyz(MY_URL, MY_HOME, http, game, name, ssurl, d, page, sokey, nam, off1, Json, type);
         列表 = dwlist(html, name);
         list = lists(html, ssurl, 列表);
         let dw1 = dws(name, list);
@@ -468,9 +468,10 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                 };
                 let lxn = getItem("lx1", "全部");
                 let lxna = /影视|动漫|短剧|网盘/.test(lxn) ? "影视" : /听书|音乐/.test(lxn) ? "听书" : /全部|其它/.test(lxn) ? "其它" : lxn;
-                let lis = "hiker://page/list?rule=百度网盘&realurl=";
-                let lif = fetch(lis);
-                let loi = "hiker://page/loging?rule=百度网盘&realurl=";
+
+                let fxlj = "hiker://page/fxlj?rule=百度云盘&realurl=";
+                let login = "hiker://page/login?rule=百度云盘&realurl=";
+                
                 List = list.map((li, index) => {
                     let title;
                     let img;
@@ -508,17 +509,17 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                         }, "hiker://empty##" + surl + '#immersiveTheme##autoCache##noHistory' + game);
                     };
 
-                    let url = /@lazyRule=|@rule=/.test(surl) ? surl : surl == "hiker://empty" ? surl : (/function/.test(mx) && 免嗅 == "on") ? $().lazyRule((nad, game, MY_HOME, url) => {
+                    let url = /@lazyRule=|@rule=/.test(surl) ? surl : surl == "hiker://empty" ? surl : (/function/.test(mx) && 免嗅 == "on") ? $("hiker://empty").lazyRule((nad, game, MY_HOME, url, type) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return mx(nad, MY_HOME, game, url);
-                    }, name, game, MY_HOME, surl) : (/function/.test(zw) && 正文 == "on") ? $(surl + "#readTheme#").rule((nad, game, MY_HOME) => {
+                        return mx(url, nad, MY_HOME, game, url, type);
+                    }, name, game, MY_HOME, surl, type) : (/function/.test(zw) && 正文 == "on") ? $(surl + "#readTheme#").rule((nad, game, MY_HOME, type) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return zw(nad, MY_URL, MY_HOME, game);
-                    }, name, game, MY_HOME) : /ali(pan|yun)/.test(surl) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(surl) : /(quark|\.uc)\.cn/.test(surl) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(surl) + "&sharePwd=" : /baidu/.test(surl) ? (lif !== "" ? lis : loi) + surl : /cloud\.189/.test(surl) ? $("hiker://empty#noHistory#").rule((url) => {
+                        return zw(nad, MY_URL, MY_HOME, game, type);
+                    }, name, game, MY_HOME, type) : /magnet:|\.torrent|ed2k:|pan\.xunlei/.test(surl) ? "hiker://page/diaoyong?rule=迅雷&page=fypage#" + surl : /ali(pan|yun)/.test(surl) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(surl) : /(quark|\.uc)\.cn/.test(surl) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(surl) + "&sharePwd=" : /baidu/.test(surl) ? (fetch(fxlj) == "" ? login : fxlj) + surl : /cloud\.189|yun\.139|www\.123[0-9a-zA-Z]{3}\.com/.test(surl) ? $("hiker://empty#noHistory#").rule((url) => {
                         let d = [];
                         putMyVar("fypanys", "1");
                         require(config.依赖.replace(/[^/]*$/, "pan.js"));
-                        hs(d, url);
+                        hs(url, d, url);
                         setResult(d);
                     }, surl) : erurl;
 
@@ -530,6 +531,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                         title: tit,
                         desc: des,
                         img: img,
+type: type,
                         inheritTitle: false,
                         pageTitle: (title !== undefined ? title.replace(/\n.*/, "") : title) + "「" + name + "」",
                         longClick: [{
@@ -615,7 +617,7 @@ function search(http, game, name, ssurl, d, page, sokey, off1, Json) {
                     };
                 };
             } catch (e) {
-                ttlo(name, Json, file, "规则失效");
+                ttlo(name, Json, file, "规则失效", type);
                 log(e.toString());
                 if (getItem("s1", "0") !== "1") {
                     d.push({
