@@ -1,4 +1,4 @@
-function lazy(nad, input) {
+function lazy(myurl, nad, input) {
     let Json;
     let file = getItem("dy", "本地") == "本地" ? "hiker://files/rules/FYJK/ys.json" : "hiker://files/cache/FY/dy/" + getItem("dy") + ".json";
     try {
@@ -176,23 +176,25 @@ function lazy(nad, input) {
     if (/(quark|\.uc)\.cn/.test(url)) {
         return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=";
     } else
-    if (/cloud\.189/.test(url)) {
-        return $("hiker://empty").rule((url) => {
+    if (/magnet:|\.torrent|ed2k:|pan\.xunlei/.test(url)) {
+        return "hiker://page/diaoyong?rule=迅雷&page=fypage#" + url
+    } else
+    if (/cloud\.189|yun\.139|www\.123[0-9a-zA-Z]{3}\.com/.test(url)) {
+        return $("hiker://empty").rule((url, myurl) => {
             let d = [];
             putMyVar("fypanys", "1");
             require(config.依赖.replace(/[^/]*$/, "pan.js"));
-            hs(d, url);
+            hs(myurl, d, url);
             setResult(d);
-        }, url);
+        }, url, myurl);
     } else
     if (/ali(pan|yun)/.test(url)) {
         return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url);
     } else
     if (/baidu/.test(url)) {
-        let list = "hiker://page/list?rule=百度网盘";
-        let login = "hiker://page/login?rule=百度网盘";
-
-        return (fetch(list) !== "" ? list : login) + "&realurl=" + url;
+        let fxlj = "hiker://page/fxlj?rule=百度云盘&realurl=";
+        let login = "hiker://page/login?rule=百度云盘&realurl=";
+        return (fetch(fxlj) == "" ? login : fxlj) + url;
     } else
     if (/\.mp4|\.m3u8|\.flv|\.m4a|\.mp3/.test(url)) {
         let Ad;
@@ -332,7 +334,7 @@ function lazy(nad, input) {
     }
 };
 
-function zw(nad, input, MY_HOME, game) {
+function zw(nad, input, MY_HOME, game, type) {
     let Json;
     let file = getItem("dy", "本地") == "本地" ? "hiker://files/rules/FYJK/ys.json" : "hiker://files/cache/FY/dy/" + getItem("dy") + ".json";
     try {
@@ -341,17 +343,17 @@ function zw(nad, input, MY_HOME, game) {
         Json = [];
         console.error('解析文件内容出错:', e);
     };
-    let gy = getMyVar("namejs", "null") == "null" ? Json.find(item => item.name.replace(/&&.*/, "") === nad).gy : getMyVar("gyjs", "");
+    let gy = type == "1" ? Json.find(item => item.name.replace(/&&.*/, "") === nad).gy : getMyVar("gyjs", "");
     let 公用 = eval("(" + gy + ")");
 
-    if (getMyVar("namejs", "null") == "null") {
+    if (type == "1") {
         try {
             let zw = 公用.正文(input);
             if (zw == "二级") {
-                return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
+                return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule((type) => {
                     require(config.依赖);
-                    erji()
-                });
+                    erji(type)
+                }, type);
             } else {
                 return zw;
             };
@@ -362,17 +364,17 @@ function zw(nad, input, MY_HOME, game) {
     } else {
         let czw = 公用.正文(input);
         if (czw == "二级") {
-            return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
+            return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule((type) => {
                 require(config.依赖);
-                erji()
-            });
+                erji(type)
+            }, type);
         } else {
             return czw;
         };
     };
 };
 
-function mx(nad, MY_HOME, game, input) {
+function mx(myurl, nad, MY_HOME, game, input, type) {
     let Json;
     let file = getItem("dy", "本地") == "本地" ? "hiker://files/rules/FYJK/ys.json" : "hiker://files/cache/FY/dy/" + getItem("dy") + ".json";
     try {
@@ -382,35 +384,37 @@ function mx(nad, MY_HOME, game, input) {
         console.error('解析文件内容出错:', e);
     };
 
-    let gy = getMyVar("namejs", "null") == "null" ? Json.find(item => item.name.replace(/&&.*/, "") === nad).gy : getMyVar("gyjs", "");
+    let gy = type == "1" ? Json.find(item => item.name.replace(/&&.*/, "") === nad).gy : getMyVar("gyjs", "");
     let 公用 = eval("(" + gy + ")");
     let xt = getItem("嗅探", "off") == "on";
-    if (!/漫画/.test(getItem("lx1", "全部")) && getMyVar("namejs", "null") == "null") {
+    if (!/漫画/.test(getItem("lx1", "全部")) && type == "1") {
         try {
             let mx = 公用.免嗅(input);
             if (mx == "嗅探") {
                 return xt ? video(input) : lazy(nad, input);
             } else
-            if (mx == "天翼") {
-                return $("hiker://empty").rule((url) => {
+            if (/https?:\/\/cloud\.189\.cn|https?:\/\/(cai)?yun\.139\.com|https?:\/\/www\.123[0-9a-zA-Z]{3}\.com/.test(mx)) {
+                return $("hiker://empty").rule((url, myurl) => {
                     let d = [];
                     putMyVar("fypanys", "1");
                     require(config.依赖.replace(/[^/]*$/, "pan.js"));
-                    hs(d, url);
+                    hs(myurl, d, url);
                     setResult(d);
-                }, input);
+                }, mx, myurl);
             } else
-            if (mx == "阿里") {
-                return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(input);
+            if (/https:\/\/www\.ali(yun|pan).*?\.com/.test(mx)) {
+                return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(mx);
             } else
-            if (mx == "夸克" || mx == "UC" || mx == "uc") {
-                return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(input) + "&sharePwd=";
+            if (/https:\/\/(drive\.uc|pan\.quark)\.cn/.test(mx)) {
+                return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(mx) + "&sharePwd=";
             } else
-            if (mx == "百度") {
-                let list = "hiker://page/list?rule=百度网盘";
-                let login = "hiker://page/login?rule=百度网盘";
-
-                return (fetch(list) !== "" ? list : login) + "&realurl=" + input;
+            if (/magnet:|\.torrent|ed2k:|pan\.xunlei\.com/.test(mx)) {
+                return "hiker://page/diaoyong?rule=迅雷&page=fypage#" + mx;
+            } else
+            if (/https:\/\/pan\.baidu\.com/.test(mx)) { 
+                let fxlj = "hiker://page/fxlj?rule=百度云盘&realurl=";
+                let login = "hiker://page/login?rule=百度云盘&realurl=";     
+                return (fetch(fxlj) == "" ? login : fxlj) + mx;
             } else
             if (/ftp:\/\/a\.gbl\.114s\.com/.test(mx)) {
                 if (!fileExist("hiker://files/cache/FY/JP/bidi.dex")) {
@@ -434,10 +438,10 @@ function mx(nad, MY_HOME, game, input) {
                 };
             } else
             if (mx == "二级") {
-                return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
+                return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule((type) => {
                     require(config.依赖);
-                    erji()
-                });
+                    erji(type)
+                }, type);
             } else {
                 return mx;
             };
@@ -451,32 +455,34 @@ function mx(nad, MY_HOME, game, input) {
         if (cmx == "嗅探") {
             return xt ? video(input) : lazy(nad, input);
         } else
-        if (mx == "天翼") {
-            return $("hiker://empty").rule((url) => {
+        if (/https?:\/\/cloud\.189\.cn|https?:\/\/(cai)?yun\.139\.com|https?:\/\/www\.123[0-9a-zA-Z]{3}\.com/.test(cmx)) {
+            return $("hiker://empty").rule((url, myurl) => {
                 let d = [];
                 putMyVar("fypanys", "1");
                 require(config.依赖.replace(/[^/]*$/, "pan.js"));
-                hs(d, url);
+                hs(myurl, d, url);
                 setResult(d);
-            }, input);
+            }, cmx, myurl);
         } else
-        if (cmx == "阿里") {
-            return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(input);
+        if (/https:\/\/www\.ali(yun|pan).*?\.com/.test(cmx)) {
+            return "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(cmx);
         } else
-        if (cmx == "夸克" || cmx == "UC" || cmx == "uc") {
-            return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(input) + "&sharePwd=";
+        if (/https:\/\/(drive\.uc|pan\.quark)\.cn/.test(cmx)) {
+            return "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(cmx) + "&sharePwd=";
         } else
-        if (mx == "百度") {
-            let list = "hiker://page/list?rule=百度网盘";
-            let login = "hiker://page/login?rule=百度网盘";
-
-            return (fetch(list) !== "" ? list : login) + "&realurl=" + input;
+        if (/magnet:|\.torrent|ed2k:|pan\.xunlei\.com/.test(cmx)) {
+                return "hiker://page/diaoyong?rule=迅雷&page=fypage#" + cmx;
+        } else
+        if (/https:\/\/pan\.baidu\.com/.test(cmx)) {           
+            let fxlj = "hiker://page/fxlj?rule=百度云盘&realurl=";
+            let login = "hiker://page/login?rule=百度云盘&realurl="; 
+            return (fetch(fxlj) == "" ? login : fxlj) + cmx;
         } else
         if (cmx == "二级") {
-            return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule(() => {
+            return $("hiker://empty##" + input + "#immersiveTheme##noHistory##autoCache" + game).rule((type) => {
                 require(config.依赖);
-                erji()
-            });
+                erji(type)
+            }, type);
         } else {
             return cmx;
         };
