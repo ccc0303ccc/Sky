@@ -5,8 +5,9 @@ addListener("onClose", $.toString(() => {
 let murl = MY_URL.replace(/.*empty##/, "");
 MY_URL = isBase64(murl) == true ? base64Decode(murl) : decodeURIComponent(murl);
 
+let type = MY_PARAMS.type;
 if (getMyVar("URL", "0") != MY_URL) {
-    if (getMyVar("namejs", "null") == "null") {
+    if (type == "1") {
         putMyVar("URL", MY_URL);
     };
     require(http + "dwer.js");
@@ -355,7 +356,7 @@ if (MY_PAGE == 1) {
         }
     }, {
         title: "搜索",
-        url: $("#noLoading#").lazyRule((input, bak) => {
+        url: $("#noLoading#").lazyRule((input, bak, type) => {
             clearMyVar("fys");
             if (bak == "1") {
                 back(false);
@@ -363,12 +364,13 @@ if (MY_PAGE == 1) {
                 return "hiker://empty";
             } else {
                 putMyVar("Mysou", input);
-                return $("hiker://empty#noRecordHistory##noHistory#fypage").rule(() => {
+                return $("hiker://empty#noRecordHistory##noHistory#fypage").rule((type) => {
                     require(config.依赖);
-                    yso()
-                });
+                    require(config.依赖.replace(/[^/]*$/, "yso.js"));
+                    yso(type);
+                }, type);
             };
-        }, 名, getMyVar("bak", "0")),
+        }, 名, getMyVar("bak", "0"), type),
         img: ertu + "搜索.png",
         col_type: "icon_small_3",
         extra: {
@@ -519,7 +521,7 @@ function setLists(lists, index) {
         listt = "";
     };
 
-    let wpl = /cloud\.189/.test(listt);
+    let wpl = /cloud\.189|yun\.139|www\.123[a-zA-Z\d]{3}\.com/.test(listt);
 
     let zflb = getItem("zf", "f") == "z";
     if (MY_PAGE == 1) {
@@ -613,7 +615,7 @@ function setLists(lists, index) {
             };
         } else if (wpl) {
             require(config.依赖.replace(/[^/]*$/, "pan.js"));
-            hs(d, list);
+            hs(MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), d, list);
         } else {
             let xtan = getItem("嗅探", "off") == "on";
             let 排 = 排除 != undefined ? 排除.toString() : "";
@@ -621,12 +623,10 @@ function setLists(lists, index) {
             let 样S = /function/.test(样s) ? eval(样s) : 样s;
             let m3u8 = getItem("缓存") == "on" ? true : false;
             let btget = getItem("zgb", "影视");
-            let get = btget == "影视" ? "ys" : btget == "小说" ? "xs" : btget == "其它" ? "qt" : btget == "漫画" ? "mh" : btget == "听书" ? "ts" : "";
+            let get = btget == "影视" ? "ys" : btget == "小说" ? "xs" : btget == "其它" ? "qt" : btget == "漫画" ? "mh" : btget == "听书" ? "ts" : "";            
 
-            let lis = "hiker://page/list?rule=百度网盘&realurl=";
-            let lif = fetch(lis);
-            let loi = "hiker://page/loging?rule=百度网盘&realurl=";
-
+            let fxlj = "hiker://page/fxlj?rule=百度云盘&realurl=";
+            let login = "hiker://page/login?rule=百度云盘&realurl=";
             for (let j = 0; j < list.length; j++) {
                 let jpg = list[j].split("$")[1];
                 let jm = jpg != "" ? list[j].split("$")[0] : list[j].split("$")[0].replace(/.*第|集[\u4e00-\u9fa5]*|话.*|期.*|线路|厂长|\(.*\)/g, "");
@@ -659,23 +659,23 @@ function setLists(lists, index) {
                     title: jpg != "" ? jm : "‘‘’’<small>" + jm + "</small>",
                     img: isBase64(jpg) == true && jpg !== "" ? base64Decode(jpg) : decodeURIComponent(jpg),
                     desc: des,
-                    url: /@lazyRule=|@rule=/.test(url) ? url : url == "hiker://empty" ? url : /function/.test(正文) ? $(zflb ? (url == "" ? MY_URL : url) + "#readTheme##autoPage#" : (url == "" ? MY_URL : url) + "#readTheme#").rule((nad, MY_HOME) => {
+                    url: /@lazyRule=|@rule=/.test(url) ? url : url == "hiker://empty" ? url : /function/.test(正文) ? $(zflb ? (url == "" ? MY_URL : url) + "#readTheme##autoPage#" : (url == "" ? MY_URL : url) + "#readTheme#").rule((nad, MY_HOME, type) => {
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return zw(nad, MY_URL, MY_HOME, "");
-                    }, der, MY_HOME) : /function/.test(免嗅) ? $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, jm, myurl, get, url) => {
+                        return zw(nad, MY_URL, MY_HOME, "", type);
+                    }, der, MY_HOME, type) : /function/.test(免嗅) ? $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, jm, myurl, get, url, type) => {
                         if (getMyVar("fys", "") == "0") {
                             require(config.依赖.replace(/[^/]*$/, "public.js"));
                             zuji(get, myurl, jm);
                         };
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return mx(nad, MY_HOME, "", url);
-                    }, der, MY_HOME, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url) : /\.mp4|\.m3u8|\.m4a|\.mp3|magnet\:|\.torrent|ed2k\:/.test(url) ? url : /ali(pan|yun)/.test(url) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url) : /(quark|\.uc)\.cn/.test(url) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=" : /baidu/.test(url) ? (lif !== "" ? lis : loi) + url : $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, xt, jm, myurl, get, url) => {
+                        return mx(myurl, nad, MY_HOME, "", url, type);
+                    }, der, MY_HOME, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url, type) : /magnet:|\.torrent|ed2k:|pan\.xunlei/.test(url) ? "hiker://page/diaoyong?rule=迅雷&page=fypage#" + url : /ali(pan|yun)/.test(url) ? "hiker://page/aliyun?rule=云盘君.简&page=fypage&realurl=" + encodeURIComponent(url) : /(quark|\.uc)\.cn/.test(url) ? "hiker://page/quarkList?rule=Quark.简&realurl=" + encodeURIComponent(url) + "&sharePwd=" : /baidu/.test(url) ? (fetch(fxlj) == "" ? login : fxlj) + url : /\.mp4|\.m3u8|\.m4a|\.mp3/.test(url) ? url : $(zflb ? "hiker://empty" : "#noPre#").lazyRule((nad, MY_HOME, xt, jm, myurl, get, url) => {
                         if (getMyVar("fys", "") == "0") {
                             require(config.依赖.replace(/[^/]*$/, "public.js"));
                             zuji(get, myurl, jm);
                         };
                         require(config.依赖.replace(/[^/]*$/, "lazy.js"));
-                        return xt ? video(url) : lazy(nad, url);
+                        return xt ? video(url) : lazy(myurl, nad, url);
                     }, der, MY_HOME, xtan, jm.replace(/.*>(.*?)<\/.*/, "$1"), MY_URL.replace(/(.*?)#immersiveTheme.*/, "$1"), get, url == "" ? MY_URL : url),
                     col_type: typeof(样S) == "function" ? 样S(jm, jpg, des, url, col) : 样S != "" && typeof(样S) == "string" ? 样S : col,
                     extra: extra
@@ -710,9 +710,9 @@ function tuiList(tuii) {
                 putMyVar("yn", "yes");
             };
             refreshPage(false);
-            return "#noHistory#hiker://empty";
+            return "hiker://empty";
         }),
-        col_type: "avatar"
+        col_type: "text_icon"
     });
 
     if (no) {
@@ -768,6 +768,7 @@ function tuiList(tuii) {
                 title: title !== undefined ? title.replace(/\n.*/, "") : title,
                 desc: desc !== undefined ? desc.replace(/\n.*/, "") : desc,
                 img: img,
+                type: type
             };
 
             d.push({
