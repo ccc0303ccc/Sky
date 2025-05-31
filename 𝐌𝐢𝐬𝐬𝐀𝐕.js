@@ -940,9 +940,9 @@ const Apollo = {
             }
         })
         try {
-            var title = "““””" + pdfh(html, "body&&.rounded-full&&img&&alt").big();
+            var title = "““””" + pdfh(html, "body&&.rounded-full&&img&&alt").bold();
             var img = pdfh(html, "body&&.rounded-full&&img&&src");
-            var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").fontcolor("#4169E1").bold() + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1").small();
+            var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").fontcolor("#4169E1").small() + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1").small();
             Apollo.d.push({
                 title: title,
                 desc: desc,
