@@ -627,7 +627,7 @@ const Sky = {
         var 日期 = pdfh(html, 'body&&.text-secondary:matches(發行日期:)&&Text');
         if (日期.trim() != "") {
             Sky.d.push({
-                title: '‘‘’’📆 ' + 日期.fontcolor("FF8C00"),
+                title: "““””📆 " + 日期.fontcolor("FF8C00"),
                 url: "hiker://search?rule=𝐉𝐚𝐯𝐃𝐁&s=" + num,
                 col_type: 'text_1',
                 extra: {
@@ -648,7 +648,7 @@ const Sky = {
         var 標題 = pdfh(html, 'body&&.text-secondary:matches(標題)&&Text');
         if (標題.trim() != "") {
             Sky.d.push({
-                title: 標題.fontcolor("#6A5ACD").small(),
+                title: 標題.fontcolor("#FF8C00").small(),
                 url: 'hiker://empty',
                 col_type: 'rich_text',
                 extra: {
