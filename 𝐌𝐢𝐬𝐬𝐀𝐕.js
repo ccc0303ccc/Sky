@@ -313,7 +313,7 @@ const Apollo = {
                         return "confirm://搜索内容為空.js:'hiker://empty'"
                     }
                 }, url),
-                desc: '搜索...',
+                desc: '使用 + 號來結合多個關鍵字',
                 col_type: "input",
                 extra: {
                     defaultValue: getMyVar('keyword', '') || "",
@@ -549,6 +549,11 @@ const Apollo = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
             }
         });
+        Apollo.d.push({
+            img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
+            url: 'hiker://empty',
+            col_type: 'pic_1_full',
+        })
         const title = pdfh(html, 'h1&&Text')
         log(url)
         //setPageTitle(title)
