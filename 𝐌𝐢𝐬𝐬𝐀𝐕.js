@@ -305,7 +305,7 @@ const Sky = {
                 url: $.toString((url) => {
                     if (input.trim() != "") {
                         putMyVar('keyword', input);
-                        var searchUrl = getHome(url) + "/cn/search/" + input
+                        var searchUrl = getHome(url) + "/search/" + input
                         putMyVar("url", searchUrl);
                         refreshPage();
                         return "hiker://empty"
