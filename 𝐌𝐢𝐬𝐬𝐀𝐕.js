@@ -543,7 +543,7 @@ const Sky = {
     },
 
     //二級
-    yijiParse: (url) => {
+    videoParse: (url) => {
         var html = fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
@@ -678,7 +678,7 @@ const Sky = {
                     url: $(url + '?page=fypage#noHistory#').rule((title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(title)
-                        Sky.yijiParse(MY_URL)
+                        Sky.videoParse(MY_URL)
                         setResult(Sky.d)
                     }, title),
                     col_type: 'icon_4_card',
@@ -707,7 +707,7 @@ const Sky = {
                     url: $(pdfh(tag, 'a&&href') + '?page=fypage#noHistory#').rule((tag_title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(tag_title)
-                        Sky.yijiParse(MY_URL)
+                        Sky.videoParse(MY_URL)
                         setResult(Sky.d)
                     }, tag_title),
                     col_type: 'flex_button',
@@ -735,7 +735,7 @@ const Sky = {
                 url: $(pdfh(series, 'a&&href') + '?page=fypage#noHistory#').rule((series_title) => {
                     const Sky = $.require('hiker://page/Sky')
                     setPageTitle(series_title)
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }, series_title),
                 col_type: 'scroll_button',
@@ -762,7 +762,7 @@ const Sky = {
                 url: $(pdfh(makers, 'a&&href') + '?page=fypage#noHistory#').rule((makers_title) => {
                     const Sky = $.require('hiker://page/Sky')
                     setPageTitle(makers_title)
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }, makers_title),
                 col_type: 'scroll_button',
@@ -789,7 +789,7 @@ const Sky = {
                 url: $(pdfh(directors, 'a&&href') + '?page=fypage#noHistory#').rule((directors_title) => {
                     const Sky = $.require('hiker://page/Sky')
                     setPageTitle(directors_title)
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }, directors_title),
                 col_type: 'scroll_button',
@@ -818,7 +818,7 @@ const Sky = {
                         label_title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(label_title)
-                        Sky.yijiParse(MY_URL)
+                        Sky.videoParse(MY_URL)
                         setResult(Sky.d)
                     }, label_title),
                     col_type: 'scroll_button',
@@ -972,7 +972,7 @@ const Sky = {
                 title: title,
                 url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                     if (Sky.taskList.length > 0) {
                         be(Sky.taskList)
@@ -1036,7 +1036,7 @@ const Sky = {
                 title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }),
                 //desc: 
@@ -1062,7 +1062,7 @@ const Sky = {
                 title: pdfh(item, 'a&&Text'),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }),
                 col_type: 'text_4',
