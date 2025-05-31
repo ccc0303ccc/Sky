@@ -643,7 +643,7 @@ const Apollo = {
         var 標題 = pdfh(html, 'body&&.text-secondary:matches(標題)&&Text');
         if (標題.trim() != "") {
             Apollo.d.push({
-                title: 標題.fontcolor("#FF8C00").small(),
+                title: 標題.fontcolor("#6A5ACD").small(),
                 url: 'hiker://empty',
                 col_type: 'rich_text',
                 extra: {
@@ -667,7 +667,7 @@ const Apollo = {
                     id: 'avatar_' + index,
                 })
                 Apollo.d.push({
-                    title: "““””" + title.fontcolor("#1E90FF"),
+                    title: "““””" + title.fontcolor("#1E90FF").small(),
                     desc: '演員',
                     pic_url: Apollo.empty,
                     url: $(url + '?page=fypage#noHistory#').rule((title) => {
