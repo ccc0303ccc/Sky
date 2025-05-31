@@ -607,20 +607,20 @@ const Sky = {
         let num, actressesList, tagsList, series, makers, directors, labelsList
         text_secondary_list.forEach(item => {
             let current_title = pdfh(item, 'span&&Text')
-            let actressName = '女優'
-            if (current_title === '番號:') {
+            let actressName = '女優' || '女优'
+            if (current_title === '番號:' || current_title === '番号:') {
                 num = pdfh(item, '.font-medium&&Text').replace("-UNCENSORED-LEAK", "").replace("-CHINESE-SUBTITLE", "")
             } else if (current_title === actressName + ':') {
                 actressesList = pdfa(item, '.text-secondary&&a')
-            } else if (current_title === '類型:') {
+            } else if (current_title === '類型:' || current_title === '类型:') {
                 tagsList = pdfa(item, '.text-secondary&&a')
             } else if (current_title === '系列:') {
                 series = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '發行商:') {
+            } else if (current_title === '發行商:' || current_title === '发行商:') {
                 makers = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '導演:') {
+            } else if (current_title === '導演:' || current_title === '导演:') {
                 directors = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '標籤:') {
+            } else if (current_title === '標籤:' || current_title === '标签:') {
                 labelsList = pdfa(item, '.text-secondary&&a')
             }
         })
@@ -972,7 +972,7 @@ const Sky = {
                 title: title,
                 url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.videoParse(MY_URL)
+                    Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
                     if (Sky.taskList.length > 0) {
                         be(Sky.taskList)
@@ -1036,7 +1036,7 @@ const Sky = {
                 title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.videoParse(MY_URL)
+                    Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
                 }),
                 //desc: 
