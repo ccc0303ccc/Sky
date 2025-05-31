@@ -884,9 +884,9 @@ const Sky = {
             return input
         }
     },
-    BTshowParse: (识别碼) => {
+    BTshowParse: (識別碼) => {
         try {
-            var btsow = "https://btsow.motorcycles/search/" + 识别碼
+            var btsow = "https://btsow.motorcycles/search/" + 識別碼
             var BTlist = pdfa(fetch(btsow), "body&&.data-list&&.row:not(.hidden-xs)");
             if (BTlist.length > 0) {
                 Sky.d.push({
@@ -952,7 +952,7 @@ const Sky = {
                 desc: desc,
                 img: img,
                 url: "hiker://empty",
-                col_type: "movie_1_vertical_pic"
+                col_type: "movie_1_left_pic"
             })
         } catch {}
         Sky.DynamicSort(html)
