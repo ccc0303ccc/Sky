@@ -543,7 +543,7 @@ const Sky = {
     },
 
     //二級
-    videoParse: (url) => {
+    yijiParse: (url) => {
         var html = fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
@@ -972,7 +972,7 @@ const Sky = {
                 title: title,
                 url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.videoParse(MY_URL)
+                    Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
                     if (Sky.taskList.length > 0) {
                         be(Sky.taskList)
