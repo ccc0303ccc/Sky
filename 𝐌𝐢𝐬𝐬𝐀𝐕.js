@@ -678,7 +678,7 @@ const Sky = {
                     url: $(url + '?page=fypage#noHistory#').rule((title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(title)
-                        Sky.videoParse(MY_URL)
+                        Sky.yijiParse(MY_URL)
                         setResult(Sky.d)
                     }, title),
                     col_type: 'icon_4_card',
