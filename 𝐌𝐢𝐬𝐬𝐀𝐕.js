@@ -1,30 +1,30 @@
 const Apollo = {
     version: "20250509",
     empty: 'hiker://empty',
-    url: "https://missav.live/dm45",
+    url: "https://missav.live/cn/",
     d: [],
     taskList: [],
     getRangeColors: function() {
         return '#' + ('00000' + (Math.random() * 0x1000000 << 0)
                 .toString(16))
             .substr(-6);
-    }, //随机顏色
+    }, //随机颜色
     pageAdd: function(page) {
         if (getMyVar("page")) {
             putMyVar("page", (parseInt(page) + 1) + '');
         }
         return;
-    }, //翻頁
+    }, //翻页
     pageMoveto: function(page, pages) {
         var longClick = [{
-            title: "首頁",
+            title: "首页",
             js: $.toString(() => {
                 putMyVar("page", "1");
                 refreshPage();
                 return "hiker://empty";
             }),
         }, {
-            title: "上頁",
+            title: "上页",
             js: $.toString((page) => {
                 if (page > 1) {
                     putMyVar("page", (parseInt(page) - 1));
@@ -33,10 +33,10 @@ const Apollo = {
                 }
             }, page),
         }, {
-            title: "第" + page + "頁",
+            title: "第" + page + "页",
             js: "",
         }, {
-            title: "跳轉",
+            title: "跳转",
             js: $.toString(() => {
                 return $("").input(() => {
                     putMyVar("page", input);
@@ -46,7 +46,7 @@ const Apollo = {
         }];
         if (typeof(pages) != 'undefined') {
             var extra1 = {
-                title: "尾頁" + pages,
+                title: "尾页" + pages,
                 js: $.toString((pages) => {
                     putMyVar("page", pages);
                     refreshPage();
@@ -56,16 +56,16 @@ const Apollo = {
             longClick.push(extra1)
         }
         return longClick
-    }, //長按跳頁
+    }, //长按跳页
     data: {
         category: getMyVar('MissAV.category', '0'),
         subCate: getMyVar('MissAV.subCate', '0'),
     },
     baseParse: () => {
-        putMyVar("MY_TYPE", "主頁");
+        putMyVar("MY_TYPE", "主页");
         var page = getMyVar("page", MY_PAGE + "")
         let categoryList = [{
-            title: '推薦',
+            title: '推荐',
             path: '',
             type: 'video',
             sub: [{
@@ -75,13 +75,13 @@ const Apollo = {
                 title: '新作上市',
                 path: 'release',
             }, {
-                title: '今日熱門',
+                title: '今日热门',
                 path: 'today-hot',
             }, {
-                title: '本週熱門',
+                title: '本週热门',
                 path: 'weekly-hot',
             }, {
-                title: '本月熱門',
+                title: '本月热门',
                 path: 'monthly-hot',
             }]
         }, {
@@ -90,7 +90,7 @@ const Apollo = {
             type: 'video',
             sub: []
         }, {
-            title: '無碼',
+            title: '无码',
             path: '',
             type: 'video',
             sub: [{
@@ -103,7 +103,7 @@ const Apollo = {
                 title: 'HEYZO ',
                 path: 'heyzo'
             }, {
-                title: '東京熱',
+                title: '东京热',
                 path: 'tokyohot'
             }, {
                 title: '一本道',
@@ -127,13 +127,13 @@ const Apollo = {
                 title: 'XXX-AV',
                 path: 'xxxav'
             }, {
-                title: '人妻斬',
+                title: '人妻斩',
                 path: 'marriedslash'
             }, {
-                title: '頑皮 4610',
+                title: '顽皮 4610',
                 path: 'naughty4610'
             }, {
-                title: '頑皮 0930',
+                title: '顽皮 0930',
                 path: 'naughty0930'
             }, ]
         }, {
@@ -166,11 +166,11 @@ const Apollo = {
                 },
             ]
         }, {
-            title: '國產',
+            title: '国产',
             path: '',
             type: 'video',
             sub: [{
-                title: '麻豆傳媒',
+                title: '麻豆传媒',
                 path: 'madou'
             }, {
                 title: 'TWAV',
@@ -185,27 +185,27 @@ const Apollo = {
             type: 'video',
             sub: []
         }, {
-            title: 'AV影評',
+            title: 'AV影评',
             path: 'articles',
             type: 'articles',
             sub: []
         }, {
-            title: '女優一覽',
+            title: '女优一览',
             path: 'actresses',
             type: 'avatar',
             sub: []
         }, {
-            title: '女優排行',
+            title: '女优排行',
             path: 'actresses/ranking',
             type: 'avatar',
             sub: []
         }, {
-            title: '類型',
+            title: '类型',
             path: 'genres',
             type: 'tags',
             sub: []
         }, {
-            title: '發行商',
+            title: '发行商',
             path: 'makers',
             type: 'tags',
             sub: []
@@ -295,13 +295,13 @@ const Apollo = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
             }
         });
-        //動態分類
+        //动态分类
         Apollo.DynamicSort(html)
         Apollo.ActorSort(url, html)
         //搜索
         if (page == 1) {
             Apollo.d.push({
-                title: "搜索",
+                title: "🔍",
                 url: $.toString((url) => {
                     if (input.trim() != "") {
                         putMyVar('keyword', input);
@@ -310,7 +310,7 @@ const Apollo = {
                         refreshPage();
                         return "hiker://empty"
                     } else {
-                        return "confirm://搜索内容為空.js:'hiker://empty'"
+                        return "confirm://搜索内容为空.js:'hiker://empty'"
                     }
                 }, url),
                 desc: '搜索...',
@@ -339,7 +339,7 @@ const Apollo = {
             case 'search':
                 if (MY_PAGE == 1) {
                     Apollo.d.push({
-                        title: '““””' + "搜索結果".fontcolor("#ffbf00"),
+                        title: '““””' + "搜寻结果".fontcolor("#FF00FF"),
                         url: "hiker://empty",
                         col_type: "text_1",
                         extra: {
@@ -367,28 +367,28 @@ const Apollo = {
         setResult(Apollo.d)
     },
 
-    //動態分類
+    //动态分类
     DynamicSort: (html) => {
-        const 分類顏色 = Apollo.getRangeColors()
-        const 大類定位 = ".mb-6:has(.relative)&&.relative"
-        const 拼接分類 = ".mb-3&&.relative"
-        const 小類定位 = "body&&.block"
-        const 分類標題 = "Text"
-        const 分類鏈接 = "a&&href"
+        const 分类颜色 = Apollo.getRangeColors()
+        const 大类定位 = ".mb-6:has(.relative)&&.relative"
+        const 拼接分类 = ".mb-3&&.relative"
+        const 小类定位 = "body&&.block"
+        const 分类标题 = "Text"
+        const 分类链接 = "a&&href"
         try {
-            if (typeof(拼接分類) != 'undefined' && 拼接分類 != '') {
-                var categories = pdfa(html, 大類定位).concat(pdfa(html, 拼接分類))
+            if (typeof(拼接分类) != 'undefined' && 拼接分类 != '') {
+                var categories = pdfa(html, 大类定位).concat(pdfa(html, 拼接分类))
             } else {
-                var categories = pdfa(html, 大類定位)
+                var categories = pdfa(html, 大类定位)
             }
         } catch {
-            var categories = pdfa(html, 大類定位)
+            var categories = pdfa(html, 大类定位)
         }
         let init_cate = []
         for (let i = 0; i < 20; i++) {
             init_cate.push("0")
         }
-        if (getMyVar("MY_TYPE") == "主頁") {
+        if (getMyVar("MY_TYPE") == "主页") {
             var cate_temp_json = getMyVar("sort", JSON.stringify(init_cate))
         } else {
             var cate_temp_json = getMyVar("ysort", JSON.stringify(init_cate))
@@ -400,17 +400,17 @@ const Apollo = {
                 col_type: "blank_block"
             });
             categories.forEach((category, index) => {
-                let sub_categories = pdfa(category, 小類定位);
+                let sub_categories = pdfa(category, 小类定位);
                 sub_categories.forEach((item, key) => {
-                    let title = pdfh(item, 分類標題)
+                    let title = pdfh(item, 分类标题)
                     if (typeof(排除) != 'undefined' && 排除 != '') {
                         title = title.replace(new RegExp(排除, "g"), "")
                     };
                     Apollo.d.push({
-                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor("#FFFFFF") : title,
-                        url: $(pdfh(item, 分類鏈接) + '#noLoading#').lazyRule((params) => {
+                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor(分类颜色) : title,
+                        url: $(pdfh(item, 分类链接) + '#noLoading#').lazyRule((params) => {
                             params.cate_temp[params.index] = params.key.toString()
-                            if (getMyVar("MY_TYPE") == "主頁") {
+                            if (getMyVar("MY_TYPE") == "主页") {
                                 putMyVar('sort', JSON.stringify(params.cate_temp));
                                 putMyVar("url", input);
                             } else {
@@ -438,22 +438,22 @@ const Apollo = {
             })
         }
     },
-    //女優sort
+    //女优sort
     ActorSort: (url, html) => {
-        const 分類顏色 = Apollo.getRangeColors()
-        const 大類定位 = "body&&.grid.mb-3&&select"
-        const 拼接分類 = ""
-        const 小類定位 = "body&&option"
-        const 分類標題 = "Text"
-        const 分類鏈接 = "option&&value"
+        const 分类颜色 = Apollo.getRangeColors()
+        const 大类定位 = "body&&.grid.mb-3&&select"
+        const 拼接分类 = ""
+        const 小类定位 = "body&&option"
+        const 分类标题 = "Text"
+        const 分类链接 = "option&&value"
         try {
-            if (typeof(拼接分類) != 'undefined' && 拼接分類 != '') {
-                var categories = pdfa(html, 大類定位).concat(pdfa(html, 拼接分類))
+            if (typeof(拼接分类) != 'undefined' && 拼接分类 != '') {
+                var categories = pdfa(html, 大类定位).concat(pdfa(html, 拼接分类))
             } else {
-                var categories = pdfa(html, 大類定位)
+                var categories = pdfa(html, 大类定位)
             }
         } catch {
-            var categories = pdfa(html, 大類定位)
+            var categories = pdfa(html, 大类定位)
         }
         let init_cate = []
         for (let i = 0; i < 20; i++) {
@@ -467,15 +467,15 @@ const Apollo = {
                 col_type: "blank_block"
             });
             categories.forEach((category, index) => {
-                let sub_categories = pdfa(category, 小類定位);
+                let sub_categories = pdfa(category, 小类定位);
                 sub_categories.forEach((item, key) => {
-                    let title = pdfh(item, 分類標題)
+                    let title = pdfh(item, 分类标题)
                     if (typeof(排除) != 'undefined' && 排除 != '') {
                         title = title.replace(new RegExp(排除, "g"), "")
                     };
                     Apollo.d.push({
-                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor("#FFFFFF") : title,
-                        url: $(pdfh(item, 分類鏈接) + '#noLoading#').lazyRule((url, params) => {
+                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor(分类颜色) : title,
+                        url: $(pdfh(item, 分类链接) + '#noLoading#').lazyRule((url, params) => {
                             params.cate_temp[params.index] = params.key.toString()
                             if (params.index == 0) {
                                 input = input ? ("&height=" + input) : ""
@@ -521,7 +521,7 @@ const Apollo = {
         log(MY_URL)
         if (MY_PAGE == 1) {
             Apollo.d.push({
-                title: "——女優——",
+                title: "——女优——",
                 url: "hiker://empty"
             });
             try {
@@ -542,7 +542,7 @@ const Apollo = {
         setResult(Apollo.d)
     },
 
-    //二級
+    //二级
     videoParse: (url) => {
         var html = fetch(url, {
             headers: {
@@ -566,7 +566,7 @@ const Apollo = {
             pic_url: pdfh(html, 'meta[property=og:image]&&content') + '@Referer=' + Apollo.url,
             url: $(Apollo.empty + '#noHistory#').lazyRule((html, url) => {
                 eval(html.match(/eval.*?source.*\n/)[0])
-                // 獲取畫質列表，併去最高畫質
+                // 获取画质列表，并去最高画质
                 let group_quality = fetch(source, {
                     headers: {
                         "origin": getHome(url)
@@ -574,12 +574,12 @@ const Apollo = {
                 })
                 hghest_quality = group_quality.match(/^(.*)\.m3u8$/gm).map(v => source.replace("playlist.m3u8", v))
                 name_quality = group_quality.match(/RESOLUTION=.*$/gm).map(n => n.replace("RESOLUTION=", ""))
-                // 按分辨率降序排序 分辨率 數組，併同時調整 hghest_quality
+                // 按分辨率降序排序 分辨率 数组，并同时调整 hghest_quality
                 var sortedData = name_quality.map((name, index) => ({
                     name,
                     url: hghest_quality[index]
                 })).sort((a, b) => b.name.match(/(\d+)/)[1] - a.name.match(/(\d+)/)[1]);
-                // 分開排序後的 names 和 urls 數組
+                // 分开排序后的 names 和 urls 数组
                 var sortedNames = sortedData.map(item => item.name);
                 var sortedUrls = sortedData.map(item => item.url);
                 let playlist = JSON.stringify({
@@ -602,27 +602,27 @@ const Apollo = {
         let num, actressesList, tagsList, series, makers, directors, labelsList
         text_secondary_list.forEach(item => {
             let current_title = pdfh(item, 'span&&Text')
-            let actressName = '女優'
-            if (current_title === '番號:') {
+            let actressName = '女优'
+            if (current_title === '番号:') {
                 num = pdfh(item, '.font-medium&&Text').replace("-UNCENSORED-LEAK", "").replace("-CHINESE-SUBTITLE", "")
             } else if (current_title === actressName + ':') {
                 actressesList = pdfa(item, '.text-secondary&&a')
-            } else if (current_title === '類型:') {
+            } else if (current_title === '类型:') {
                 tagsList = pdfa(item, '.text-secondary&&a')
             } else if (current_title === '系列:') {
                 series = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '發行商:') {
+            } else if (current_title === '发行商:') {
                 makers = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '導演:') {
+            } else if (current_title === '导演:') {
                 directors = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '標籤:') {
+            } else if (current_title === '标籤:') {
                 labelsList = pdfa(item, '.text-secondary&&a')
             }
         })
-        var 日期 = pdfh(html, 'body&&.text-secondary:matches(發行日期:)&&Text');
+        var 日期 = pdfh(html, 'body&&.text-secondary:matches(发行日期:)&&Text');
         if (日期.trim() != "") {
             Apollo.d.push({
-                title: '‘‘’’' + 日期.fontcolor("#6A5ACD"),
+                title: '‘‘’’' + 日期.fontcolor("#FF0000"),
                 url: "hiker://search?rule=𝐉𝐚𝐯𝐃𝐁&s=" + num,
                 col_type: 'text_1',
                 extra: {
@@ -632,7 +632,7 @@ const Apollo = {
         }
         if (num) {
             Apollo.d.push({
-                title: "““””番號 : " + num.fontcolor("#FA7298"),
+                title: "““””番号 : " + num.fontcolor("#1E90FF"),
                 url: 'copy://' + num,
                 col_type: 'text_1',
                 extra: {
@@ -640,10 +640,10 @@ const Apollo = {
                 },
             })
         }
-        var 標題 = pdfh(html, 'body&&.text-secondary:matches(標題)&&Text');
-        if (標題.trim() != "") {
+        var 标题 = pdfh(html, 'body&&.text-secondary:matches(标题)&&Text');
+        if (标题.trim() != "") {
             Apollo.d.push({
-                title: 標題.fontcolor("#FFBF00").small(),
+                title: 标题.fontcolor("#D2691E").small(),
                 url: 'hiker://empty',
                 col_type: 'rich_text',
                 extra: {
@@ -667,8 +667,8 @@ const Apollo = {
                     id: 'avatar_' + index,
                 })
                 Apollo.d.push({
-                    title: "““””" + title.bold(),
-                    desc: '演員',
+                    title: "““””" + title.fontcolor("#C71585"),
+                    desc: '演员',
                     pic_url: Apollo.empty,
                     url: $(url + '?page=fypage#noHistory#').rule((title) => {
                         const Apollo = $.require('hiker://page/Apollo')
@@ -688,7 +688,7 @@ const Apollo = {
         }
         if (tagsList) {
             Apollo.d.push({
-                title: '類型 : ',
+                title: '类型 : ',
                 url: Apollo.empty,
                 col_type: 'flex_button',
                 extra: {
@@ -745,7 +745,7 @@ const Apollo = {
         }
         if (makers) {
             Apollo.d.push({
-                title: '發行商 : ',
+                title: '发行商 : ',
                 url: Apollo.empty,
                 col_type: 'scroll_button',
                 extra: {
@@ -772,7 +772,7 @@ const Apollo = {
         }
         if (directors) {
             Apollo.d.push({
-                title: '導演 : ',
+                title: '导演 : ',
                 url: Apollo.empty,
                 col_type: 'scroll_button',
                 extra: {
@@ -799,7 +799,7 @@ const Apollo = {
         }
         if (labelsList) {
             Apollo.d.push({
-                title: '標簽 : ',
+                title: '标签 : ',
                 url: Apollo.empty,
                 col_type: 'scroll_button',
                 extra: {
@@ -831,7 +831,7 @@ const Apollo = {
         const CiliList = pdfa(html, '.min-w-full&&tr')
         if (CiliList.length > 0) {
             Apollo.d.push({
-                title: '本小站磁力' + CiliList.length + "條",
+                title: '本小站磁力' + CiliList.length + "条",
                 url: Apollo.empty,
                 col_type: 'text_center_1',
                 extra: {
@@ -845,14 +845,74 @@ const Apollo = {
             Apollo.d.push({
                 title: pdfh(item, 'a&&Text'),
                 url: pdfh(item, 'a&&href'),
-                desc: (index + 1).toString().padStart(2, "0") + " 💽 " + Apollo.formatNumber(pdfh('<table>' + item + '</table>', 'td,1&&Text')) + "📆 " + pdfh('<table>' + item + '</table>', 'td,2&&Text'),
+                desc: (index + 1).toString().padStart(2, "0") + "\t💽" + Apollo.formatNumber(pdfh('<table>' + item + '</table>', 'td,1&&Text')) + "📆" + pdfh('<table>' + item + '</table>', 'td,2&&Text'),
                 pic_url: "https://img.vinua.cn/images/Ooz4R.jpeg",
                 col_type: 'avatar'
             })
         })
 
+        /*var path = url.match(/\/(?!.*\/)(.*$)/) ? url.match(/\/(?!.*\/)(.*$)/)[1] : num;
+        var userId = pdfh(html, ".items-center.space-x-6&&a&&href").match(/\/(?!.*\/).*userId=(.*$)/)[1]
+        // 获取当前的 10 位 Unix 时间戳
+        let timestamp = Math.floor(Date.now() / 1000);
+        var sign;
+        var URL = `https://client-rapi-missav.recombee.com/missav-default/batch/?frontend_timestamp=${timestamp}&frontend_sign=${sign}`;
+
+        var result = fetch(URL, {
+            body: JSON.stringify({
+                "requests": [{
+                    "method": "POST",
+                    "path": `/recomms/items/${path}/items/`,
+                    "params": {
+                        "targetUserId": userId,
+                        "count": 16,
+                        "scenario": "mobile-watch-next",
+                        "returnProperties": true,
+                        "includedProperties": [
+                            "title_cn",
+                            "duration",
+                            "has_chinese_subtitle",
+                            "is_uncensored_leak",
+                            "dm"
+                        ],
+                        "cascadeCreate": true
+                    }
+                }],
+                "distinctRecomms": true
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: 'POST'
+        });
+        log(result)
+        const videoList = pdfa(html, '.grid.grid-cols-2.gap-5&&.relative')
         Apollo.d.push({
-            title: '““””' + "已經到底了".fontcolor("grey")
+            title: '推荐视频',
+            url: Apollo.empty,
+            col_type: 'text_center_1',
+            extra: {
+                lineVisible: false
+            },
+        })
+        videoList.forEach(item => {
+            Apollo.d.push({
+                title: pdfh(item, '.lozad&&alt'),
+                url: $(pdfh(item, 'a&&href') + '#noHistory#').rule(() => {
+                    const Apollo = $.require('hiker://page/Apollo')
+                    Apollo.videoParse(MY_URL)
+                    setResult(Apollo.d)
+                    if (Apollo.taskList.length > 0) {
+                        be(Apollo.taskList)
+                    }
+                }),
+                pic_url: pdfh(item, '.lozad&&data-src') + '@Referer=' + Apollo.url,
+                desc: pdfh(item, '.absolute&&Text'),
+                col_type: 'movie_2'
+            })
+        })*/
+        Apollo.d.push({
+            title: '““””' + "我是有底线的".fontcolor("grey")
                 .small(),
             url: Apollo.empty,
             col_type: "text_center_1",
@@ -863,30 +923,30 @@ const Apollo = {
         setResult(Apollo.d)
     },
     formatNumber: function(input) {
-        // 分離整數、小數和單位
+        // 分离整数、小数和单位
         var regex = /(\d+)(\.\d+)?([a-zA-Z]+)/;
         var match = input.match(regex);
         if (match) {
-            var integerPart = match[1].toString(); // 獲取整數部分
-            var decimalPart = match[2] ? match[2].slice(1).toString() : '0'; // 如果沒小數部分，默認為 '0'
-            var unitPart = match[3]; // 獲取單位部分              
-            // 對整數部分進行補零
+            var integerPart = match[1].toString(); // 获取整数部分
+            var decimalPart = match[2] ? match[2].slice(1).toString() : '0'; // 如果没小数部分，默认为 '0'
+            var unitPart = match[3]; // 获取单位部分              
+            // 对整数部分进行补零
             integerPart = integerPart.padStart(2, '0');
-            // 對小數部分進行補零  
+            // 对小数部分进行补零  
             decimalPart = decimalPart.padEnd(2, '0');
-            // 合併結果
+            // 合并结果
             return integerPart + '.' + decimalPart + unitPart;
         } else {
             return input
         }
     },
-    BTshowParse: (識別碼) => {
+    BTshowParse: (识别码) => {
         try {
-            var btsow = "https://btsow.motorcycles/search/" + 識別碼
+            var btsow = "https://btsow.motorcycles/search/" + 识别码
             var BTlist = pdfa(fetch(btsow), "body&&.data-list&&.row:not(.hidden-xs)");
             if (BTlist.length > 0) {
                 Apollo.d.push({
-                    title: 'BTshow磁力' + BTlist.length + "條",
+                    title: 'BTshow磁力' + BTlist.length + "条",
                     url: btsow,
                     col_type: 'text_center_1',
                     extra: {
@@ -898,7 +958,7 @@ const Apollo = {
                 var url = getMyVar("BTcili");
                 Apollo.d.push({
                     title: '<b><small><font color="#4682B4"> ' + pdfh(item, 'a&&title') + '</font></small>',
-                    desc: (index + 1).toString().padStart(2, "0") + " 💽 " + Apollo.formatNumber(pdfh(item, '.size&&Text')) + "📆 " + pdfh(item, '.date&&Text'),
+                    desc: (index + 1).toString().padStart(2, "0") + "\t💽" + Apollo.formatNumber(pdfh(item, '.size&&Text')) + "📆" + pdfh(item, '.date&&Text'),
                     img: "https://img.vinua.cn/images/Ocqpj.png",
                     url: "https:" + pdfh(item, 'a&&href') + $('').lazyRule(() => {
                         var url = pdfh(request(input, {}), '#magnetOpen&&a&&href');
@@ -910,9 +970,9 @@ const Apollo = {
             })
         } catch {}
     },
-    //一級.簡
+    //一级.简
     yijiParse: (url) => {
-        putMyVar("MY_TYPE", "一級")
+        putMyVar("MY_TYPE", "一级")
         var page = getMyVar("page", MY_PAGE + "")
         try {
             var pages = pdfh(html, "body&&.mt-6.justify-between&&form&&Text").match(/\d+/)[0]
@@ -932,7 +992,7 @@ const Apollo = {
                 return (url.includes('?') ? '&page=' : '?page=') + page;
             }
         });
-        //log(url)
+        log(url)
         Apollo.pageAdd(page)
         const html = fetch(url, {
             headers: {
@@ -1106,7 +1166,7 @@ const Apollo = {
             if (desc == undefined) {
                 return;
             }
-            desc = desc.constructor == Array ? desc.join('<br>') : desc.small();
+            desc = desc.constructor == Array ? desc.join('<br>') : desc;
             if (desc.replace(/(<br>|\s+|<\/?p>|&nbsp;)/g, '').length == 0) {
                 return;
             }
@@ -1121,15 +1181,15 @@ const Apollo = {
             let sdesc = substr(desc, num);
 
             var colors = {
-                show: custom.簡介展開,
-                hide: custom.簡介收起
+                show: "#008B8B",
+                hide: "#8A2BE2"
             }
 
             var lazy = $(`#noLoading#`).lazyRule((dc, sdc, m, cs) => {
                 var show = storage0.getItem(m, '0');
                 var title = findItem('desc').title;
                 var re = /(<\/big><br>.*?>).+/g;
-                var exp = '展開:';
+                var exp = '展开:';
                 var ret = '收起:';
                 if (show == '1') {
                     updateItem('desc', {
@@ -1151,11 +1211,11 @@ const Apollo = {
                 }
                 return `hiker://empty`
             }, desc, sdesc, mark, colors)
-            var sc = storage0.getItem(mark, '0') == '0' ? '展開:' : '收起:';
+            var sc = storage0.getItem(mark, '0') == '0' ? '展开:' : '收起:';
             var dc = storage0.getItem(mark, '0') == '0' ? sdesc : desc;
             var cs = storage0.getItem(mark, '0') == '0' ? colors.hide : colors.show;
             arr.push({
-                title: '☠' + '<b><font color="#ffbf00">劇情簡介	</font></b>' + "<middle><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></big><br><font color="' + cs + '">' + `${dc}` + '</small>',
+                title: '' + '<b><font color="">∷ 剧情简介	</font></b>' + "<middle><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></big><br><font color="' + cs + '">' + `${dc}` + '</small>',
                 col_type: 'rich_text',
                 extra: {
                     id: 'desc',
