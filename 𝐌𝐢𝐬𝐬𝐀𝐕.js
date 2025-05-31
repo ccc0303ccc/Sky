@@ -667,7 +667,7 @@ const Apollo = {
                     id: 'avatar_' + index,
                 })
                 Apollo.d.push({
-                    title: "““””" + title.fontcolor(getRangeColors()),
+                    title: "““””" + title.fontcolor("#1E90FF"),
                     desc: '演員',
                     pic_url: Apollo.empty,
                     url: $(url + '?page=fypage#noHistory#').rule((title) => {
@@ -698,7 +698,7 @@ const Apollo = {
             tagsList.forEach(tag => {
                 let tag_title = pdfh(tag, 'a&&Text')
                 Apollo.d.push({
-                    title: tag_title,
+                    title: "““””" + tag_title.fontcolor("#1E90FF"),
                     url: $(pdfh(tag, 'a&&href') + '?page=fypage#noHistory#').rule((tag_title) => {
                         const Apollo = $.require('hiker://page/Apollo')
                         setPageTitle(tag_title)
@@ -898,7 +898,7 @@ const Apollo = {
                 var url = getMyVar("BTcili");
                 Apollo.d.push({
                     title: '<b><small><font color="#4682B4"> ' + pdfh(item, 'a&&title') + '</font></small>',
-                    desc: (index + 1).toString().padStart(2, "0") + "\t💽" + Apollo.formatNumber(pdfh(item, '.size&&Text')) + "📆" + pdfh(item, '.date&&Text'),
+                    desc: (index + 1).toString().padStart(2, "0") + " 💽" + Apollo.formatNumber(pdfh(item, '.size&&Text')) + "📆 " + pdfh(item, '.date&&Text'),
                     img: "https://img.vinua.cn/images/Ocqpj.png",
                     url: "https:" + pdfh(item, 'a&&href') + $('').lazyRule(() => {
                         var url = pdfh(request(input, {}), '#magnetOpen&&a&&href');
