@@ -698,7 +698,7 @@ const Apollo = {
             tagsList.forEach(tag => {
                 let tag_title = pdfh(tag, 'a&&Text')
                 Apollo.d.push({
-                    title: "““””" + tag_title.fontcolor("#1E90FF"),
+                    title: "““””" + tag_title.fontcolor("#FFFFFF"),
                     url: $(pdfh(tag, 'a&&href') + '?page=fypage#noHistory#').rule((tag_title) => {
                         const Apollo = $.require('hiker://page/Apollo')
                         setPageTitle(tag_title)
@@ -754,7 +754,7 @@ const Apollo = {
             })
             let makers_title = pdfh(makers, 'a&&Text')
             Apollo.d.push({
-                title: makers_title,
+                title: "““””" + makers_title.fontcolor("#FFFFFF"),
                 url: $(pdfh(makers, 'a&&href') + '?page=fypage#noHistory#').rule((makers_title) => {
                     const Apollo = $.require('hiker://page/Apollo')
                     setPageTitle(makers_title)
@@ -781,7 +781,7 @@ const Apollo = {
             })
             let directors_title = pdfh(directors, 'a&&Text')
             Apollo.d.push({
-                title: directors_title,
+                title: "““””" + directors_title.fontcolor("#FFFFFF"),
                 url: $(pdfh(directors, 'a&&href') + '?page=fypage#noHistory#').rule((directors_title) => {
                     const Apollo = $.require('hiker://page/Apollo')
                     setPageTitle(directors_title)
@@ -809,7 +809,7 @@ const Apollo = {
             labelsList.forEach(label => {
                 let label_title = pdfh(label, 'a&&Text')
                 Apollo.d.push({
-                    title: label_title,
+                    title: "““””" + label_title.fontcolor("#FFFFFF")label_title,
                     url: $(pdfh(label, 'a&&href') + '?page=fypage#noHistory#').rule((
                         label_title) => {
                         const Apollo = $.require('hiker://page/Apollo')
@@ -845,7 +845,7 @@ const Apollo = {
             Apollo.d.push({
                 title: pdfh(item, 'a&&Text'),
                 url: pdfh(item, 'a&&href'),
-                desc: (index + 1).toString().padStart(2, "0") + " 💽 " + Apollo.formatNumber(pdfh('<table>' + item + '</table>', 'td,1&&Text')) + "📆 " + pdfh('<table>' + item + '</table>', 'td,2&&Text'),
+                desc: (index + 1).toString().padStart(2, "0") + " 💽 " + Apollo.formatNumber(pdfh('<table>' + item + '</table>', 'td,1&&Text')) + " 📆 " + pdfh('<table>' + item + '</table>', 'td,2&&Text'),
                 pic_url: "https://img.vinua.cn/images/Ooz4R.jpeg",
                 col_type: 'avatar'
             })
@@ -898,7 +898,7 @@ const Apollo = {
                 var url = getMyVar("BTcili");
                 Apollo.d.push({
                     title: '<b><small><font color="#4682B4"> ' + pdfh(item, 'a&&title') + '</font></small>',
-                    desc: (index + 1).toString().padStart(2, "0") + " 💽" + Apollo.formatNumber(pdfh(item, '.size&&Text')) + "📆 " + pdfh(item, '.date&&Text'),
+                    desc: (index + 1).toString().padStart(2, "0") + " 💽" + Apollo.formatNumber(pdfh(item, '.size&&Text')) + " 📆 " + pdfh(item, '.date&&Text'),
                     img: "https://img.vinua.cn/images/Ocqpj.png",
                     url: "https:" + pdfh(item, 'a&&href') + $('').lazyRule(() => {
                         var url = pdfh(request(input, {}), '#magnetOpen&&a&&href');
@@ -940,9 +940,9 @@ const Apollo = {
             }
         })
         try {
-            var title = "““””" + pdfh(html, "body&&.rounded-full&&img&&alt").big().fontcolor("#FF1493");
+            var title = "““””" + pdfh(html, "body&&.rounded-full&&img&&alt").big();
             var img = pdfh(html, "body&&.rounded-full&&img&&src");
-            var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").big().fontcolor("#4169E1") + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1").big();
+            var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").fontcolor("#4169E1").bold() + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1").small();
             Apollo.d.push({
                 title: title,
                 desc: desc,
