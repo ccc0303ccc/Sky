@@ -1,7 +1,7 @@
 const Sky = {
     version: "20250509",
     empty: 'hiker://empty',
-    url: "https://missav.live/dm15/cn",
+    url: "https://missav.live/dm15/cn/",
     d: [],
     taskList: [],
     getRangeColors: function() {
