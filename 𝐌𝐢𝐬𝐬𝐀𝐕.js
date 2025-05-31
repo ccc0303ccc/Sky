@@ -928,6 +928,11 @@ const Sky = {
             clearMyVar("ysort");
             clearMyVar("page")
         }));
+        Sky.d.push({
+            img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
+            url: 'hiker://empty',
+            col_type: 'pic_1_full',
+        })
         url = getMyVar("yurl", url)
         url = url.replace(/(\?page=\d+|\&page=\d+|$)/, (match) => {
             if (match.startsWith('?') || match.startsWith('&')) {
@@ -1034,7 +1039,7 @@ const Sky = {
         list.forEach(item => {
             Sky.d.push({
                 title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
-                url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
+                url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory##gameTheme#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
                     Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
