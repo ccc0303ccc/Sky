@@ -1149,7 +1149,7 @@ const Sky = {
                         title: title
                             .replace(exp, ret)
                             .replace(re, '$1' + dc + '</small>')
-                            .replace(/(<\/small><br>\<font color=").*?(">)/, '$1' + cs.show + '$2')
+                            .replace(/(<\/big><br>\<font color=").*?(">)/, '$1' + cs.show + '$2')
                     })
                     storage0.setItem(m, '1');
                 }
