@@ -566,7 +566,7 @@ const Apollo = {
             pic_url: pdfh(html, 'meta[property=og:image]&&content') + '@Referer=' + Apollo.url,
             url: $(Apollo.empty + '#noHistory#').lazyRule((html, url) => {
                 eval(html.match(/eval.*?source.*\n/)[0])
-                // 獲取画质列表，并去最高画质
+                // 獲取画质列表，併併去最高画质
                 let group_quality = fetch(source, {
                     headers: {
                         "origin": getHome(url)
@@ -574,7 +574,7 @@ const Apollo = {
                 })
                 hghest_quality = group_quality.match(/^(.*)\.m3u8$/gm).map(v => source.replace("playlist.m3u8", v))
                 name_quality = group_quality.match(/RESOLUTION=.*$/gm).map(n => n.replace("RESOLUTION=", ""))
-                // 按分辨率降序排序 分辨率 數组，并同时调整 hghest_quality
+                // 按分辨率降序排序 分辨率 數组，併併同时调整 hghest_quality
                 var sortedData = name_quality.map((name, index) => ({
                     name,
                     url: hghest_quality[index]
@@ -727,7 +727,7 @@ const Apollo = {
             })
             let series_title = pdfh(series, 'a&&Text')
             Apollo.d.push({
-                title: series_title,
+                title: "““””" + series_title.fontcolor("#FFFFFF"),
                 url: $(pdfh(series, 'a&&href') + '?page=fypage#noHistory#').rule((series_title) => {
                     const Apollo = $.require('hiker://page/Apollo')
                     setPageTitle(series_title)
@@ -863,18 +863,18 @@ const Apollo = {
         setResult(Apollo.d)
     },
     formatNumber: function(input) {
-        // 分离整數、小數和單位
+        // 分離整數、小數和單位
         var regex = /(\d+)(\.\d+)?([a-zA-Z]+)/;
         var match = input.match(regex);
         if (match) {
             var integerPart = match[1].toString(); // 獲取整數部分
             var decimalPart = match[2] ? match[2].slice(1).toString() : '0'; // 如果没小數部分，默認為 '0'
             var unitPart = match[3]; // 獲取單位部分              
-            // 對整數部分进行补零
+            // 對整數部分進行補零
             integerPart = integerPart.padStart(2, '0');
-            // 對小數部分进行补零  
+            // 對小數部分進行補零  
             decimalPart = decimalPart.padEnd(2, '0');
-            // 合并結果
+            // 合併結果
             return integerPart + '.' + decimalPart + unitPart;
         } else {
             return input
@@ -1155,7 +1155,7 @@ const Apollo = {
             var dc = storage0.getItem(mark, '0') == '0' ? sdesc : desc;
             var cs = storage0.getItem(mark, '0') == '0' ? colors.hide : colors.show;
             arr.push({
-                title: '☠' + '<b><font color="#FFBF00">劇情簡介	</font></b>' + "<middle><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></small><br><font color="' + cs + '">' + `${dc}` + '</small>',
+                title: '☠' + '<b><font color="#FFBF00">劇情簡介	</font></b>' + "<middle><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></big><br><font color="' + cs + '">' + `${dc}` + '</small>',
                 col_type: 'rich_text',
                 extra: {
                     id: 'desc',
