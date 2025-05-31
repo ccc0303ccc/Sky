@@ -1033,13 +1033,12 @@ const Sky = {
         const list = pdfa(html, '.mx-auto.grid&&li')
         list.forEach(item => {
             Sky.d.push({
-                title: '““””<small>' + pdfh(item, 'h4&Text') + '\n' + pdfh(item, '.text-nord10&&Text') + '\n' + pdfh(item, '.text-nord10&&Text') + '\n' + pdfh(item, '.text-nord10,1&&Text') + '</small>',
+                title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
                     Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
                 }),
-                //desc: 
                 pic_url: pdfh(item, 'img&&src') ? (pdfh(item, 'img&&src') + '@Referer=' + Sky.url) : "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/12/63/3e/12633eff-07b7-0fcd-d9be-00b345ec5aed/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/600x600bb.png",
                 col_type: 'card_pic_3',
                 extra: page ? {
