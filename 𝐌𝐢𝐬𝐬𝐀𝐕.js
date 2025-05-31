@@ -592,7 +592,7 @@ const Sky = {
         })
         Sky.d.push({
             title: '““””' + title.fontcolor("#6A5ACD").bold(),
-            url: url,
+            url: url + "#noHistory#",
             col_type: 'text_1',
             extra: {
                 lineVisiable: false
