@@ -557,15 +557,7 @@ const Apollo = {
         const title = pdfh(html, 'h1&&Text')
         log(url)
         //setPageTitle(title)
-
-        Apollo.d.push({
-            title: '““””' + title.fontcolor("#FF8C00").small(),
-            url: url,
-            col_type: 'text_1',
-            extra: {
-                lineVisiable: false
-            }
-        })
+        
         Apollo.d.push({
             desc: pdfh(html, '.text-secondary.break-all.line-clamp-2&&Text'),
             pic_url: pdfh(html, 'meta[property=og:image]&&content') + '@Referer=' + Apollo.url,
@@ -597,6 +589,14 @@ const Apollo = {
                 return playlist;
             }, html, Apollo.url),
             col_type: 'pic_1_full',
+        })
+        Apollo.d.push({
+            title: '““””' + title.fontcolor("#FF8C00").small(),
+            url: url,
+            col_type: 'text_1',
+            extra: {
+                lineVisiable: false
+            }
         })
         var content = pdfh(html, '.text-secondary.break-all.line-clamp-2&&Text');
         if (content.trim() != "") {
