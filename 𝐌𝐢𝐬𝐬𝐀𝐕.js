@@ -591,7 +591,7 @@ const Sky = {
             col_type: 'pic_1_full',
         })
         Sky.d.push({
-            title: '““””' + title.fontcolor("#6A5ACD").small(),
+            title: '““””' + title.fontcolor("#6A5ACD").bold(),
             url: url,
             col_type: 'text_1',
             extra: {
