@@ -1121,8 +1121,8 @@ const Apollo = {
             let sdesc = substr(desc, num);
 
             var colors = {
-                show: custom.簡介展開,
-                hide: custom.簡介收起
+                show: "#000000",
+                hide: "grey"
             }
 
             var lazy = $(`#noLoading#`).lazyRule((dc, sdc, m, cs) => {
