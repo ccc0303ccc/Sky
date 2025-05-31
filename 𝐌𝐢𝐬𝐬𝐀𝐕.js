@@ -607,12 +607,12 @@ const Sky = {
         let num, actressesList, tagsList, series, makers, directors, labelsList
         text_secondary_list.forEach(item => {
             let current_title = pdfh(item, 'span&&Text')
-            let actressName = '女優'
+            let actressName = '女優'||女优
             if (current_title === '番號:') {
                 num = pdfh(item, '.font-medium&&Text').replace("-UNCENSORED-LEAK", "").replace("-CHINESE-SUBTITLE", "")
             } else if (current_title === actressName + ':') {
                 actressesList = pdfa(item, '.text-secondary&&a')
-            } else if (current_title === '類型:') {
+            } else if (current_title === '類型:'||current_title === '类型:') {
                 tagsList = pdfa(item, '.text-secondary&&a')
             } else if (current_title === '系列:') {
                 series = pdfa(item, '.text-secondary&&a')[0]
