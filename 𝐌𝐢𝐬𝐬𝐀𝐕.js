@@ -1149,7 +1149,7 @@ const Sky = {
                         title: title
                             .replace(exp, ret)
                             .replace(re, '$1' + dc + '</small>')
-                            .replace(/(<\/big><br>\<font color=").*?(">)/, '$1' + cs.show + '$2')
+                            .replace(/(<\/small><br>\<font color=").*?(">)/, '$1' + cs.show + '$2')
                     })
                     storage0.setItem(m, '1');
                 }
@@ -1159,7 +1159,7 @@ const Sky = {
             var dc = storage0.getItem(mark, '0') == '0' ? sdesc : desc;
             var cs = storage0.getItem(mark, '0') == '0' ? colors.hide : colors.show;
             arr.push({
-                title: '☠' + '<b><font color="#FFBF00">劇情簡介	</font></b>' + "<small><a style='text-decoration: none;' href='" + lazy + "'>" + sc.small() + '</a><br><font color="' + cs + '">' + `${dc}` + '</small>',
+                title: '☠' + '<b><font color="#FFBF00">劇情簡介	</font></b>' + "<middle><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></small><br><font color="' + cs + '">' + `${dc}` + '</small>',
                 col_type: 'rich_text',
                 extra: {
                     id: 'desc',
