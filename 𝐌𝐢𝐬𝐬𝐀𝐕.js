@@ -1,30 +1,30 @@
 const Apollo = {
     version: "20250509",
     empty: 'hiker://empty',
-    url: "https://missav.live/cn/",
+    url: "https://missav.live/dm45/",
     d: [],
     taskList: [],
     getRangeColors: function() {
         return '#' + ('00000' + (Math.random() * 0x1000000 << 0)
                 .toString(16))
             .substr(-6);
-    }, //随机颜色
+    }, //隨機顏色
     pageAdd: function(page) {
         if (getMyVar("page")) {
             putMyVar("page", (parseInt(page) + 1) + '');
         }
         return;
-    }, //翻页
+    }, //翻頁
     pageMoveto: function(page, pages) {
         var longClick = [{
-            title: "首页",
+            title: "首頁",
             js: $.toString(() => {
                 putMyVar("page", "1");
                 refreshPage();
                 return "hiker://empty";
             }),
         }, {
-            title: "上页",
+            title: "上頁",
             js: $.toString((page) => {
                 if (page > 1) {
                     putMyVar("page", (parseInt(page) - 1));
@@ -33,10 +33,10 @@ const Apollo = {
                 }
             }, page),
         }, {
-            title: "第" + page + "页",
+            title: "第" + page + "頁",
             js: "",
         }, {
-            title: "跳转",
+            title: "跳轉",
             js: $.toString(() => {
                 return $("").input(() => {
                     putMyVar("page", input);
@@ -46,7 +46,7 @@ const Apollo = {
         }];
         if (typeof(pages) != 'undefined') {
             var extra1 = {
-                title: "尾页" + pages,
+                title: "尾頁" + pages,
                 js: $.toString((pages) => {
                     putMyVar("page", pages);
                     refreshPage();
@@ -56,16 +56,16 @@ const Apollo = {
             longClick.push(extra1)
         }
         return longClick
-    }, //长按跳页
+    }, //長按跳頁
     data: {
         category: getMyVar('MissAV.category', '0'),
         subCate: getMyVar('MissAV.subCate', '0'),
     },
     baseParse: () => {
-        putMyVar("MY_TYPE", "主页");
+        putMyVar("MY_TYPE", "主頁");
         var page = getMyVar("page", MY_PAGE + "")
         let categoryList = [{
-            title: '推荐',
+            title: '推薦',
             path: '',
             type: 'video',
             sub: [{
@@ -75,13 +75,13 @@ const Apollo = {
                 title: '新作上市',
                 path: 'release',
             }, {
-                title: '今日热门',
+                title: '今日熱門',
                 path: 'today-hot',
             }, {
-                title: '本週热门',
+                title: '本週熱門',
                 path: 'weekly-hot',
             }, {
-                title: '本月热门',
+                title: '本月熱門',
                 path: 'monthly-hot',
             }]
         }, {
@@ -90,7 +90,7 @@ const Apollo = {
             type: 'video',
             sub: []
         }, {
-            title: '无码',
+            title: '無碼',
             path: '',
             type: 'video',
             sub: [{
@@ -103,7 +103,7 @@ const Apollo = {
                 title: 'HEYZO ',
                 path: 'heyzo'
             }, {
-                title: '东京热',
+                title: '東京熱',
                 path: 'tokyohot'
             }, {
                 title: '一本道',
@@ -130,10 +130,10 @@ const Apollo = {
                 title: '人妻斩',
                 path: 'marriedslash'
             }, {
-                title: '顽皮 4610',
+                title: '頑皮 4610',
                 path: 'naughty4610'
             }, {
-                title: '顽皮 0930',
+                title: '頑皮 0930',
                 path: 'naughty0930'
             }, ]
         }, {
@@ -166,11 +166,11 @@ const Apollo = {
                 },
             ]
         }, {
-            title: '国产',
+            title: '國產',
             path: '',
             type: 'video',
             sub: [{
-                title: '麻豆传媒',
+                title: '麻豆傳媒',
                 path: 'madou'
             }, {
                 title: 'TWAV',
@@ -185,27 +185,27 @@ const Apollo = {
             type: 'video',
             sub: []
         }, {
-            title: 'AV影评',
+            title: 'AV影評',
             path: 'articles',
             type: 'articles',
             sub: []
         }, {
-            title: '女优一览',
+            title: '女優一覽',
             path: 'actresses',
             type: 'avatar',
             sub: []
         }, {
-            title: '女优排行',
+            title: '女優排行',
             path: 'actresses/ranking',
             type: 'avatar',
             sub: []
         }, {
-            title: '类型',
+            title: '類型',
             path: 'genres',
             type: 'tags',
             sub: []
         }, {
-            title: '发行商',
+            title: '發行商',
             path: 'makers',
             type: 'tags',
             sub: []
@@ -295,7 +295,7 @@ const Apollo = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
             }
         });
-        //动态分类
+        //动态分類
         Apollo.DynamicSort(html)
         Apollo.ActorSort(url, html)
         //搜索
@@ -367,28 +367,28 @@ const Apollo = {
         setResult(Apollo.d)
     },
 
-    //动态分类
+    //动态分類
     DynamicSort: (html) => {
-        const 分类颜色 = Apollo.getRangeColors()
-        const 大类定位 = ".mb-6:has(.relative)&&.relative"
-        const 拼接分类 = ".mb-3&&.relative"
-        const 小类定位 = "body&&.block"
-        const 分类标题 = "Text"
-        const 分类链接 = "a&&href"
+        const 分類顏色 = Apollo.getRangeColors()
+        const 大類定位 = ".mb-6:has(.relative)&&.relative"
+        const 拼接分類 = ".mb-3&&.relative"
+        const 小類定位 = "body&&.block"
+        const 分類标题 = "Text"
+        const 分類链接 = "a&&href"
         try {
-            if (typeof(拼接分类) != 'undefined' && 拼接分类 != '') {
-                var categories = pdfa(html, 大类定位).concat(pdfa(html, 拼接分类))
+            if (typeof(拼接分類) != 'undefined' && 拼接分類 != '') {
+                var categories = pdfa(html, 大類定位).concat(pdfa(html, 拼接分類))
             } else {
-                var categories = pdfa(html, 大类定位)
+                var categories = pdfa(html, 大類定位)
             }
         } catch {
-            var categories = pdfa(html, 大类定位)
+            var categories = pdfa(html, 大類定位)
         }
         let init_cate = []
         for (let i = 0; i < 20; i++) {
             init_cate.push("0")
         }
-        if (getMyVar("MY_TYPE") == "主页") {
+        if (getMyVar("MY_TYPE") == "主頁") {
             var cate_temp_json = getMyVar("sort", JSON.stringify(init_cate))
         } else {
             var cate_temp_json = getMyVar("ysort", JSON.stringify(init_cate))
@@ -400,17 +400,17 @@ const Apollo = {
                 col_type: "blank_block"
             });
             categories.forEach((category, index) => {
-                let sub_categories = pdfa(category, 小类定位);
+                let sub_categories = pdfa(category, 小類定位);
                 sub_categories.forEach((item, key) => {
-                    let title = pdfh(item, 分类标题)
+                    let title = pdfh(item, 分類标题)
                     if (typeof(排除) != 'undefined' && 排除 != '') {
                         title = title.replace(new RegExp(排除, "g"), "")
                     };
                     Apollo.d.push({
-                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor(分类颜色) : title,
-                        url: $(pdfh(item, 分类链接) + '#noLoading#').lazyRule((params) => {
+                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor("#FFFFFF") : title,
+                        url: $(pdfh(item, 分類链接) + '#noLoading#').lazyRule((params) => {
                             params.cate_temp[params.index] = params.key.toString()
-                            if (getMyVar("MY_TYPE") == "主页") {
+                            if (getMyVar("MY_TYPE") == "主頁") {
                                 putMyVar('sort', JSON.stringify(params.cate_temp));
                                 putMyVar("url", input);
                             } else {
@@ -438,22 +438,22 @@ const Apollo = {
             })
         }
     },
-    //女优sort
+    //女優sort
     ActorSort: (url, html) => {
-        const 分类颜色 = Apollo.getRangeColors()
-        const 大类定位 = "body&&.grid.mb-3&&select"
-        const 拼接分类 = ""
-        const 小类定位 = "body&&option"
-        const 分类标题 = "Text"
-        const 分类链接 = "option&&value"
+        const 分類顏色 = Apollo.getRangeColors()
+        const 大類定位 = "body&&.grid.mb-3&&select"
+        const 拼接分類 = ""
+        const 小類定位 = "body&&option"
+        const 分類标题 = "Text"
+        const 分類链接 = "option&&value"
         try {
-            if (typeof(拼接分类) != 'undefined' && 拼接分类 != '') {
-                var categories = pdfa(html, 大类定位).concat(pdfa(html, 拼接分类))
+            if (typeof(拼接分類) != 'undefined' && 拼接分類 != '') {
+                var categories = pdfa(html, 大類定位).concat(pdfa(html, 拼接分類))
             } else {
-                var categories = pdfa(html, 大类定位)
+                var categories = pdfa(html, 大類定位)
             }
         } catch {
-            var categories = pdfa(html, 大类定位)
+            var categories = pdfa(html, 大類定位)
         }
         let init_cate = []
         for (let i = 0; i < 20; i++) {
@@ -467,15 +467,15 @@ const Apollo = {
                 col_type: "blank_block"
             });
             categories.forEach((category, index) => {
-                let sub_categories = pdfa(category, 小类定位);
+                let sub_categories = pdfa(category, 小類定位);
                 sub_categories.forEach((item, key) => {
-                    let title = pdfh(item, 分类标题)
+                    let title = pdfh(item, 分類标题)
                     if (typeof(排除) != 'undefined' && 排除 != '') {
                         title = title.replace(new RegExp(排除, "g"), "")
                     };
                     Apollo.d.push({
-                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor(分类颜色) : title,
-                        url: $(pdfh(item, 分类链接) + '#noLoading#').lazyRule((url, params) => {
+                        title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor("#FFFFFF") : title,
+                        url: $(pdfh(item, 分類链接) + '#noLoading#').lazyRule((url, params) => {
                             params.cate_temp[params.index] = params.key.toString()
                             if (params.index == 0) {
                                 input = input ? ("&height=" + input) : ""
@@ -521,7 +521,7 @@ const Apollo = {
         log(MY_URL)
         if (MY_PAGE == 1) {
             Apollo.d.push({
-                title: "——女优——",
+                title: "——女優——",
                 url: "hiker://empty"
             });
             try {
@@ -602,16 +602,16 @@ const Apollo = {
         let num, actressesList, tagsList, series, makers, directors, labelsList
         text_secondary_list.forEach(item => {
             let current_title = pdfh(item, 'span&&Text')
-            let actressName = '女优'
+            let actressName = '女優'
             if (current_title === '番号:') {
                 num = pdfh(item, '.font-medium&&Text').replace("-UNCENSORED-LEAK", "").replace("-CHINESE-SUBTITLE", "")
             } else if (current_title === actressName + ':') {
                 actressesList = pdfa(item, '.text-secondary&&a')
-            } else if (current_title === '类型:') {
+            } else if (current_title === '類型:') {
                 tagsList = pdfa(item, '.text-secondary&&a')
             } else if (current_title === '系列:') {
                 series = pdfa(item, '.text-secondary&&a')[0]
-            } else if (current_title === '发行商:') {
+            } else if (current_title === '發行商:') {
                 makers = pdfa(item, '.text-secondary&&a')[0]
             } else if (current_title === '导演:') {
                 directors = pdfa(item, '.text-secondary&&a')[0]
@@ -619,7 +619,7 @@ const Apollo = {
                 labelsList = pdfa(item, '.text-secondary&&a')
             }
         })
-        var 日期 = pdfh(html, 'body&&.text-secondary:matches(发行日期:)&&Text');
+        var 日期 = pdfh(html, 'body&&.text-secondary:matches(發行日期:)&&Text');
         if (日期.trim() != "") {
             Apollo.d.push({
                 title: '‘‘’’' + 日期.fontcolor("#FF0000"),
@@ -688,7 +688,7 @@ const Apollo = {
         }
         if (tagsList) {
             Apollo.d.push({
-                title: '类型 : ',
+                title: '類型 : ',
                 url: Apollo.empty,
                 col_type: 'flex_button',
                 extra: {
@@ -745,7 +745,7 @@ const Apollo = {
         }
         if (makers) {
             Apollo.d.push({
-                title: '发行商 : ',
+                title: '發行商 : ',
                 url: Apollo.empty,
                 col_type: 'scroll_button',
                 extra: {
@@ -888,7 +888,7 @@ const Apollo = {
         log(result)
         const videoList = pdfa(html, '.grid.grid-cols-2.gap-5&&.relative')
         Apollo.d.push({
-            title: '推荐视频',
+            title: '推薦视频',
             url: Apollo.empty,
             col_type: 'text_center_1',
             extra: {
@@ -940,9 +940,9 @@ const Apollo = {
             return input
         }
     },
-    BTshowParse: (识别码) => {
+    BTshowParse: (识别碼) => {
         try {
-            var btsow = "https://btsow.motorcycles/search/" + 识别码
+            var btsow = "https://btsow.motorcycles/search/" + 识别碼
             var BTlist = pdfa(fetch(btsow), "body&&.data-list&&.row:not(.hidden-xs)");
             if (BTlist.length > 0) {
                 Apollo.d.push({
