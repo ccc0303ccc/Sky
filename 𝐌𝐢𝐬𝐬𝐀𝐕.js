@@ -972,7 +972,7 @@ const Sky = {
                 title: title,
                 url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                     if (Sky.taskList.length > 0) {
                         be(Sky.taskList)
