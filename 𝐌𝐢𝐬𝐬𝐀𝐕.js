@@ -1132,7 +1132,7 @@ const Sky = {
             var lazy = $(`#noLoading#`).lazyRule((dc, sdc, m, cs) => {
                 var show = storage0.getItem(m, '0');
                 var title = findItem('desc').title;
-                var re = /(<\/big><br>.*?>).+/g;
+                var re = /(<\/small><br>.*?>).+/g;
                 var exp = '展開:';
                 var ret = '收起:';
                 if (show == '1') {
@@ -1140,7 +1140,7 @@ const Sky = {
                         title: title
                             .replace(ret, exp)
                             .replace(re, '$1' + sdc + '</small>')
-                            .replace(/(<\/big><br>\<font color=").*?(">)/, '$1' + cs.hide + '$2')
+                            .replace(/(<\/small><br>\<font color=").*?(">)/, '$1' + cs.hide + '$2')
 
                     })
                     storage0.setItem(m, '0');
@@ -1149,17 +1149,17 @@ const Sky = {
                         title: title
                             .replace(exp, ret)
                             .replace(re, '$1' + dc + '</small>')
-                            .replace(/(<\/big><br>\<font color=").*?(">)/, '$1' + cs.show + '$2')
+                            .replace(/(<\/small><br>\<font color=").*?(">)/, '$1' + cs.show + '$2')
                     })
                     storage0.setItem(m, '1');
                 }
                 return `hiker://empty`
             }, desc, sdesc, mark, colors)
-            var sc = storage0.getItem(mark, '0') == '0' ? '展開:' : '收起:';
-            var dc = storage0.getItem(mark, '0') == '0' ? sdesc : desc;
-            var cs = storage0.getItem(mark, '0') == '0' ? colors.hide : colors.show;
-            arr.push({
-                title: '☠' + '<b><font color="#FFBF00">劇情簡介	</font></b>' + "<middle><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></big><br><font color="' + cs + '">' + `${dc}` + '</small>',
+                var sc = storage0.getItem(mark, '0') == '0' ? '展開:' : '收起:';
+                var dc = storage0.getItem(mark, '0') == '0' ? sdesc : desc;
+                var cs = storage0.getItem(mark, '0') == '0' ? colors.hide : colors.show;
+                d.push({
+                title: '☠' + '<b><font color="#FFBF00">劇情簡介	</font></b>' + "<small><a style='text-decoration: none;' href='" + lazy + "'>" + sc + '</a></small><br><font color="' + cs + '">' + `${dc}` + '</small>',
                 col_type: 'rich_text',
                 extra: {
                     id: 'desc',
@@ -1169,7 +1169,6 @@ const Sky = {
                 }
             })
         }
-
         setDesc(Sky.d, desc, 90);
     },
 }
