@@ -809,7 +809,7 @@ const Apollo = {
             labelsList.forEach(label => {
                 let label_title = pdfh(label, 'a&&Text')
                 Apollo.d.push({
-                    title: "““””" + label_title.fontcolor("#FFFFFF")label_title,
+                    title: "““””" + label_title.fontcolor("#FFFFFF"),
                     url: $(pdfh(label, 'a&&href') + '?page=fypage#noHistory#').rule((
                         label_title) => {
                         const Apollo = $.require('hiker://page/Apollo')
