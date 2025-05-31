@@ -1034,7 +1034,7 @@ const Sky = {
         list.forEach(item => {
             Sky.d.push({
                 //title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
-                title: '<small>' + pdfh(item, 'h4&Text') + '\n' + pdfh(item, '.text-nord10&&Text') + '\n' + pdfh(item, '.text-nord10&&Text') + '\n' + pdfh(item, '.text-nord10,1&&Text')
+                title: '<small>' + pdfh(item, 'h4&Text') + '\n' + pdfh(item, '.text-nord10&&Text') + '\n' + pdfh(item, '.text-nord10&&Text') + '\n' + pdfh(item, '.text-nord10,1&&Text'),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
                     Sky.yijiParse(MY_URL)
