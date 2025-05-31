@@ -1,4 +1,4 @@
-const Apollo = {
+const Sky = {
     version: "20250509",
     empty: 'hiker://empty',
     url: "https://missav.live/dm45/",
@@ -224,14 +224,14 @@ const Apollo = {
                 path: 'site/supjav',
             }, ]
         }, ]
-        const currentCate = categoryList[Apollo.data.category]
+        const currentCate = categoryList[Sky.data.category]
         let url
         var type = currentCate.type
         var path = currentCate.path
         if (currentCate.sub.length > 0) {
-            url = getMyVar("url", Apollo.url + currentCate.sub[Apollo.data.subCate].path)
+            url = getMyVar("url", Sky.url + currentCate.sub[Sky.data.subCate].path)
         } else {
-            url = getMyVar("url", Apollo.url + currentCate.path)
+            url = getMyVar("url", Sky.url + currentCate.path)
         }
         url = url.replace(/(\?page=\d+|\&page=\d+|$)/, (match) => {
             if (match.startsWith('?') || match.startsWith('&')) {
@@ -243,17 +243,17 @@ const Apollo = {
                 return (url.includes('?') ? '&page=' : '?page=') + page;
             }
         });
-        Apollo.pageAdd(page)
+        Sky.pageAdd(page)
         if (url.includes("search")) {
             type = "search"
         }
         log(url)
         if (MY_PAGE == 1) {
             categoryList.forEach((cate, index) => {
-                Apollo.d.push({
-                    title: parseInt(Apollo.data.category) === index ?
+                Sky.d.push({
+                    title: parseInt(Sky.data.category) === index ?
                         '‘‘’’' + cate.title.fontcolor("#FFFFFF") : cate.title,
-                    url: $(Apollo.empty + "#noLoading#").lazyRule((index) => {
+                    url: $(Sky.empty + "#noLoading#").lazyRule((index) => {
                         putMyVar("MissAV.category", index.toString())
                         putMyVar("MissAV.subCate", '0')
                         clearMyVar("url")
@@ -262,20 +262,20 @@ const Apollo = {
                         return "hiker://empty"
                     }, index),
                     extra: {
-                        'backgroundColor': parseInt(Apollo.data.category) === index ? Apollo.getRangeColors() : ''
+                        'backgroundColor': parseInt(Sky.data.category) === index ? Sky.getRangeColors() : ''
                     },
                     col_type: 'scroll_button',
                 })
             })
             if (currentCate.sub.length > 0) {
-                Apollo.d.push({
+                Sky.d.push({
                     col_type: 'blank_block',
                 })
                 currentCate.sub.forEach((cate, index) => {
-                    Apollo.d.push({
-                        title: parseInt(Apollo.data.subCate) === index ?
+                    Sky.d.push({
+                        title: parseInt(Sky.data.subCate) === index ?
                             '‘‘’’' + cate.title.fontcolor("#FFFFFF") : cate.title,
-                        url: $(Apollo.empty + "#noLoading#").lazyRule((index) => {
+                        url: $(Sky.empty + "#noLoading#").lazyRule((index) => {
                             putMyVar("MissAV.subCate", index.toString());
                             clearMyVar("url")
                             clearMyVar("page")
@@ -283,7 +283,7 @@ const Apollo = {
                             return "hiker://empty"
                         }, index),
                         extra: {
-                            'backgroundColor': parseInt(Apollo.data.subCate) === index ? Apollo.getRangeColors() : ''
+                            'backgroundColor': parseInt(Sky.data.subCate) === index ? Sky.getRangeColors() : ''
                         },
                         col_type: 'scroll_button',
                     })
@@ -295,12 +295,12 @@ const Apollo = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
             }
         });
-        //动态分類
-        Apollo.DynamicSort(html)
-        Apollo.ActorSort(url, html)
+        //動態分類
+        Sky.DynamicSort(html)
+        Sky.ActorSort(url, html)
         //搜索
         if (page == 1) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: "搜索",
                 url: $.toString((url) => {
                     if (input.trim() != "") {
@@ -323,22 +323,22 @@ const Apollo = {
 
         switch (type) {
             case 'video':
-                Apollo.videoType(html, page)
+                Sky.videoType(html, page)
                 break
             case 'articles':
-                Apollo.articlesType(html, page)
+                Sky.articlesType(html, page)
                 break
             case 'avatar':
                 if ((path === 'actresses/ranking' && page == 1) || path !== 'actresses/ranking') {
-                    Apollo.avatarType(html, page)
+                    Sky.avatarType(html, page)
                 }
                 break
             case 'tags':
-                Apollo.tagsType(html, page)
+                Sky.tagsType(html, page)
                 break
             case 'search':
                 if (MY_PAGE == 1) {
-                    Apollo.d.push({
+                    Sky.d.push({
                         title: '““””' + "搜索結果".fontcolor("#FFBF00"),
                         url: "hiker://empty",
                         col_type: "text_1",
@@ -347,29 +347,29 @@ const Apollo = {
                         }
                     })
                     try {
-                        Apollo.avatarType(html, page)
+                        Sky.avatarType(html, page)
                     } catch {}
-                    Apollo.d.push({
+                    Sky.d.push({
                         col_type: "blank_block"
                     })
                     try {
-                        Apollo.videoType(html, page)
+                        Sky.videoType(html, page)
                     } catch {}
                 } else {
                     try {
-                        Apollo.videoType(html, page)
+                        Sky.videoType(html, page)
                     } catch {}
                 }
                 break
             default:
-                Apollo.videoType(html, page)
+                Sky.videoType(html, page)
         }
-        setResult(Apollo.d)
+        setResult(Sky.d)
     },
 
-    //动态分類
+    //動態分類
     DynamicSort: (html) => {
-        const 分類顏色 = Apollo.getRangeColors()
+        const 分類顏色 = Sky.getRangeColors()
         const 大類定位 = ".mb-6:has(.relative)&&.relative"
         const 拼接分類 = ".mb-3&&.relative"
         const 小類定位 = "body&&.block"
@@ -396,7 +396,7 @@ const Apollo = {
         var cate_temp = JSON.parse(cate_temp_json)
 
         if (MY_PAGE == 1) {
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: "blank_block"
             });
             categories.forEach((category, index) => {
@@ -406,7 +406,7 @@ const Apollo = {
                     if (typeof(排除) != 'undefined' && 排除 != '') {
                         title = title.replace(new RegExp(排除, "g"), "")
                     };
-                    Apollo.d.push({
+                    Sky.d.push({
                         title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor("#FFFFFF") : title,
                         url: $(pdfh(item, 分類連結) + '#noLoading#').lazyRule((params) => {
                             params.cate_temp[params.index] = params.key.toString()
@@ -428,11 +428,11 @@ const Apollo = {
                         }),
                         col_type: 'scroll_button',
                         extra: {
-                            'backgroundColor': key.toString() === cate_temp[index] ? Apollo.getRangeColors() : ''
+                            'backgroundColor': key.toString() === cate_temp[index] ? Sky.getRangeColors() : ''
                         }
                     })
                 })
-                Apollo.d.push({
+                Sky.d.push({
                     col_type: "blank_block"
                 });
             })
@@ -440,7 +440,7 @@ const Apollo = {
     },
     //女優sort
     ActorSort: (url, html) => {
-        const 分類顏色 = Apollo.getRangeColors()
+        const 分類顏色 = Sky.getRangeColors()
         const 大類定位 = "body&&.grid.mb-3&&select"
         const 拼接分類 = ""
         const 小類定位 = "body&&option"
@@ -463,7 +463,7 @@ const Apollo = {
         var cate_temp = JSON.parse(cate_temp_json)
 
         if (MY_PAGE == 1) {
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: "blank_block"
             });
             categories.forEach((category, index) => {
@@ -473,7 +473,7 @@ const Apollo = {
                     if (typeof(排除) != 'undefined' && 排除 != '') {
                         title = title.replace(new RegExp(排除, "g"), "")
                     };
-                    Apollo.d.push({
+                    Sky.d.push({
                         title: key.toString() === cate_temp[index] ? '““””' + title.fontcolor("#FFFFFF") : title,
                         url: $(pdfh(item, 分類連結) + '#noLoading#').lazyRule((url, params) => {
                             params.cate_temp[params.index] = params.key.toString()
@@ -506,11 +506,11 @@ const Apollo = {
                         }),
                         col_type: 'scroll_button',
                         extra: {
-                            'backgroundColor': key.toString() === cate_temp[index] ? Apollo.getRangeColors() : ''
+                            'backgroundColor': key.toString() === cate_temp[index] ? Sky.getRangeColors() : ''
                         }
                     })
                 })
-                Apollo.d.push({
+                Sky.d.push({
                     col_type: "blank_block"
                 });
             })
@@ -520,26 +520,26 @@ const Apollo = {
     searchParse: () => {
         log(MY_URL)
         if (MY_PAGE == 1) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: "——女優——",
                 url: "hiker://empty"
             });
             try {
-                Apollo.avatarType(getResCode());
+                Sky.avatarType(getResCode());
             } catch {}
-            Apollo.d.push({
+            Sky.d.push({
                 title: "——影片——",
                 url: "hiker://empty"
             });
             try {
-                Apollo.videoType(getResCode());
+                Sky.videoType(getResCode());
             } catch {}
         } else {
             try {
-                Apollo.videoType(getResCode());
+                Sky.videoType(getResCode());
             } catch {}
         }
-        setResult(Apollo.d)
+        setResult(Sky.d)
     },
 
     //二級
@@ -549,21 +549,21 @@ const Apollo = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
             }
         });
-        Apollo.d.push({
+        Sky.d.push({
             img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
             url: 'hiker://empty',
             col_type: 'pic_1_full',
         })
         const title = pdfh(html, 'h1&&Text')
-        log(url)
+        //log(url)
         //setPageTitle(title)
         
-        Apollo.d.push({
+        Sky.d.push({
             desc: pdfh(html, '.text-secondary.break-all.line-clamp-2&&Text'),
-            pic_url: pdfh(html, 'meta[property=og:image]&&content') + '@Referer=' + Apollo.url,
-            url: $(Apollo.empty + '#noHistory#').lazyRule((html, url) => {
+            pic_url: pdfh(html, 'meta[property=og:image]&&content') + '@Referer=' + Sky.url,
+            url: $(Sky.empty + '#noHistory#').lazyRule((html, url) => {
                 eval(html.match(/eval.*?source.*\n/)[0])
-                // 獲取画质列表，併併去最高画质
+                // 獲取畫質列表，併去最高畫質
                 let group_quality = fetch(source, {
                     headers: {
                         "origin": getHome(url)
@@ -571,12 +571,12 @@ const Apollo = {
                 })
                 hghest_quality = group_quality.match(/^(.*)\.m3u8$/gm).map(v => source.replace("playlist.m3u8", v))
                 name_quality = group_quality.match(/RESOLUTION=.*$/gm).map(n => n.replace("RESOLUTION=", ""))
-                // 按分辨率降序排序 分辨率 數组，併併同时调整 hghest_quality
+                // 按分辨率降序排序 分辨率 數組，併同時调整 hghest_quality
                 var sortedData = name_quality.map((name, index) => ({
                     name,
                     url: hghest_quality[index]
                 })).sort((a, b) => b.name.match(/(\d+)/)[1] - a.name.match(/(\d+)/)[1]);
-                // 分開排序后的 names 和 urls 數组
+                // 分開排序後的 names 和 urls 數組
                 var sortedNames = sortedData.map(item => item.name);
                 var sortedUrls = sortedData.map(item => item.url);
                 let playlist = JSON.stringify({
@@ -587,10 +587,10 @@ const Apollo = {
                     })
                 });
                 return playlist;
-            }, html, Apollo.url),
+            }, html, Sky.url),
             col_type: 'pic_1_full',
         })
-        Apollo.d.push({
+        Sky.d.push({
             title: '““””' + title.fontcolor("#FF8C00").small(),
             url: url,
             col_type: 'text_1',
@@ -600,7 +600,7 @@ const Apollo = {
         })
         var content = pdfh(html, '.text-secondary.break-all.line-clamp-2&&Text');
         if (content.trim() != "") {
-            Apollo.setDesc(content)
+            Sky.setDesc(content)
         }
 
         const text_secondary_list = pdfa(html, 'body&&.text-secondary')
@@ -626,7 +626,7 @@ const Apollo = {
         })
         var 日期 = pdfh(html, 'body&&.text-secondary:matches(發行日期:)&&Text');
         if (日期.trim() != "") {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '‘‘’’📆 ' + 日期.fontcolor("6A5ACD"),
                 url: "hiker://search?rule=𝐉𝐚𝐯𝐃𝐁&s=" + num,
                 col_type: 'text_1',
@@ -636,7 +636,7 @@ const Apollo = {
             })
         }
         if (num) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: "““””番號 : " + num.fontcolor("#FA7298"),
                 url: 'copy://' + num,
                 col_type: 'text_1',
@@ -647,7 +647,7 @@ const Apollo = {
         }
         var 標題 = pdfh(html, 'body&&.text-secondary:matches(標題)&&Text');
         if (標題.trim() != "") {
-            Apollo.d.push({
+            Sky.d.push({
                 title: 標題.fontcolor("#6A5ACD").small(),
                 url: 'hiker://empty',
                 col_type: 'rich_text',
@@ -656,30 +656,30 @@ const Apollo = {
                 }
             })
         }
-        Apollo.d.push({
+        Sky.d.push({
             col_type: 'line_blank'
         })
         if (actressesList) {
             actressesList.forEach((actresses, index) => {
                 let title = pdfh(actresses, 'a&&Text')
                 let url = pdfh(actresses, 'a&&href')
-                Apollo.taskList.push({
-                    func: Apollo.updateAvatar,
+                Sky.taskList.push({
+                    func: Sky.updateAvatar,
                     param: {
                         url: url,
                         index: 'avatar_' + index
                     },
                     id: 'avatar_' + index,
                 })
-                Apollo.d.push({
+                Sky.d.push({
                     title: "““””" + title.fontcolor("#1E90FF").small(),
                     desc: '演員',
-                    pic_url: Apollo.empty,
+                    pic_url: Sky.empty,
                     url: $(url + '?page=fypage#noHistory#').rule((title) => {
-                        const Apollo = $.require('hiker://page/Apollo')
+                        const Sky = $.require('hiker://page/Sky')
                         setPageTitle(title)
-                        Apollo.yijiParse(MY_URL)
-                        setResult(Apollo.d)
+                        Sky.yijiParse(MY_URL)
+                        setResult(Sky.d)
                     }, title),
                     col_type: 'icon_4_card',
                     extra: {
@@ -687,14 +687,14 @@ const Apollo = {
                     }
                 })
             })
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: 'line_blank'
             })
         }
         if (tagsList) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '類型 : ',
-                url: Apollo.empty,
+                url: Sky.empty,
                 col_type: 'flex_button',
                 extra: {
                     lineVisible: false
@@ -702,110 +702,109 @@ const Apollo = {
             })
             tagsList.forEach(tag => {
                 let tag_title = pdfh(tag, 'a&&Text')
-                Apollo.d.push({
+                Sky.d.push({
                     title: "““””" + tag_title.fontcolor("#FFFFFF"),
                     url: $(pdfh(tag, 'a&&href') + '?page=fypage#noHistory#').rule((tag_title) => {
-                        const Apollo = $.require('hiker://page/Apollo')
+                        const Sky = $.require('hiker://page/Sky')
                         setPageTitle(tag_title)
-                        Apollo.yijiParse(MY_URL)
-                        setResult(Apollo.d)
+                        Sky.yijiParse(MY_URL)
+                        setResult(Sky.d)
                     }, tag_title),
                     col_type: 'flex_button',
                     extra: {
-                        'backgroundColor': Apollo.getRangeColors()
+                        'backgroundColor': Sky.getRangeColors()
                     }
                 })
             })
-
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: 'blank_block'
             })
         }
         if (series) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '系列 : ',
-                url: Apollo.empty,
+                url: Sky.empty,
                 col_type: 'scroll_button',
                 extra: {
                     lineVisible: false
                 },
             })
             let series_title = pdfh(series, 'a&&Text')
-            Apollo.d.push({
+            Sky.d.push({
                 title: "““””" + series_title.fontcolor("#FFFFFF"),
                 url: $(pdfh(series, 'a&&href') + '?page=fypage#noHistory#').rule((series_title) => {
-                    const Apollo = $.require('hiker://page/Apollo')
+                    const Sky = $.require('hiker://page/Sky')
                     setPageTitle(series_title)
-                    Apollo.yijiParse(MY_URL)
-                    setResult(Apollo.d)
+                    Sky.yijiParse(MY_URL)
+                    setResult(Sky.d)
                 }, series_title),
                 col_type: 'scroll_button',
                 extra: {
-                    'backgroundColor': Apollo.getRangeColors()
+                    'backgroundColor': Sky.getRangeColors()
                 }
             })
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: 'blank_block'
             })
         }
         if (makers) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '發行商 : ',
-                url: Apollo.empty,
+                url: Sky.empty,
                 col_type: 'scroll_button',
                 extra: {
                     lineVisible: false
                 },
             })
             let makers_title = pdfh(makers, 'a&&Text')
-            Apollo.d.push({
+            Sky.d.push({
                 title: "““””" + makers_title.fontcolor("#FFFFFF"),
                 url: $(pdfh(makers, 'a&&href') + '?page=fypage#noHistory#').rule((makers_title) => {
-                    const Apollo = $.require('hiker://page/Apollo')
+                    const Sky = $.require('hiker://page/Sky')
                     setPageTitle(makers_title)
-                    Apollo.yijiParse(MY_URL)
-                    setResult(Apollo.d)
+                    Sky.yijiParse(MY_URL)
+                    setResult(Sky.d)
                 }, makers_title),
                 col_type: 'scroll_button',
                 extra: {
-                    'backgroundColor': Apollo.getRangeColors()
+                    'backgroundColor': Sky.getRangeColors()
                 }
             })
-            /*Apollo.d.push({
+            /*Sky.d.push({
                 col_type: 'line_blank'
             })*/
         }
         if (directors) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '導演 : ',
-                url: Apollo.empty,
+                url: Sky.empty,
                 col_type: 'scroll_button',
                 extra: {
                     lineVisible: false
                 },
             })
             let directors_title = pdfh(directors, 'a&&Text')
-            Apollo.d.push({
+            Sky.d.push({
                 title: "““””" + directors_title.fontcolor("#FFFFFF"),
                 url: $(pdfh(directors, 'a&&href') + '?page=fypage#noHistory#').rule((directors_title) => {
-                    const Apollo = $.require('hiker://page/Apollo')
+                    const Sky = $.require('hiker://page/Sky')
                     setPageTitle(directors_title)
-                    Apollo.yijiParse(MY_URL)
-                    setResult(Apollo.d)
+                    Sky.yijiParse(MY_URL)
+                    setResult(Sky.d)
                 }, directors_title),
                 col_type: 'scroll_button',
                 extra: {
-                    'backgroundColor': Apollo.getRangeColors()
+                    'backgroundColor': Sky.getRangeColors()
                 }
             })
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: 'blank_block'
             })
         }
         if (labelsList) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '標簽 : ',
-                url: Apollo.empty,
+                url: Sky.empty,
                 col_type: 'scroll_button',
                 extra: {
                     lineVisible: false
@@ -813,59 +812,59 @@ const Apollo = {
             })
             labelsList.forEach(label => {
                 let label_title = pdfh(label, 'a&&Text')
-                Apollo.d.push({
+                Sky.d.push({
                     title: "““””" + label_title.fontcolor("#FFFFFF"),
                     url: $(pdfh(label, 'a&&href') + '?page=fypage#noHistory#').rule((
                         label_title) => {
-                        const Apollo = $.require('hiker://page/Apollo')
+                        const Sky = $.require('hiker://page/Sky')
                         setPageTitle(label_title)
-                        Apollo.yijiParse(MY_URL)
-                        setResult(Apollo.d)
+                        Sky.yijiParse(MY_URL)
+                        setResult(Sky.d)
                     }, label_title),
                     col_type: 'scroll_button',
                     extra: {
-                        'backgroundColor': Apollo.getRangeColors()
+                        'backgroundColor': Sky.getRangeColors()
                     }
                 })
             })
-            Apollo.d.push({
+            Sky.d.push({
                 col_type: 'line_blank'
             })
         }
 
         const CiliList = pdfa(html, '.min-w-full&&tr')
         if (CiliList.length > 0) {
-            Apollo.d.push({
+            Sky.d.push({
                 title: '本小站磁力' + CiliList.length + "條",
-                url: Apollo.empty,
+                url: Sky.empty,
                 col_type: 'text_center_1',
                 extra: {
                     lineVisible: false
                 },
             })
         } else {
-            //Apollo.BTshowParse(num);
+            //Sky.BTshowParse(num);
         }
         CiliList.forEach((item, index) => {
-            Apollo.d.push({
+            Sky.d.push({
                 title: pdfh(item, 'a&&Text'),
                 url: pdfh(item, 'a&&href'),
-                desc: (index + 1).toString().padStart(2, "0") + " 💽 " + Apollo.formatNumber(pdfh('<table>' + item + '</table>', 'td,1&&Text')) + " 📆 " + pdfh('<table>' + item + '</table>', 'td,2&&Text'),
+                desc: (index + 1).toString().padStart(2, "0") + " 💽 " + Sky.formatNumber(pdfh('<table>' + item + '</table>', 'td,1&&Text')) + " 📆 " + pdfh('<table>' + item + '</table>', 'td,2&&Text'),
                 pic_url: "https://img.vinua.cn/images/Ooz4R.jpeg",
                 col_type: 'avatar'
             })
         })
 
-        Apollo.d.push({
+        Sky.d.push({
             title: '““””' + "一已經到底了一".fontcolor("grey")
                 .small(),
-            url: Apollo.empty,
+            url: Sky.empty,
             col_type: "text_center_1",
             extra: {
                 lineVisible: false
             }
         })
-        setResult(Apollo.d)
+        setResult(Sky.d)
     },
     formatNumber: function(input) {
         // 分離整數、小數和單位
@@ -890,7 +889,7 @@ const Apollo = {
             var btsow = "https://btsow.motorcycles/search/" + 识别碼
             var BTlist = pdfa(fetch(btsow), "body&&.data-list&&.row:not(.hidden-xs)");
             if (BTlist.length > 0) {
-                Apollo.d.push({
+                Sky.d.push({
                     title: 'BTshow磁力' + BTlist.length + "條",
                     url: btsow,
                     col_type: 'text_center_1',
@@ -901,9 +900,9 @@ const Apollo = {
             }
             BTlist.forEach((item, index) => {
                 var url = getMyVar("BTcili");
-                Apollo.d.push({
+                Sky.d.push({
                     title: '<b><small><font color="#4682B4"> ' + pdfh(item, 'a&&title') + '</font></small>',
-                    desc: (index + 1).toString().padStart(2, "0") + " 💽" + Apollo.formatNumber(pdfh(item, '.size&&Text')) + " 📆 " + pdfh(item, '.date&&Text'),
+                    desc: (index + 1).toString().padStart(2, "0") + " 💽" + Sky.formatNumber(pdfh(item, '.size&&Text')) + " 📆 " + pdfh(item, '.date&&Text'),
                     img: "https://img.vinua.cn/images/Ocqpj.png",
                     url: "https:" + pdfh(item, 'a&&href') + $('').lazyRule(() => {
                         var url = pdfh(request(input, {}), '#magnetOpen&&a&&href');
@@ -938,7 +937,7 @@ const Apollo = {
             }
         });
         log(url)
-        Apollo.pageAdd(page)
+        Sky.pageAdd(page)
         const html = fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
@@ -948,7 +947,7 @@ const Apollo = {
             var title = "““””" + pdfh(html, "body&&.rounded-full&&img&&alt").bold();
             var img = pdfh(html, "body&&.rounded-full&&img&&src");
             var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").fontcolor("#4169E1").small() + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1").small();
-            Apollo.d.push({
+            Sky.d.push({
                 title: title,
                 desc: desc,
                 img: img,
@@ -956,8 +955,8 @@ const Apollo = {
                 col_type: "movie_1_vertical_pic"
             })
         } catch {}
-        Apollo.DynamicSort(html)
-        Apollo.videoType(html, page)
+        Sky.DynamicSort(html)
+        Sky.videoType(html, page)
     },
 
     videoType: (html, page) => {
@@ -969,21 +968,21 @@ const Apollo = {
         const list = pdfa(html, 'body&&.thumbnail')
         list.forEach(item => {
             var title = pdfh(item, '.lozad&&alt');
-            Apollo.d.push({
+            Sky.d.push({
                 title: title,
                 url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
-                    const Apollo = $.require('hiker://page/Apollo')
-                    Apollo.videoParse(MY_URL)
-                    setResult(Apollo.d)
-                    if (Apollo.taskList.length > 0) {
-                        be(Apollo.taskList)
+                    const Sky = $.require('hiker://page/Sky')
+                    Sky.videoParse(MY_URL)
+                    setResult(Sky.d)
+                    if (Sky.taskList.length > 0) {
+                        be(Sky.taskList)
                     }
                 }),
-                pic_url: pdfh(item, '.lozad&&data-src').replace("cover-t", "cover-n") + '@Referer=' + Apollo.url,
+                pic_url: pdfh(item, '.lozad&&data-src').replace("cover-t", "cover-n") + '@Referer=' + Sky.url,
                 desc: pdfh(item, 'a&&alt').toUpperCase().replace("-CHINESE-SUBTITLE", "🀄️").replace("-UNCENSORED-LEAK", "✅🈚️") + "⏰" + pdfh(item, '.absolute,-1&&Text'),
                 col_type: 'movie_2',
                 extra: page ? {
-                    longClick: Apollo.pageMoveto(page, pages),
+                    longClick: Sky.pageMoveto(page, pages),
                     pageTitle: title
                 } : {
                     pageTitle: title
@@ -1000,25 +999,25 @@ const Apollo = {
         }
         const list = pdfa(html, '.grid&&.rounded-lg')
         list.forEach(item => {
-            Apollo.d.push({
+            Sky.d.push({
                 title: pdfh(item, 'img&&alt'),
                 url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
-                    const Apollo = $.require('hiker://page/Apollo')
+                    const Sky = $.require('hiker://page/Sky')
                     const html = fetch(MY_URL, {
                         headers: {
                             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0)'
                         }
                     })
-                    Apollo.d.push({
+                    Sky.d.push({
                         title: pdfh(html, 'article&&Html'),
                         col_type: 'rich_text'
                     })
-                    setResult(Apollo.d)
+                    setResult(Sky.d)
                 }),
-                pic_url: pdfh(item, 'img&&data-src') + '@Referer=' + Apollo.url,
+                pic_url: pdfh(item, 'img&&data-src') + '@Referer=' + Sky.url,
                 col_type: 'movie_2',
                 extra: page ? {
-                    longClick: Apollo.pageMoveto(page, pages)
+                    longClick: Sky.pageMoveto(page, pages)
                 } : ""
             })
         })
@@ -1033,18 +1032,18 @@ const Apollo = {
         }
         const list = pdfa(html, '.mx-auto.grid&&li')
         list.forEach(item => {
-            Apollo.d.push({
+            Sky.d.push({
                 title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
-                    const Apollo = $.require('hiker://page/Apollo')
-                    Apollo.yijiParse(MY_URL)
-                    setResult(Apollo.d)
+                    const Sky = $.require('hiker://page/Sky')
+                    Sky.yijiParse(MY_URL)
+                    setResult(Sky.d)
                 }),
                 //desc: 
-                pic_url: pdfh(item, 'img&&src') ? (pdfh(item, 'img&&src') + '@Referer=' + Apollo.url) : "https://thumbsnap.com/i/sySMQ7Mg.jpg",
+                pic_url: pdfh(item, 'img&&src') ? (pdfh(item, 'img&&src') + '@Referer=' + Sky.url) : "https://thumbsnap.com/i/sySMQ7Mg.jpg",
                 col_type: 'card_pic_3',
                 extra: page ? {
-                    longClick: Apollo.pageMoveto(page, pages)
+                    longClick: Sky.pageMoveto(page, pages)
                 } : ""
             })
         })
@@ -1059,16 +1058,16 @@ const Apollo = {
         }
         const list = pdfa(html, '.gap-4&&div')
         list.forEach(item => {
-            Apollo.d.push({
+            Sky.d.push({
                 title: pdfh(item, 'a&&Text'),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
-                    const Apollo = $.require('hiker://page/Apollo')
-                    Apollo.yijiParse(MY_URL)
-                    setResult(Apollo.d)
+                    const Sky = $.require('hiker://page/Sky')
+                    Sky.yijiParse(MY_URL)
+                    setResult(Sky.d)
                 }),
                 col_type: 'text_4',
                 extra: page ? {
-                    longClick: Apollo.pageMoveto(page, pages)
+                    longClick: Sky.pageMoveto(page, pages)
                 } : ""
             })
         })
@@ -1171,7 +1170,7 @@ const Apollo = {
             })
         }
 
-        setDesc(Apollo.d, desc, 90);
+        setDesc(Sky.d, desc, 90);
     },
 }
-$.exports = Apollo
+$.exports = Sky
