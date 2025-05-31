@@ -1036,7 +1036,7 @@ const Sky = {
                 title: pdfh(item, '.space-y-2&&Text').replace(/\(.*\)/, "").replace("影片", ""),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }),
                 //desc: 
@@ -1062,7 +1062,7 @@ const Sky = {
                 title: pdfh(item, 'a&&Text'),
                 url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
-                    Sky.yijiParse(MY_URL)
+                    Sky.videoParse(MY_URL)
                     setResult(Sky.d)
                 }),
                 col_type: 'text_4',
