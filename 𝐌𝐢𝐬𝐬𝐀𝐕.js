@@ -313,7 +313,7 @@ const Sky = {
                         return "confirm://搜索内容為空.js:'hiker://empty'"
                     }
                 }, url),
-                desc: '使用 + 號來結合多個關鍵字',
+                desc: 'ଘ(˵╹-╹)━✨•.,¸,.•*¯`•.,¸,.•*',
                 col_type: "input",
                 extra: {
                     defaultValue: getMyVar('keyword', '') || "",
@@ -674,7 +674,7 @@ const Sky = {
                 Sky.d.push({
                     title: "““””" + title.fontcolor("#1E90FF").small(),
                     desc: '演員',
-                    pic_url: Sky.empty ? Sky.empty : 'https://missav.live/img/favicon.ico',
+                    pic_url: Sky.empty,
                     url: $(url + '?page=fypage#noHistory##immersiveTheme#').rule((title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(title)
