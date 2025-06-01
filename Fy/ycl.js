@@ -2,7 +2,7 @@ let http;
 try {
     http = config.依赖.replace(/[^/]*$/, "");
 } catch (e) {
-    http = (readFile("hiker://files/rules/FYJK/git.txt") || "https://codeberg.org/suifeng/yin/raw/branch/master/ycl.js").replace(/[^/]*$/, "");
+    http = (readFile("hiker://files/rules/FYJK/git.txt") || "https://raw.githubusercontent.com/ccc0303ccc/Sky/main/Fy/ycl.js").replace(/[^/]*$/, "");
 };
 
 require(http + "public.js");
