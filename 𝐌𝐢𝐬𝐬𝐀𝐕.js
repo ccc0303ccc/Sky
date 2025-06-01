@@ -937,6 +937,9 @@ const Sky = {
             Sky.d.push({
                 col_type: 'line_blank',
             })
+            Sky.d.push({
+                col_type: 'big_blank_block',
+            })
         }
         url = getMyVar("yurl", url)
         url = url.replace(/(\?page=\d+|\&page=\d+|$)/, (match) => {
