@@ -934,6 +934,9 @@ const Sky = {
                 url: 'hiker://empty',
                 col_type: 'pic_1_full',
             })
+            Sky.d.push({
+                col_type: 'line_blank',
+            })
         }
         url = getMyVar("yurl", url)
         url = url.replace(/(\?page=\d+|\&page=\d+|$)/, (match) => {
