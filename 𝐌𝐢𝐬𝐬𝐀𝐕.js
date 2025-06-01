@@ -1066,7 +1066,7 @@ const Sky = {
         list.forEach(item => {
             Sky.d.push({
                 title: pdfh(item, 'a&&Text'),
-                url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
+                url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
                     Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
