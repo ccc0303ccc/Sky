@@ -1005,19 +1005,6 @@ const Sky = {
     },
 
     articlesType: (html, page) => {
-        if (page == 1) {
-            Sky.d.push({
-                img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
-                url: 'hiker://empty',
-                col_type: 'pic_1_full',
-            })
-            Sky.d.push({
-                col_type: 'line_blank',
-            })
-            Sky.d.push({
-                col_type: 'big_blank_block',
-            })
-        }
         try {
             var pages = pdfh(html, "body&&.mt-6.justify-between&&form&&Text").match(/\d+/)[0]
         } catch {
@@ -1051,6 +1038,19 @@ const Sky = {
 
 
     avatarType: (html, page) => {
+        if (page == 1) {
+            Sky.d.push({
+                img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
+                url: 'hiker://empty',
+                col_type: 'pic_1_full',
+            })
+            Sky.d.push({
+                col_type: 'line_blank',
+            })
+            Sky.d.push({
+                col_type: 'big_blank_block',
+            })
+        }
         try {
             var pages = pdfh(html, "body&&.mt-6.justify-between&&form&&Text").match(/\d+/)[0]
         } catch {
