@@ -178,6 +178,12 @@ const Sky = {
             }, {
                 title: 'Furuke',
                 path: 'furuke'
+            }, {
+                title: '韓國直播',
+                path: 'klive'
+            }, {
+                title: '中國直播',
+                path: 'clive'
             }, ]
         }, {
             title: 'VR',
