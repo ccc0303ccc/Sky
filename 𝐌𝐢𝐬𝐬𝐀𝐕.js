@@ -675,7 +675,7 @@ const Sky = {
                     title: "““””" + title.fontcolor("#1E90FF").small(),
                     desc: '演員',
                     pic_url: Sky.empty,
-                    url: $(url + '?page=fypage#noHistory##immersiveTheme#').rule((title) => {
+                    url: $(url + '?page=fypage#noHistory#').rule((title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(title)
                         Sky.yijiParse(MY_URL)
@@ -704,7 +704,7 @@ const Sky = {
                 let tag_title = pdfh(tag, 'a&&Text')
                 Sky.d.push({
                     title: "““””" + tag_title.fontcolor("#FFFFFF"),
-                    url: $(pdfh(tag, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule((tag_title) => {
+                    url: $(pdfh(tag, 'a&&href') + '?page=fypage#noHistory#').rule((tag_title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(tag_title)
                         Sky.yijiParse(MY_URL)
@@ -732,7 +732,7 @@ const Sky = {
             let series_title = pdfh(series, 'a&&Text')
             Sky.d.push({
                 title: "““””" + series_title.fontcolor("#FFFFFF"),
-                url: $(pdfh(series, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule((series_title) => {
+                url: $(pdfh(series, 'a&&href') + '?page=fypage#noHistory#').rule((series_title) => {
                     const Sky = $.require('hiker://page/Sky')
                     setPageTitle(series_title)
                     Sky.yijiParse(MY_URL)
@@ -759,7 +759,7 @@ const Sky = {
             let makers_title = pdfh(makers, 'a&&Text')
             Sky.d.push({
                 title: "““””" + makers_title.fontcolor("#FFFFFF"),
-                url: $(pdfh(makers, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule((makers_title) => {
+                url: $(pdfh(makers, 'a&&href') + '?page=fypage#noHistory#').rule((makers_title) => {
                     const Sky = $.require('hiker://page/Sky')
                     setPageTitle(makers_title)
                     Sky.yijiParse(MY_URL)
@@ -786,7 +786,7 @@ const Sky = {
             let directors_title = pdfh(directors, 'a&&Text')
             Sky.d.push({
                 title: "““””" + directors_title.fontcolor("#FFFFFF"),
-                url: $(pdfh(directors, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule((directors_title) => {
+                url: $(pdfh(directors, 'a&&href') + '?page=fypage#noHistory#').rule((directors_title) => {
                     const Sky = $.require('hiker://page/Sky')
                     setPageTitle(directors_title)
                     Sky.yijiParse(MY_URL)
@@ -814,7 +814,7 @@ const Sky = {
                 let label_title = pdfh(label, 'a&&Text')
                 Sky.d.push({
                     title: "““””" + label_title.fontcolor("#FFFFFF"),
-                    url: $(pdfh(label, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule((
+                    url: $(pdfh(label, 'a&&href') + '?page=fypage#noHistory#').rule((
                         label_title) => {
                         const Sky = $.require('hiker://page/Sky')
                         setPageTitle(label_title)
@@ -928,19 +928,6 @@ const Sky = {
             clearMyVar("ysort");
             clearMyVar("page")
         }));
-        if (page == 1) {
-            Sky.d.push({
-                img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
-                url: 'hiker://empty',
-                col_type: 'pic_1_full',
-            })
-            Sky.d.push({
-                col_type: 'line_blank',
-            })
-            Sky.d.push({
-                col_type: 'big_blank_block',
-            })
-        }
         url = getMyVar("yurl", url)
         url = url.replace(/(\?page=\d+|\&page=\d+|$)/, (match) => {
             if (match.startsWith('?') || match.startsWith('&')) {
@@ -1066,19 +1053,6 @@ const Sky = {
 
 
     tagsType: (html, page) => {
-        if (page == 1) {
-            Sky.d.push({
-                img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
-                url: 'hiker://empty',
-                col_type: 'pic_1_full',
-            })
-            Sky.d.push({
-                col_type: 'line_blank',
-            })
-            Sky.d.push({
-                col_type: 'big_blank_block',
-            })
-        }
         try {
             var pages = pdfh(html, "body&&.mt-6.justify-between&&form&&Text").match(/\d+/)[0]
         } catch {
@@ -1088,7 +1062,7 @@ const Sky = {
         list.forEach(item => {
             Sky.d.push({
                 title: pdfh(item, 'a&&Text'),
-                url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory##immersiveTheme#').rule(() => {
+                url: $(pdfh(item, 'a&&href') + '?page=fypage#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
                     Sky.yijiParse(MY_URL)
                     setResult(Sky.d)
