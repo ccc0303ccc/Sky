@@ -1004,7 +1004,7 @@ const Sky = {
         list.forEach(item => {
             Sky.d.push({
                 title: pdfh(item, 'img&&alt'),
-                url: $(pdfh(item, 'a&&href') + '#noHistory##gameTheme#').rule(() => {
+                url: $(pdfh(item, 'a&&href') + '#noHistory#').rule(() => {
                     const Sky = $.require('hiker://page/Sky')
                     const html = fetch(MY_URL, {
                         headers: {
