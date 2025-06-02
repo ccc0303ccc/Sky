@@ -1,5 +1,5 @@
 const Sky = {
-    version: "20250509",
+    version: "20250601",
     empty: 'hiker://empty',
     url: "https://missav.live/dm45/",
     d: [],
@@ -247,7 +247,7 @@ const Sky = {
         if (url.includes("search")) {
             type = "search"
         }
-        log(url)
+        //log(url)
         if (MY_PAGE == 1) {
             categoryList.forEach((cate, index) => {
                 Sky.d.push({
@@ -959,13 +959,13 @@ const Sky = {
         try {
             var title = "““””" + pdfh(html, "body&&.rounded-full&&img&&alt").bold();
             var img = pdfh(html, "body&&.rounded-full&&img&&src");
-            var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").fontcolor("#4169E1").small() + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1").small();
+            var desc = "““””" + pdfh(html, ".mt-2.text-sm.text-nord9&&p&&Text").fontcolor("#4169E1") + "\n" + pdfh(html, ".mt-2.text-sm.text-nord9&&p,1&&Text").fontcolor("#00CED1");
             Sky.d.push({
                 title: title,
                 desc: desc,
                 img: img,
                 url: "hiker://empty",
-                col_type: "movie_1_left_pic"
+                col_type: "movie_1_vertical_pic"
             })
         } catch {}
         Sky.DynamicSort(html)
@@ -973,6 +973,19 @@ const Sky = {
     },
 
     videoType: (html, page) => {
+        if (page == 1) {
+            Sky.d.push({
+                img: 'https://s2.loli.net/2025/05/07/jEhr9ifg3NVowdq.png',
+                url: 'hiker://empty',
+                col_type: 'pic_1_full',
+            })
+            Sky.d.push({
+                col_type: 'line_blank',
+            })
+            Sky.d.push({
+                col_type: 'big_blank_block',
+            })
+        }
         try {
             var pages = pdfh(html, "body&&.mt-6.justify-between&&form&&Text").match(/\d+/)[0]
         } catch (e) {
